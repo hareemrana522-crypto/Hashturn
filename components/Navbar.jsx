@@ -1,0 +1,88 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+const NAV_LINKS = [
+  { href: "/", label: "Home" },
+  { href: "/services", label: "Services" },
+  { href: "/work", label: "Work" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contact", label: "Contact" },
+];
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [activeId, setActiveId] = useState("");
+
+  /* ── Sticky nav ── */
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  /* ── Active nav highlight on scroll (scroll-spy) ── */
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
+    if (!sections.length) return;
+
+    const sectionIO = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -40% 0px" }
+    );
+
+    sections.forEach((s) => sectionIO.observe(s));
+    return () => sectionIO.disconnect();
+  }, []);
+
+  return (
+    <nav className={`navbar${scrolled ? " scrolled" : ""}`} id="navbar">
+      <div className="nav-inner">
+        <a href="#home" className="nav-logo">
+          <div className="logo-mark">
+            <img src="/logo.png.png" alt="Hashturn Logo" height="45px" />
+          </div>
+          <span className="logo-text">HASHTURN</span>
+        </a>
+
+        <ul className={`nav-links${open ? " open" : ""}`} id="navLinks">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                className={`nav-link${
+                  activeId === link.href.replace("#", "") ? " active-link" : ""
+                }`}
+                onClick={() => setOpen(false)}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <a href="/contact" className="nav-cta button1">Get Free Quote</a>
+
+        <button
+          className="hamburger"
+          id="hamburger"
+          aria-label="Toggle menu"
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  );
+}
