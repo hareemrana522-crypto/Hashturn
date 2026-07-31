@@ -74,7 +74,7 @@ export default function ToolsMarquee() {
         .tools-marquee-container {
           width: 100%;
           display: flex;
-          flex-direction: column;https://api.whatsapp.com/send/?phone=923090483683&text&type=phone_number&app_absent=0
+          flex-direction: column;
         }
 
         .marquee-row {
