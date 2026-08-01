@@ -33,8 +33,14 @@ export default function ContactPage() {
            <h2 className="section-title" style={{ color: "var(--text)" }}>Book a Time That Works for You</h2>
            <p className="section-desc" style={{ marginBottom: "50px", color: "var(--muted)" }}>Pick a slot and we'll call you — no waiting, no back-and-forth.</p>
            
-           <div style={{ minHeight: "600px", border: "2px dashed var(--border)", borderRadius: "16px", display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "var(--bg-alt)" }}>
-             <p style={{ color: "var(--muted)", fontFamily: "'Inter', sans-serif" }}>[ Calendly Widget Will Go Here ]</p>
+           <div style={{ minHeight: "600px", borderRadius: "16px", overflow: "hidden", backgroundColor: "var(--bg-alt)", boxShadow: "0 10px 40px rgba(0,0,0,0.03)", maxWidth: "1000px", margin: "0 auto", height: "700px" }}>
+             <iframe 
+               src="https://calendly.com/hashturns/30min?embed_domain=hashturn.com&embed_type=Inline" 
+               width="100%" 
+               height="100%" 
+               frameBorder="0" 
+               title="Select a Date & Time - Calendly"
+             ></iframe>
            </div>
         </div>
       </section>
@@ -72,9 +78,11 @@ export default function ContactPage() {
                     <label style={{ color: "var(--text)" }}>Estimated Budget</label>
                     <select>
                       <option>Select a range</option>
-                      <option>$1k - $5k</option>
-                      <option>$5k - $10k</option>
-                      <option>$10k+</option>
+                      <option>Under $500</option>
+                      <option>$500 - $2,000</option>
+                      <option>$2,000 - $5,000</option>
+                      <option>$5,000+</option>
+                      <option>Not sure yet</option>
                     </select>
                   </div>
                 </div>
@@ -84,9 +92,12 @@ export default function ContactPage() {
                   <select>
                     <option>Select a service</option>
                     <option>Business Process Automation</option>
-                    <option>Robotic Process Automation</option>
+                    <option>Robotic Process Automation (RPA)</option>
                     <option>API & Webhook Integration</option>
                     <option>CRM Automation</option>
+                    <option>Microsoft 365 Solutions</option>
+                    <option>Mobile & Web Development</option>
+                    <option>Other / Not Sure</option>
                   </select>
                 </div>
 

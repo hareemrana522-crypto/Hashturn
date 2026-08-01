@@ -95,7 +95,7 @@ export default function CaseStudyPage({ params }) {
       </section>
 
       {/* ░░ BODY — article + sidebar ░░ */}
-      <section className="page">
+      <section className="page" style={{ paddingTop: "2rem" }}>
         <div className="container">
           <div className="cd-body-grid" style={{ "--cs-color": study.color }}>
             {/* ── Article ── */}
@@ -170,6 +170,8 @@ export default function CaseStudyPage({ params }) {
                       <div key={t} className="tech-icon-badge" style={{ "--icon-color": tool.color }}>
                         {tool.text ? (
                           <span style={{ fontSize: "1.3rem", fontWeight: 800 }}>{tool.text}</span>
+                        ) : tool.icon ? (
+                          <i className={tool.icon} style={{ fontSize: "1.5rem", color: tool.color }}></i>
                         ) : (
                           <img 
                             src={`/${tool.img}`} 

@@ -51,9 +51,11 @@ export default function QuotePage() {
                     <label style={{ fontSize: "0.85rem", fontWeight: "600", color: "var(--text)" }}>Estimated Budget</label>
                     <select style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif", backgroundColor: "#fff" }}>
                       <option>Select a range</option>
-                      <option>$1k - $5k</option>
-                      <option>$5k - $10k</option>
-                      <option>$10k+</option>
+                      <option>Under $500</option>
+                      <option>$500 - $2,000</option>
+                      <option>$2,000 - $5,000</option>
+                      <option>$5,000+</option>
+                      <option>Not sure yet</option>
                     </select>
                   </div>
                 </div>
@@ -63,9 +65,12 @@ export default function QuotePage() {
                   <select style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif", backgroundColor: "#fff" }}>
                     <option>Select a service</option>
                     <option>Business Process Automation</option>
-                    <option>Robotic Process Automation</option>
+                    <option>Robotic Process Automation (RPA)</option>
                     <option>API & Webhook Integration</option>
                     <option>CRM Automation</option>
+                    <option>Microsoft 365 Solutions</option>
+                    <option>Mobile & Web Development</option>
+                    <option>Other / Not Sure</option>
                   </select>
                 </div>
 
@@ -84,8 +89,8 @@ export default function QuotePage() {
                   <select style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif", backgroundColor: "#fff" }}>
                     <option>Select a timeline</option>
                     <option>As soon as possible</option>
-                    <option>Within 2 weeks</option>
-                    <option>Within 1 month</option>
+                    <option>1-2 weeks</option>
+                    <option>Within a month</option>
                     <option>Flexible</option>
                   </select>
                 </div>

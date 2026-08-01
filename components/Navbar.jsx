@@ -49,7 +49,7 @@ export default function Navbar() {
       <div className="nav-inner">
         <a href="#home" className="nav-logo">
           <div className="logo-mark">
-            <img src="/logo.png.png" alt="Hashturn Logo" height="45px" />
+            <img src="/logo.png.png" alt="Hashturn Logo" height="55px" />
           </div>
           <span className="logo-text">HASHTURN</span>
         </a>

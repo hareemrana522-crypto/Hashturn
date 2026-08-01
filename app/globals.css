@@ -26,9 +26,9 @@
   --glass-shadow: 0 8px 40px rgba(0,0,0,.06);
 
   /* Spacing */
-  --nav-h: 72px;
-  --section-pad: 100px;
-  --container: 1200px;
+  --nav-h: 85px;
+  --section-pad: 60px;
+  --container: 75rem; /* scales perfectly with base font size */
 
   /* Easing */
   --ease: cubic-bezier(.25,.8,.25,1);
@@ -36,7 +36,14 @@
 
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { 
+  scroll-behavior: smooth;
+  font-size: 16px; /* Base 100% scale for small screens */
+}
+
+@media (min-width: 1440px) {
+  html { font-size: 20px; } /* Exactly 125% scale for everything on desktop screens */
+}
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--white);
@@ -149,8 +156,7 @@ h1, h2, h3, h4 {
 
 /* ── Section base ── */
 .page {
-  min-height: 100vh;
-  padding: calc(var(--nav-h) + 60px) 0 var(--section-pad);
+  padding: calc(var(--nav-h) + 20px) 0 var(--section-pad);
   position: relative;
   overflow: hidden;
 }
@@ -216,10 +222,10 @@ h1, h2, h3, h4 {
 .nav-logo {
   display: flex;
   align-items: center;
-  /* gap: 0px; */
-  /* font-family: 'Plus Jakarta Sans', sans-serif; */
-  font-weight: 700;
-  font-size: 1.25rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
     .anton-regular {
   font-family: "Anton", sans-serif;
   font-weight: 400;
@@ -233,7 +239,7 @@ h1, h2, h3, h4 {
 }
 .nav-link {
   font-family: 'Inter', sans-serif;
-  font-size: .85rem;
+  font-size: 1rem;
   font-weight: 500;
   padding: .5rem .75rem;
   border-radius: 8px;
@@ -1368,9 +1374,8 @@ font-size: clamp(1.75rem, 3.2vw, 2.5rem);
    SCROLL REVEAL
    ============================================================ */
 .reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .65s var(--ease), transform .65s var(--ease);
+  opacity: 1;
+  transform: none;
 }
 .reveal.visible {
   opacity: 1;
@@ -1531,17 +1536,27 @@ body{
   position:relative; 
   min-height: 480px;
   width: 100%;
-   overflow-y: hidden; /* Bahar bhagne wale content ko cut karega */
+   overflow-y: hidden;
    overflow-x: auto;
+   -ms-overflow-style: none;
+   scrollbar-width: none;
+}
+.panels-wrap::-webkit-scrollbar {
+  display: none;
 }
 .panel{
   position:absolute;top:0;left:0;
-  width:100%; /* Mobile screen ke barabar container width rakhega */
+  width:100%;
   visibility:hidden;opacity:0;
   transition:opacity .3s, visibility .3s;
   pointer-events:none;
-  overflow-x: auto; /* Sirf is panel ke andar 850px ka chart scroll hoga */
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.panel::-webkit-scrollbar {
+  display: none;
 }
 .panel.active{
   position:relative;

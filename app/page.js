@@ -71,13 +71,13 @@ export default function HomePage() {
       <section
         className="page"
         id="home"
-        style={{ paddingTop: 100, paddingBottom: 60 }}
+        style={{ paddingTop: "calc(var(--nav-h) + 40px)", paddingBottom: 0 }}
       >
         <div className="container">
           <div className="cta-outer reveal">
             <div
               className="cta-mesh-card"
-              style={{ padding: "60px 40px", textAlign: "center" }}
+              style={{ padding: "90px 40px 60px", textAlign: "center" }}
             >
               <div className="cta-mesh-blob mb-1"></div>
               <div className="cta-mesh-blob mb-2"></div>
@@ -91,15 +91,15 @@ export default function HomePage() {
               >
                 <h1
                   className="hero-title"
-                  style={{ marginBottom: 20, fontSize: "2.3rem" }}
+                  style={{ marginBottom: 20, fontSize: "2.3rem", lineHeight: 1.15, fontWeight: 800 }}
                 >
                   We Automate the Work.
                   <br />
                   <span className="text-multicolor">You Run the Business.</span>
                 </h1>
                 <p
-                  className="hero-sub reveal eyebrow"
-                  style={{ marginBottom: 35, fontSize: 10 }}
+                  className="hero-sub reveal"
+                  style={{ marginBottom: 35, fontSize: "0.95rem", maxWidth: "700px", margin: "0 auto 35px", lineHeight: 1.6 }}
                 >
                   HashTurn designs and builds custom automation systems —
                   connecting your apps, eliminating repetitive tasks, and
@@ -113,7 +113,7 @@ export default function HomePage() {
                   <a href="/contact" className="cta-btn-grad">
                     Book Free Strategy Call <i className="fa-solid fa-arrow-right"></i>
                   </a>
-                  <a href="#services" className="btn-ghost">
+                  <a href="/services" className="btn-ghost">
                     See Our Services
                   </a>
                 </div>
@@ -160,18 +160,13 @@ export default function HomePage() {
       {/* ░░ THE PROBLEM WE SOLVE ░░ */}
       <section id="problem" className="page">
         <div className="container">
-          <div className="section-header reveal">
+          <div className="section-header reveal" style={{ maxWidth: "1000px" }}>
             <p className="eyebrow">THE PROBLEM WE SOLVE</p>
-            <h2 className="compact-title">
-              Your Team Spends Too Much Time <br />
-              on Tasks <span className="gradient-text">That Shouldn&apos;t Exist</span>
+            <h2 className="section-title">
+              Your Team Spends Too Much Time on Tasks <span className="gradient-text">That Shouldn&apos;t Exist</span>
             </h2>
             <p className="section-subtitle-text tight-subtitle">
-              Data entry, copy-pasting between apps, sending the same emails,
-              generating the <br />
-              same reports — these tasks eat hours every day. HashTurn
-              eliminates <br /> them so your team can focus on what actually
-              matters.
+              Data entry, copy-pasting between apps, sending the same emails, generating the same reports — these tasks eat hours every day. HashTurn eliminates them so your team can focus on what actually matters.
             </p>
           </div>
 
@@ -373,15 +368,13 @@ export default function HomePage() {
                     </span>
                   </div>
                 </div>
-                <span className="review-badge">
-                  <i className="fa-solid fa-circle-check"></i> Direct Review
-                </span>
+
               </div>
             ))}
           </div>
 
           <div className="reviews-cta reveal">
-            <a href="#" className="btn-ghost">
+            <a href="https://www.fiverr.com/zeeshaanbillal?public_mode=true" target="_blank" rel="noopener noreferrer" className="btn-ghost">
               See All Reviews on Fiverr
             </a>
           </div>

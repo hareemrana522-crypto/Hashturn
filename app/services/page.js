@@ -157,7 +157,7 @@ export default function ServicesPage() {
     <>
       {/* ░░ HERO ░░ */}
       <section className="srv-hero-section">
-        <div className="container srv-hero-inner reveal">
+        <div className="container srv-hero-inner">
           <span className="srv-tag">OUR SERVICES</span>
           <h1 className="srv-title" style={{ marginBottom: 10 }}>
             Everything You Need to <br />{" "}
@@ -177,7 +177,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ░░ SERVICE ROWS ░░ */}
-      <section className="srv-split-section reveal">
+      <section className="srv-split-section">
         <div className="container">
           <div className="srv-split-list">
             {SERVICES.map((s) => {

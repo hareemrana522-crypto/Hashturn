@@ -127,6 +127,8 @@ export default function WorkPage() {
                         <div key={t} className="tech-icon-badge" style={{ "--icon-color": tool.color }}>
                           {tool.text ? (
                             <span style={{ fontSize: "1.3rem", fontWeight: 800 }}>{tool.text}</span>
+                          ) : tool.icon ? (
+                            <i className={tool.icon} style={{ fontSize: "1.5rem", color: tool.color }}></i>
                           ) : (
                             <img 
                               src={`/${tool.img}`} 
