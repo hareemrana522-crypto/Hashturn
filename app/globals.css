@@ -1515,15 +1515,7 @@ body{
   --sf1:#f5f5f3;--sf2:#fff;
   --tp:#0b0b0b;--ts:#52514e;--tm:#898781;
 }
-@media(prefers-color-scheme:dark){
-  body{background:#111110;color:#fff;}
-  :root{
-    --border:rgba(255,255,255,0.10);
-    --border-strong:rgba(255,255,255,0.20);
-    --sf1:#1a1a19;--sf2:#222221;
-    --tp:#fff;--ts:#c3c2b7;--tm:#898781;
-  }
-}
+
 
 /* tabs */
 .tab-row{display:flex;border-bottom:1px solid var(--border);margin-bottom:16px;position:relative;}
