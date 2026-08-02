@@ -589,7 +589,7 @@ font-size: clamp(1.75rem, 3.2vw, 2.5rem);
 }
 
 .modern-services-accordion-list {
-  max-width: 1000px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -854,7 +854,7 @@ font-size: clamp(1.75rem, 3.2vw, 2.5rem);
   justify-content: center;
   align-items: center;
   position: relative;
-  height: 600px;
+  height: 650px;
 }
 
 .master-orbit-wrapper {
@@ -864,6 +864,7 @@ font-size: clamp(1.75rem, 3.2vw, 2.5rem);
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: scale(1.25); /* Makes the wheel 25% larger on desktop */
 }
 
 /* ─── ORBIT RINGS ─── */
@@ -1392,11 +1393,7 @@ font-size: clamp(1.75rem, 3.2vw, 2.5rem);
 /* ============================================================
    SCREEN OVERFLOW BREAKPOINT & RESPONSIVE FIXES
    ============================================================ */
-.container {
-  max-width: 100%;
-  padding-left: 5%;
-  padding-right: 5%;
-}
+
 
 @media (max-width: 1100px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2201,6 +2198,9 @@ font-size: clamp(1.75rem, 3.2vw, 2.5rem);
   background: var(--white);
   border: 1px solid var(--border);
   box-shadow: 0 30px 80px rgba(15, 17, 21, .08);
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 /* colorful blurred blobs — brand mesh */
@@ -2291,16 +2291,16 @@ font-size: clamp(1.75rem, 3.2vw, 2.5rem);
 .cta-sticker:hover { transform: translateY(-4px) scale(1.03); }
 
 .sticker-1 {
-  top: -22px;
-  left: 6%;
+  top: -12px;
+  left: 9%;
   transform: rotate(-6deg);
   color: var(--red);
 }
 .sticker-1 i { color: var(--red); }
 
 .sticker-2 {
-  bottom: -22px;
-  right: 7%;
+  bottom: -12px;
+  right: 10%;
   transform: rotate(5deg);
   color: var(--yellow);
 }

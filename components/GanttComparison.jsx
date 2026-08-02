@@ -102,7 +102,8 @@ export default function GanttComparison() {
   }, [tab]);
 
   const isMobile = windowWidth < 768;
-  const W = isMobile ? 850 : Math.max(windowWidth - 32, 300);
+  const containerWidth = windowWidth * 0.9; // Accounts for 5% padding left and right
+  const W = isMobile ? 850 : Math.max(containerWidth, 300);
   const LBL_W = isMobile ? 150 : Math.min(200, Math.floor(W * 0.25));
   const BAR_W = W - LBL_W;
   const COL_W = Math.floor(BAR_W / COLS);
