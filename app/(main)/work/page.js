@@ -3,6 +3,8 @@ import Image from "next/image";
 import { TOOL_LOGOS } from "@/lib/case-studies";
 import { sql } from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Our Work — Hashturn",
   description:
@@ -74,10 +76,8 @@ export default async function WorkPage() {
                           inset: 0,
                           width: "100%",
                           height: "100%",
-                          objectFit: "contain",
-                          backgroundColor: "#f8f9fa",
+                          objectFit: "cover",
                           display: "block",
-                          padding: "1rem",
                         }}
                       />
                     ) : (

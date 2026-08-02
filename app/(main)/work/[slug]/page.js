@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { TOOL_LOGOS } from "@/lib/case-studies";
 import { sql } from "@/lib/db";
+
+export const dynamic = "force-dynamic";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }) {
