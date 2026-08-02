@@ -1,6 +1,7 @@
 import GanttComparison from "@/components/GanttComparison";
 import OrbitWheel from "@/components/OrbitWheel";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import { sql } from "@/lib/db";
 
 const SERVICES_ACCORDION = [
   {
@@ -48,15 +49,6 @@ const PROCESS_STEPS = [
   { color: "var(--green)", icon: "fa-rocket", num: "04", title: "Launch & Support", desc: "We go live and provide ongoing support. Your automation runs reliably — and we're here if anything needs adjusting." },
 ];
 
-const REVIEWS = [
-  { color: "var(--blue)", initials: "MO", name: "mohsin129", flag: "🇬🇧", country: "United Kingdom", text: "Zeeshan is very competent in his work and his confidence put me at ease about what I wanted to achieve. He helped me automate task list reminders on Teams and Outlook. Will definitely use his skills again." },
-  { color: "var(--yellow)", initials: "GD", name: "gdivergetagc", flag: "🇺🇸", country: "United States", text: "Zeeshan was incredible. He not only created the project but then set up a Zoom call to make sure everything worked correctly." },
-  { color: "var(--red)", initials: "GR", name: "ground_studio", flag: "🇹🇭", country: "Thailand", text: "The final result was fantastic — the work was well done and communication was great throughout. Truly appreciated the attention to detail and problem-solving. A true professional!" },
-  { color: "var(--green)", initials: "MA", name: "malikko1992", flag: "🇩🇪", country: "Germany", text: "Working with Zeeshan was an absolute pleasure. He helped me fully automate certificate creation after Microsoft Teams meetings using Power Automate — clear, professional, solution-oriented from day one." },
-  { color: "var(--blue)", initials: "ST", name: "stephcruz938", flag: "🇺🇸", country: "United States", text: "Zeeshan was easy to talk to, very professional, and timely. Grateful that Fiverr connected me with a freelancer like him. Thanks!" },
-  { color: "var(--yellow)", initials: "MW", name: "mwade4", flag: "🇺🇸", country: "United States", text: "I was struggling with a Power Automate flow at work. Zeeshan quickly built a solution matching my vision, then walked me through it live on a Zoom call until I fully understood how to manage it myself." },
-];
-
 const WHY_ITEMS = [
   { color: "var(--blue)", num: "01", title: "200+ successfully delivered projects", desc: "Proven track record across industries — retail, finance, healthcare, logistics, and more." },
   { color: "var(--green)", num: "02", title: "End-to-end service", desc: "From strategy to build to support — you get one dedicated team from start to finish." },
@@ -64,7 +56,10 @@ const WHY_ITEMS = [
   { color: "var(--red)", num: "04", title: "Microsoft-certified expertise", desc: "Deep experience with the full Microsoft ecosystem — Power Platform, SharePoint, Excel VBA, and beyond." },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const reviews = await sql`SELECT name as client_name, location as company, rating, review_text as text, source FROM reviews WHERE featured = true ORDER BY created_at DESC LIMIT 6`.catch(() => []);
+  const colors = ["var(--blue)", "var(--yellow)", "var(--red)", "var(--green)", "var(--blue)", "var(--yellow)"];
+
   return (
     <>
       {/* ░░ HERO ░░ */}
@@ -346,31 +341,34 @@ export default function HomePage() {
           </div>
 
           <div className="reviews-grid">
-            {REVIEWS.map((r) => (
-              <div
-                className="review-card glass-card reveal"
-                style={{ "--rv-color": r.color }}
-                key={r.name}
-              >
-                <i className="fa-solid fa-quote-left review-quote-icon"></i>
-                <div className="review-stars">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <i className="fa-solid fa-star" key={i}></i>
-                  ))}
-                </div>
-                <p className="review-text">{r.text}</p>
-                <div className="review-footer">
-                  <div className="review-avatar">{r.initials}</div>
-                  <div className="review-meta">
-                    <h4>{r.name}</h4>
-                    <span>
-                      {r.flag} {r.country}
-                    </span>
+            {reviews.map((r, idx) => {
+              const reviewColor = colors[idx % colors.length];
+              const initial = r.client_name ? r.client_name.charAt(0).toUpperCase() : "A";
+              return (
+                <div
+                  className="review-card glass-card reveal"
+                  style={{ "--rv-color": reviewColor }}
+                  key={idx}
+                >
+                  <i className="fa-solid fa-quote-left review-quote-icon"></i>
+                  <div className="review-stars">
+                    {Array.from({ length: r.rating || 5 }).map((_, i) => (
+                      <i className="fa-solid fa-star" key={i}></i>
+                    ))}
+                  </div>
+                  <p className="review-text">{r.text}</p>
+                  <div className="review-footer">
+                    <div className="review-avatar">{initial}</div>
+                    <div className="review-meta">
+                      <h4>{r.client_name}</h4>
+                      <span>
+                        {r.company ? r.company : (r.source === "Fiverr" ? "via Fiverr" : "")}
+                      </span>
+                    </div>
                   </div>
                 </div>
-
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="reviews-cta reveal">

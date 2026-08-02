@@ -5,43 +5,14 @@ export const metadata = {
   description: 'Discover actionable tips on automation, case studies from real businesses, and the latest in Microsoft 365 solutions.',
 };
 
-const BLOG_POSTS = [
-  {
-    slug: "automate-sales-pipeline-2024",
-    tag: "Automation",
-    title: "How to automate your entire sales pipeline in 2024",
-    desc: "Discover the step-by-step guide to removing manual data entry from your CRM and speeding up your sales cycle.",
-    date: "Aug 12",
-    readTime: "5 min read",
-    featured: false,
-    color: "var(--blue)",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    slug: "logistics-firm-case-study",
-    tag: "Case Study",
-    title: "How We Saved a Logistics Firm 40 Hours a Week",
-    desc: "A deep dive into the custom Power Automate flows we built to handle dispatch scheduling and invoice generation entirely on autopilot.",
-    date: "Sep 05",
-    readTime: "8 min read",
-    featured: true,
-    color: "var(--red)",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    slug: "sharepoint-vs-custom-apps",
-    tag: "Microsoft 365",
-    title: "SharePoint vs. Custom Apps: Which is right for you?",
-    desc: "Are you outgrowing your SharePoint lists? Here is how to know when it's time to build a custom internal tool.",
-    date: "Sep 22",
-    readTime: "4 min read",
-    featured: false,
-    color: "var(--yellow)",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
-  },
-];
+import { sql } from '@/lib/db';
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const posts = await sql`SELECT slug, title, description as desc, pub_date, '5 min read' as read_time, false as featured, hero_image as image, tags as tag FROM blog_posts ORDER BY pub_date DESC`.catch(() => []);
+
+  // Use a fallback color array for tags
+  const colors = ["var(--blue)", "var(--red)", "var(--yellow)", "var(--green)"];
+
   return (
     <>
       {/* =========================================
@@ -62,7 +33,7 @@ export default function BlogPage() {
 
         <div className="container">
           <div className="blog-grid reveal">
-            {BLOG_POSTS.map((post) => (
+            {posts.map((post, idx) => (
               <div
                 key={post.slug}
                 className={`glass-panel blog-card ${
@@ -72,18 +43,18 @@ export default function BlogPage() {
               >
                 {/* Blog Image */}
                 <div style={{ margin: "-2rem -2rem 1.5rem -2rem", borderRadius: "1rem 1rem 0 0", overflow: "hidden" }}>
-                  <img src={post.image} alt={post.title} style={{ width: "100%", height: "220px", objectFit: "cover" }} />
+                  <img src={post.image || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"} alt={post.title} style={{ width: "100%", height: "220px", objectFit: "cover" }} />
                 </div>
                 
-                <span className="blog-tag" style={{ color: post.color }}>
-                  {post.tag}
+                <span className="blog-tag" style={{ color: colors[idx % colors.length] }}>
+                  {post.tag || "Insight"}
                 </span>
                 <h3>{post.title}</h3>
                 <p style={{ flexGrow: 1 }}>{post.desc}</p>
                 <div className="blog-meta">
-                  <span>{post.date}</span>
+                  <span>{new Date(post.pub_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
                   <span>•</span>
-                  <span>{post.readTime}</span>
+                  <span>{post.read_time || "5 min read"}</span>
                 </div>
                 <a href={`/blog/${post.slug}`} className="blog-link">
                   Read More <i className="fa-solid fa-arrow-right"></i>

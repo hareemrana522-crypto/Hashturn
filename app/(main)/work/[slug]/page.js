@@ -1,24 +1,28 @@
 import Link from "next/link";
 import Image from "next/image";
-import { CASE_STUDIES, TOOL_LOGOS } from "@/lib/case-studies";
+import { TOOL_LOGOS } from "@/lib/case-studies";
+import { sql } from "@/lib/db";
 import { notFound } from "next/navigation";
 
-export async function generateStaticParams() {
-  return CASE_STUDIES.map((s) => ({ slug: s.slug }));
-}
-
 export async function generateMetadata({ params }) {
-  const study = CASE_STUDIES.find((s) => s.slug === params.slug);
+  const result = await sql`SELECT title, description as problem FROM projects WHERE slug = ${params.slug} LIMIT 1`.catch(() => []);
+  const study = result[0];
   if (!study) return {};
   return {
     title: `${study.title} — HashTurn`,
-    description: study.summary,
+    description: study.problem,
   };
 }
 
-export default function CaseStudyPage({ params }) {
-  const study = CASE_STUDIES.find((s) => s.slug === params.slug);
+export default async function CaseStudyPage({ params }) {
+  const result = await sql`SELECT slug, title, service as category, client, description as summary, description as problem, content as solution, results as results_text, tools as tech_stack, hero_image as image FROM projects WHERE slug = ${params.slug} LIMIT 1`.catch(() => []);
+  const study = result[0];
+
   if (!study) notFound();
+
+  const studyColor = "#3B82F6"; // default blue or dynamic based on category
+  const techList = study.tech_stack ? study.tech_stack.split(',').map(s => s.trim()) : [];
+  const resultsList = study.results_text ? study.results_text.split('\n').filter(r => r.trim() !== '') : [];
 
   return (
     <>
@@ -97,63 +101,24 @@ export default function CaseStudyPage({ params }) {
       {/* ░░ BODY — article + sidebar ░░ */}
       <section className="page" style={{ paddingTop: "2rem" }}>
         <div className="container">
-          <div className="cd-body-grid" style={{ "--cs-color": study.color }}>
+          <div className="cd-body-grid" style={{ "--cs-color": studyColor }}>
             {/* ── Article ── */}
             <article>
-              <h2 className="cd-article-title">Our Solution</h2>
+              <h2 className="cd-article-title">Case Study</h2>
 
-              {/* Challenge */}
-              <div className="cd-section">
-                <h3>The Challenge</h3>
-                <p>{study.challenge}</p>
-              </div>
-
-              {/* Solution intro */}
-              <div className="cd-section">
-                <h3>Our Approach</h3>
-                <p>{study.solution}</p>
-              </div>
-
-              {/* Detailed sections */}
-              {study.sections.map((sec) => (
-                <div key={sec.heading} className="cd-section">
-                  <h3>{sec.heading}</h3>
-                  <p>{sec.body}</p>
-                  {sec.bullets && sec.bullets.length > 0 && (
-                    <ul className="cd-bullets">
-                      {sec.bullets.map((b) => (
-                        <li key={b}>
-                          <strong>{b.split(":")[0]}:</strong>
-                          {b.includes(":") ? b.slice(b.indexOf(":") + 1) : ""}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              ))}
-
-              {/* Technical highlight */}
-              {study.technicalHighlight && (
+              {/* Problem */}
+              {study.problem && (
                 <div className="cd-section">
-                  <h3>Technical Highlight</h3>
-                  <p>{study.technicalHighlight}</p>
+                  <h3>The Challenge</h3>
+                  <p style={{ whiteSpace: "pre-line" }}>{study.problem}</p>
                 </div>
               )}
 
-              {/* Additional Images (Flow Screenshots) */}
-              {study.images && study.images.length > 0 && (
-                <div className="cd-section" style={{ marginTop: "3rem" }}>
-                  <h3 style={{ marginBottom: "1.5rem" }}>Workflow Architecture</h3>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-                    {study.images.map((img, i) => (
-                      <img
-                        key={i}
-                        src={img}
-                        alt={`Workflow Step ${i + 1}`}
-                        style={{ width: "100%", height: "auto", borderRadius: "12px", border: "1px solid var(--border)" }}
-                      />
-                    ))}
-                  </div>
+              {/* Solution intro */}
+              {study.solution && (
+                <div className="cd-section">
+                  <h3>Our Approach & Solution</h3>
+                  <p style={{ whiteSpace: "pre-line" }}>{study.solution}</p>
                 </div>
               )}
             </article>
@@ -164,7 +129,7 @@ export default function CaseStudyPage({ params }) {
               <div className="cd-sidebar-box">
                 <h4>Tools & Technologies</h4>
                 <div className="tech-icons-row" style={{ marginTop: "1rem" }}>
-                  {study.tech.map((t) => {
+                  {techList.map((t) => {
                     const tool = TOOL_LOGOS[t] || { img: "react.png.png", color: "#ccc" };
                     return (
                       <div key={t} className="tech-icon-badge" style={{ "--icon-color": tool.color }}>
@@ -187,20 +152,22 @@ export default function CaseStudyPage({ params }) {
               </div>
 
               {/* Results box */}
-              <div className="cd-sidebar-box" style={{ "--cs-color": study.color }}>
-                <h4>Key Results</h4>
-                <ul className="cd-sidebar-results">
-                  {study.results.map((r) => (
-                    <li key={r}>
-                      <i
-                        className="fa-solid fa-check"
-                        style={{ color: study.color, marginRight: 8 }}
-                      />
-                      {r}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {resultsList.length > 0 && (
+                <div className="cd-sidebar-box" style={{ "--cs-color": studyColor }}>
+                  <h4>Key Results</h4>
+                  <ul className="cd-sidebar-results">
+                    {resultsList.map((r, i) => (
+                      <li key={i}>
+                        <i
+                          className="fa-solid fa-check"
+                          style={{ color: studyColor, marginRight: 8 }}
+                        />
+                        {r}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               {/* CTA box */}
               <div className="cd-sidebar-cta">

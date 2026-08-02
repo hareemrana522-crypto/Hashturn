@@ -40,9 +40,9 @@ export default function AboutPage() {
             <div className="mission-text">
               <span className="eyebrow">Our Mission</span>
               <h2 className="section-title">Every Hour Saved Is <span className="gradient-text">an Hour Earned</span></h2>
-              <p className="section-body">HashTurn was built on a simple idea: businesses waste enormous amounts of time on repetitive tasks that technology can handle better. Manual data entry, copy-pasting between apps, generating the same reports every week, sending the same emails — none of this should require a human.</p>
+              <p className="section-body">HashTurn was built on a simple idea: businesses waste enormous amounts of time on repetitive tasks that technology can handle better. Manual data entry, copy-pasting between apps, generating the same reports every week, sending the same emails ??? none of this should require a human.</p>
               <p className="section-body">We started on Fiverr, delivering hundreds of automation projects for businesses around the world. We earned a 5-star reputation by doing one thing consistently: building automation that actually works, on time, and exactly as promised.</p>
-              <p className="section-body">Today, HashTurn is a full-service automation company. We work with businesses across every industry — retail, finance, healthcare, logistics, and more — helping them save hundreds of hours every month.</p>
+              <p className="section-body">Today, HashTurn is a full-service automation company. We work with businesses across every industry ??? retail, finance, healthcare, logistics, and more ??? helping them save hundreds of hours every month.</p>
             </div>
 
             <div className="mission-collage">
@@ -60,7 +60,7 @@ export default function AboutPage() {
               </div>
 
               <div className="mission-stat-card mc-3">
-                <h3>5★</h3>
+                <h3>5???</h3>
                 <p>Fiverr Rating</p>
               </div>
 
@@ -403,7 +403,7 @@ export default function AboutPage() {
               <span className="gradient-text">Can Do for Your Business?</span>
             </h2>
             <p className="section-subtitle-text tight-subtitle" style={{ margin: "20px auto 40px auto", maxWidth: "600px", fontSize: "1.1rem" }}>
-              Book a free strategy call. No commitment, no pressure — just an honest conversation about your business and how we can help.
+              Book a free strategy call. No commitment, no pressure ??? just an honest conversation about your business and how we can help.
             </p>
             <a href="/contact" className="button1" style={{ fontSize: "1.1rem", padding: "16px 36px", display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none" }}>
               Book Free Strategy Call <span>&rarr;</span>
