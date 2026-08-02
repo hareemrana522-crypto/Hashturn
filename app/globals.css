@@ -2895,7 +2895,14 @@ display: inline-flex;
   position: relative;
   width: 130px;
   height: 130px;
-  margin: 2rem  0;
+  margin: 3rem 0 2rem 0;
+}
+
+@media (max-width: 992px) {
+  .mini-orbit {
+    align-self: center;
+    margin: 3rem auto 2rem auto;
+  }
 }
 
 
@@ -2946,8 +2953,8 @@ display: inline-flex;
 
 .mini-tool-badge:hover {
   transform: scale(1.25);
-
-  box-shadow: 0 0 14px rgba(217, 77, 22, 0.3), 0 4px 12px rgba(202, 140, 33, 0.08);
+  box-shadow: 0 0 12px var(--icon-color);
+  border-color: var(--icon-color);
   z-index: 5;
 }
 

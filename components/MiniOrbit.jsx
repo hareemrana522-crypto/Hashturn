@@ -22,7 +22,10 @@ export default function MiniOrbit({ tools }) {
             className="mini-orbit-slot"
             style={{ "--angle": `${i * step}deg` }}
           >
-            <div className="mini-tool-badge">
+            <div
+              className="mini-tool-badge"
+              style={{ "--icon-color": tool.color || "rgba(202, 140, 33, 1)" }}
+            >
               <img
                 src={`/${tool.img}`}
                 alt={tool.label}
