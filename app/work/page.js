@@ -31,7 +31,7 @@ export default function WorkPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
               gap: "2rem",
               maxWidth: "1200px",
               margin: "0 auto",

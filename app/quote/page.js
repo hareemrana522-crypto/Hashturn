@@ -1,9 +1,42 @@
-export const metadata = {
-  title: 'Get a Quote | HashTurn',
-  description: 'Get a custom automation quote in 24 hours. Tell us what you need automated and we\'ll send you a clear plan.',
-};
+"use client";
+import { useState } from 'react';
+import Script from 'next/script';
 
 export default function QuotePage() {
+  const [status, setStatus] = useState({ state: "idle", message: "" });
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setStatus({ state: "submitting", message: "" });
+
+    const formData = new FormData(e.target);
+    if (formData.get("_honey")) {
+      return setStatus({ state: "success", message: "Quote request received." });
+    }
+
+    try {
+      const turnstileResponse = formData.get("cf-turnstile-response");
+      if (process.env.NODE_ENV !== 'development' && !turnstileResponse) {
+        return setStatus({ state: "error", message: "Please complete the security check." });
+      }
+
+      const res = await fetch("/api/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        setStatus({ state: "success", message: "Request sent successfully! We'll be in touch." });
+        e.target.reset();
+      } else {
+        setStatus({ state: "error", message: data.error || "Something went wrong." });
+      }
+    } catch (err) {
+      setStatus({ state: "error", message: "Failed to send request. Please try again." });
+    }
+  }
+
   return (
     <>
       <section className="page" id="quote-hero" style={{ paddingTop: 180, paddingBottom: 100, backgroundColor: 'var(--bg)', color: 'var(--text)' }}>
@@ -23,80 +56,113 @@ export default function QuotePage() {
 
       <section className="page" id="quote-form" style={{ paddingBottom: 120, paddingTop: 40, backgroundColor: "var(--white)" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr", gap: "3rem", alignItems: "start" }}>
+          <div className="responsive-grid-quote">
             
             {/* Left: Form */}
-            <div className="glass-panel contact-form" style={{ backgroundColor: "#fff", border: "1px solid var(--border)", borderRadius: "16px", boxShadow: "0 10px 40px rgba(0,0,0,0.03)", padding: "2.5rem" }}>
+            <div className="glass-panel contact-form" style={{ backgroundColor: "#fff", border: "1px solid var(--border)", borderRadius: "16px", boxShadow: "0 10px 40px rgba(0,0,0,0.03)", padding: "2.5rem 2.5rem 1.25rem 2.5rem", height: "fit-content" }}>
               <h3 style={{ fontSize: "1.6rem", fontWeight: "800", fontFamily: "'Plus Jakarta Sans', sans-serif", marginBottom: "0.5rem", color: "var(--text)" }}>Project Details</h3>
               <p style={{ color: "var(--muted)", fontSize: "0.95rem", fontFamily: "'Inter', sans-serif", marginBottom: "2.5rem" }}>The more detail you provide, the more accurate your quote will be.</p>
               
-              <form>
-                <div className="form-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1.25rem" }}>
+              {status.state === "success" && (
+                <div style={{ padding: "12px 16px", backgroundColor: "rgba(0, 177, 64, 0.1)", color: "var(--green)", border: "1px solid var(--green)", borderRadius: "8px", marginBottom: "1.5rem", fontSize: "0.95rem", fontWeight: "600" }}>
+                  <i className="fa-solid fa-check-circle" style={{ marginRight: "8px" }}></i>
+                  {status.message}
+                </div>
+              )}
+
+              {status.state === "error" && (
+                <div style={{ padding: "12px 16px", backgroundColor: "rgba(232, 25, 44, 0.1)", color: "var(--red)", border: "1px solid var(--red)", borderRadius: "8px", marginBottom: "1.5rem", fontSize: "0.95rem", fontWeight: "600" }}>
+                  <i className="fa-solid fa-triangle-exclamation" style={{ marginRight: "8px" }}></i>
+                  {status.message}
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit}>
+                <input type="text" name="_honey" style={{ display: "none" }} tabIndex="-1" autoComplete="off" />
+                <input type="hidden" name="source" value="quote" />
+                
+                <div className="form-row-grid">
                   <div className="form-group" style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
                     <label style={{ fontSize: "0.85rem", fontWeight: "600", color: "var(--text)" }}>Your Name <span style={{ color: "var(--red)" }}>*</span></label>
-                    <input type="text" placeholder="John Smith" style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif" }} />
+                    <input type="text" name="name" placeholder="John Smith" style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif" }} required />
                   </div>
                   <div className="form-group" style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
                     <label style={{ fontSize: "0.85rem", fontWeight: "600", color: "var(--text)" }}>Email Address <span style={{ color: "var(--red)" }}>*</span></label>
-                    <input type="email" placeholder="john@company.com" style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif" }} />
+                    <input type="email" name="email" placeholder="john@company.com" style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif" }} required />
                   </div>
                 </div>
 
-                <div className="form-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1.25rem" }}>
+                <div className="form-row-grid">
                   <div className="form-group" style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
                     <label style={{ fontSize: "0.85rem", fontWeight: "600", color: "var(--text)" }}>Company Name</label>
-                    <input type="text" placeholder="Acme Corp" style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif" }} />
+                    <input type="text" name="company" placeholder="Acme Corp" style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif" }} />
                   </div>
                   <div className="form-group" style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
                     <label style={{ fontSize: "0.85rem", fontWeight: "600", color: "var(--text)" }}>Estimated Budget</label>
-                    <select style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif", backgroundColor: "#fff" }}>
-                      <option>Select a range</option>
-                      <option>Under $500</option>
-                      <option>$500 - $2,000</option>
-                      <option>$2,000 - $5,000</option>
-                      <option>$5,000+</option>
-                      <option>Not sure yet</option>
+                    <select name="budget" style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif", backgroundColor: "#fff" }}>
+                      <option value="">Select a range</option>
+                      <option value="Under $500">Under $500</option>
+                      <option value="$500 - $2,000">$500 - $2,000</option>
+                      <option value="$2,000 - $5,000">$2,000 - $5,000</option>
+                      <option value="$5,000+">$5,000+</option>
+                      <option value="Not sure yet">Not sure yet</option>
                     </select>
                   </div>
                 </div>
 
                 <div className="form-group" style={{ display: "flex", flexDirection: "column", gap: "0.4rem", marginBottom: "1.25rem" }}>
                   <label style={{ fontSize: "0.85rem", fontWeight: "600", color: "var(--text)" }}>Service Type <span style={{ color: "var(--red)" }}>*</span></label>
-                  <select style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif", backgroundColor: "#fff" }}>
-                    <option>Select a service</option>
-                    <option>Business Process Automation</option>
-                    <option>Robotic Process Automation (RPA)</option>
-                    <option>API & Webhook Integration</option>
-                    <option>CRM Automation</option>
-                    <option>Microsoft 365 Solutions</option>
-                    <option>Mobile & Web Development</option>
-                    <option>Other / Not Sure</option>
+                  <select name="service" style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif", backgroundColor: "#fff" }} required>
+                    <option value="">Select a service</option>
+                    <option value="Business Process Automation">Business Process Automation</option>
+                    <option value="Robotic Process Automation (RPA)">Robotic Process Automation (RPA)</option>
+                    <option value="API & Webhook Integration">API & Webhook Integration</option>
+                    <option value="CRM Automation">CRM Automation</option>
+                    <option value="Microsoft 365 Solutions">Microsoft 365 Solutions</option>
+                    <option value="Mobile & Web Development">Mobile & Web Development</option>
+                    <option value="Other / Not Sure">Other / Not Sure</option>
                   </select>
                 </div>
 
                 <div className="form-group" style={{ display: "flex", flexDirection: "column", gap: "0.4rem", marginBottom: "1.25rem" }}>
                   <label style={{ fontSize: "0.85rem", fontWeight: "600", color: "var(--text)" }}>Tools/Apps Involved</label>
-                  <input type="text" placeholder="e.g. HubSpot, QuickBooks, Google Sheets, Shopify..." style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif" }} />
+                  <input type="text" name="apps" placeholder="e.g. HubSpot, QuickBooks, Google Sheets, Shopify..." style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif" }} />
                 </div>
 
                 <div className="form-group" style={{ display: "flex", flexDirection: "column", gap: "0.4rem", marginBottom: "1.25rem" }}>
                   <label style={{ fontSize: "0.85rem", fontWeight: "600", color: "var(--text)" }}>Describe Your Project <span style={{ color: "var(--red)" }}>*</span></label>
-                  <textarea rows="5" placeholder="What process do you want to automate? What apps are involved? What does the current manual process look like? What would the ideal automated version do?" style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif", resize: "vertical" }}></textarea>
+                  <textarea name="message" rows="5" placeholder="What process do you want to automate? What apps are involved? What does the current manual process look like? What would the ideal automated version do?" style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif", resize: "vertical" }} required></textarea>
                 </div>
 
                 <div className="form-group" style={{ display: "flex", flexDirection: "column", gap: "0.4rem", marginBottom: "2rem" }}>
                   <label style={{ fontSize: "0.85rem", fontWeight: "600", color: "var(--text)" }}>Desired Timeline</label>
-                  <select style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif", backgroundColor: "#fff" }}>
-                    <option>Select a timeline</option>
-                    <option>As soon as possible</option>
-                    <option>1-2 weeks</option>
-                    <option>Within a month</option>
-                    <option>Flexible</option>
+                  <select name="timeline" style={{ padding: "0.8rem 1rem", borderRadius: "8px", border: "1px solid var(--border)", outline: "none", fontFamily: "'Inter', sans-serif", backgroundColor: "#fff" }}>
+                    <option value="">Select a timeline</option>
+                    <option value="As soon as possible">As soon as possible</option>
+                    <option value="1-2 weeks">1-2 weeks</option>
+                    <option value="Within a month">Within a month</option>
+                    <option value="Flexible">Flexible</option>
                   </select>
                 </div>
 
-                <button type="button" className="btn-solid" style={{ width: "100%", textAlign: "center", display: "block", backgroundColor: "var(--green)", border: "none", color: "#fff", padding: "16px", borderRadius: "10px", fontWeight: "700", fontSize: "1.05rem", cursor: "pointer", transition: "opacity 0.2s" }}>
-                  Submit Quote Request <i className="fa-solid fa-arrow-right" style={{ marginLeft: "5px" }}></i>
+                {process.env.NODE_ENV === 'development' ? (
+                  <div style={{ padding: "10px 15px", border: "1px solid var(--border)", borderRadius: "8px", display: "inline-flex", alignItems: "center", gap: "10px", marginBottom: "1.5rem", width: "100%", maxWidth: "300px", backgroundColor: "#fcfcfc" }}>
+                    <i className="fa-solid fa-check-circle" style={{ color: "var(--green)", fontSize: "1.5rem" }}></i>
+                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", color: "var(--text)" }}>Success!</span>
+                    <div style={{ marginLeft: "auto", display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
+                      <span style={{ fontSize: "0.75rem", color: "#f6821f", fontWeight: "bold", fontFamily: "sans-serif" }}>CLOUDFLARE</span>
+                      <span style={{ fontSize: "0.65rem", color: "var(--muted)" }}>Privacy · Terms</span>
+                    </div>
+                  </div>
+                ) : (
+                  <div style={{ marginBottom: "1.5rem" }}>
+                    <div className="cf-turnstile" data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'} data-theme="light"></div>
+                    <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="lazyOnload" />
+                  </div>
+                )}
+
+                <button type="submit" disabled={status.state === "submitting"} className="btn-solid" style={{ width: "100%", textAlign: "center", display: "block", backgroundColor: "var(--green)", border: "none", color: "#fff", padding: "16px", borderRadius: "10px", fontWeight: "700", fontSize: "1.05rem", cursor: status.state === "submitting" ? "not-allowed" : "pointer", opacity: status.state === "submitting" ? 0.7 : 1, transition: "opacity 0.2s" }}>
+                  {status.state === "submitting" ? "Sending..." : "Submit Quote Request"} {status.state !== "submitting" && <i className="fa-solid fa-arrow-right" style={{ marginLeft: "5px" }}></i>}
                 </button>
                 <div className="form-note" style={{ marginTop: "1rem", textAlign: "center", fontSize: "0.85rem" }}>
                   <i className="fa-solid fa-lock" style={{ color: "var(--yellow)" }}></i> <span style={{ color: "var(--muted)", marginLeft: "5px" }}>We respond within 24 hours. No spam, no pressure.</span>

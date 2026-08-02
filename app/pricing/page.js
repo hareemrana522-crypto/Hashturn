@@ -45,7 +45,7 @@ export default function PricingPage() {
         <div className="container">
           <div className="pricing-grid reveal" style={{ 
             display: "grid", 
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", 
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", 
             gap: "2rem",
             alignItems: "stretch"
           }}>
@@ -204,71 +204,53 @@ export default function PricingPage() {
           
           <div className="faq-grid reveal" style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 450px), 1fr))",
             gap: "1.5rem",
             marginTop: "3rem"
           }}>
-            <div className="cta-mesh-card" style={{ padding: "2.5rem", borderRadius: "16px", boxShadow: "0 10px 30px rgba(0,0,0,0.05)", position: "relative", overflow: "hidden" }}>
-              <div className="cta-mesh-blob mb-1" style={{ transform: "scale(0.5)", opacity: 0.5 }}></div>
-              <div className="cta-mesh-blob mb-3" style={{ transform: "scale(0.5)", opacity: 0.5 }}></div>
-              <div className="cta-mesh-overlay"></div>
+            <div className="faq-card" style={{ padding: "2.5rem", borderRadius: "16px", border: "2px solid transparent", background: "linear-gradient(var(--off, #fff), var(--off, #fff)) padding-box, var(--brand-gradient) border-box", position: "relative", overflow: "hidden" }}>
               <h4 style={{ fontSize: "1.2rem", marginBottom: "1rem", position: "relative", zIndex: 2, color: "var(--text)" }}>How long does a project take?</h4>
-              <p style={{ color: "var(--muted)", fontSize: "1rem", lineHeight: 1.6, position: "relative", zIndex: 2 }}>
+              <p style={{ color: "var(--muted)", fontSize: "1rem", lineHeight: 1.6, position: "relative", zIndex: 2, textAlign: "justify", textJustify: "inter-word" }}>
                 Most automation projects are delivered in 3-14 days depending on complexity. 
                 Custom mobile or web apps typically take 4-8 weeks.
               </p>
             </div>
             
-            <div className="cta-mesh-card" style={{ padding: "2.5rem", borderRadius: "16px", boxShadow: "0 10px 30px rgba(0,0,0,0.05)", position: "relative", overflow: "hidden" }}>
-              <div className="cta-mesh-blob mb-2" style={{ transform: "scale(0.5)", opacity: 0.5 }}></div>
-              <div className="cta-mesh-blob mb-4" style={{ transform: "scale(0.5)", opacity: 0.5 }}></div>
-              <div className="cta-mesh-overlay"></div>
+            <div className="faq-card" style={{ padding: "2.5rem", borderRadius: "16px", border: "2px solid transparent", background: "linear-gradient(var(--off, #fff), var(--off, #fff)) padding-box, var(--brand-gradient) border-box", position: "relative", overflow: "hidden" }}>
               <h4 style={{ fontSize: "1.2rem", marginBottom: "1rem", position: "relative", zIndex: 2, color: "var(--text)" }}>Do I need technical knowledge?</h4>
-              <p style={{ color: "var(--muted)", fontSize: "1rem", lineHeight: 1.6, position: "relative", zIndex: 2 }}>
+              <p style={{ color: "var(--muted)", fontSize: "1rem", lineHeight: 1.6, position: "relative", zIndex: 2, textAlign: "justify", textJustify: "inter-word" }}>
                 Not at all. We handle everything — you just tell us what you want and we translate 
                 that into the final automated system.
               </p>
             </div>
             
-            <div className="cta-mesh-card" style={{ padding: "2.5rem", borderRadius: "16px", boxShadow: "0 10px 30px rgba(0,0,0,0.05)", position: "relative", overflow: "hidden" }}>
-              <div className="cta-mesh-blob mb-3" style={{ transform: "scale(0.5)", opacity: 0.5 }}></div>
-              <div className="cta-mesh-blob mb-1" style={{ transform: "scale(0.5)", opacity: 0.5 }}></div>
-              <div className="cta-mesh-overlay"></div>
+            <div className="faq-card" style={{ padding: "2.5rem", borderRadius: "16px", border: "2px solid transparent", background: "linear-gradient(var(--off, #fff), var(--off, #fff)) padding-box, var(--brand-gradient) border-box", position: "relative", overflow: "hidden" }}>
               <h4 style={{ fontSize: "1.2rem", marginBottom: "1rem", position: "relative", zIndex: 2, color: "var(--text)" }}>What if I need changes after delivery?</h4>
-              <p style={{ color: "var(--muted)", fontSize: "1rem", lineHeight: 1.6, position: "relative", zIndex: 2 }}>
+              <p style={{ color: "var(--muted)", fontSize: "1rem", lineHeight: 1.6, position: "relative", zIndex: 2, textAlign: "justify", textJustify: "inter-word" }}>
                 We include a support period with every project. Minor adjustments are covered. 
                 For new features, we can quote them as add-ons.
               </p>
             </div>
             
-            <div className="cta-mesh-card" style={{ padding: "2.5rem", borderRadius: "16px", boxShadow: "0 10px 30px rgba(0,0,0,0.05)", position: "relative", overflow: "hidden" }}>
-              <div className="cta-mesh-blob mb-4" style={{ transform: "scale(0.5)", opacity: 0.5 }}></div>
-              <div className="cta-mesh-blob mb-2" style={{ transform: "scale(0.5)", opacity: 0.5 }}></div>
-              <div className="cta-mesh-overlay"></div>
+            <div className="faq-card" style={{ padding: "2.5rem", borderRadius: "16px", border: "2px solid transparent", background: "linear-gradient(var(--off, #fff), var(--off, #fff)) padding-box, var(--brand-gradient) border-box", position: "relative", overflow: "hidden" }}>
               <h4 style={{ fontSize: "1.2rem", marginBottom: "1rem", position: "relative", zIndex: 2, color: "var(--text)" }}>Can I pay per hour instead?</h4>
-              <p style={{ color: "var(--muted)", fontSize: "1rem", lineHeight: 1.6, position: "relative", zIndex: 2 }}>
+              <p style={{ color: "var(--muted)", fontSize: "1rem", lineHeight: 1.6, position: "relative", zIndex: 2, textAlign: "justify", textJustify: "inter-word" }}>
                 Yes. For complex or ongoing projects, we also offer hourly retainer arrangements. 
                 Contact us to discuss your specific needs.
               </p>
             </div>
             
-            <div className="cta-mesh-card" style={{ padding: "2.5rem", borderRadius: "16px", boxShadow: "0 10px 30px rgba(0,0,0,0.05)", position: "relative", overflow: "hidden" }}>
-              <div className="cta-mesh-blob mb-1" style={{ transform: "scale(0.5)", opacity: 0.5 }}></div>
-              <div className="cta-mesh-blob mb-4" style={{ transform: "scale(0.5)", opacity: 0.5 }}></div>
-              <div className="cta-mesh-overlay"></div>
+            <div className="faq-card" style={{ padding: "2.5rem", borderRadius: "16px", border: "2px solid transparent", background: "linear-gradient(var(--off, #fff), var(--off, #fff)) padding-box, var(--brand-gradient) border-box", position: "relative", overflow: "hidden" }}>
               <h4 style={{ fontSize: "1.2rem", marginBottom: "1rem", position: "relative", zIndex: 2, color: "var(--text)" }}>What&apos;s your refund policy?</h4>
-              <p style={{ color: "var(--muted)", fontSize: "1rem", lineHeight: 1.6, position: "relative", zIndex: 2 }}>
+              <p style={{ color: "var(--muted)", fontSize: "1rem", lineHeight: 1.6, position: "relative", zIndex: 2, textAlign: "justify", textJustify: "inter-word" }}>
                 We stand behind our work. If we can&apos;t deliver what we promised, you get a full refund. 
                 Simple and risk-free.
               </p>
             </div>
             
-            <div className="cta-mesh-card" style={{ padding: "2.5rem", borderRadius: "16px", boxShadow: "0 10px 30px rgba(0,0,0,0.05)", position: "relative", overflow: "hidden" }}>
-              <div className="cta-mesh-blob mb-2" style={{ transform: "scale(0.5)", opacity: 0.5 }}></div>
-              <div className="cta-mesh-blob mb-3" style={{ transform: "scale(0.5)", opacity: 0.5 }}></div>
-              <div className="cta-mesh-overlay"></div>
+            <div className="faq-card" style={{ padding: "2.5rem", borderRadius: "16px", border: "2px solid transparent", background: "linear-gradient(var(--off, #fff), var(--off, #fff)) padding-box, var(--brand-gradient) border-box", position: "relative", overflow: "hidden" }}>
               <h4 style={{ fontSize: "1.2rem", marginBottom: "1rem", position: "relative", zIndex: 2, color: "var(--text)" }}>Do you work with international clients?</h4>
-              <p style={{ color: "var(--muted)", fontSize: "1rem", lineHeight: 1.6, position: "relative", zIndex: 2 }}>
+              <p style={{ color: "var(--muted)", fontSize: "1rem", lineHeight: 1.6, position: "relative", zIndex: 2, textAlign: "justify", textJustify: "inter-word" }}>
                 Absolutely. We serve clients across the US, Europe, and Asia. All projects are 
                 managed fully online.
               </p>

@@ -1,123 +1,196 @@
-export const metadata = {
-  title: 'Contact | HashTurn',
-  description: 'Book your free strategy call and learn how automation can save your team hours every week.',
-};
+"use client";
+import { useState, useEffect } from "react";
+import Script from "next/script";
+import Navbar from "@/components/Navbar";
 
 export default function ContactPage() {
+  const [status, setStatus] = useState({ state: "idle", message: "" });
+  const [showCalendar, setShowCalendar] = useState(false);
+
+  useEffect(() => {
+    // Delay rendering the heavy calendly widget to avoid blocking page load
+    const timer = setTimeout(() => {
+      setShowCalendar(true);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ state: "submitting", message: "" });
+    const formData = new FormData(e.target);
+    
+    try {
+      const res = await fetch("/api/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      
+      if (res.ok) {
+        setStatus({ state: "success", message: "Message sent successfully!" });
+        e.target.reset();
+      } else {
+        setStatus({ state: "error", message: data.error || "Failed to send message." });
+      }
+    } catch (err) {
+      setStatus({ state: "error", message: "Network error. Please try again." });
+    }
+  };
+
   return (
     <>
+      <Navbar />
+      
       {/* =========================================
            HERO SECTION
       ========================================= */}
-      <section className="page" id="contact-hero" style={{ paddingTop: 180, paddingBottom: 100, backgroundColor: 'var(--bg)', color: 'var(--text)' }}>
-        <div className="container" style={{ textAlign: "center" }}>
-          <div className="hero-content reveal" style={{ maxWidth: 800, margin: "0 auto", width: "100%", textAlign: "center" }}>
-            <p className="eyebrow" style={{ color: "var(--green)", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "1px", fontWeight: "700", textTransform: "uppercase", marginBottom: "15px" }}>GET IN TOUCH</p>
-            <h1 className="hero-title" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: "800", marginBottom: 20, fontSize: "clamp(2.5rem, 4vw, 4rem)", lineHeight: 1.2, color: "var(--foreground)" }}>
+      <section className="page" id="contact-hero" style={{ paddingTop: "calc(var(--nav-h) + 60px)" }}>
+        <div className="container">
+          
+          <div className="section-header reveal" style={{ textAlign: "center" }}>
+            <p className="section-label" style={{ color: "var(--green)", fontWeight: "bold", letterSpacing: "1px", textTransform: "uppercase", fontSize: "0.85rem", marginBottom: "1rem" }}>Get in Touch</p>
+            <h1 className="section-title" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", lineHeight: 1.1, marginBottom: "1.5rem" }}>
               Book Your Free<br />
-              <span className="text-multicolor">Strategy Call</span>
+              <span className="gradient-text">Strategy Call</span>
             </h1>
-            <p className="hero-sub reveal" style={{ fontFamily: "'Inter', sans-serif", fontSize: "1.1rem", lineHeight: 1.7, color: "var(--muted)", maxWidth: "600px", margin: "0 auto" }}>
+            <p className="section-sub" style={{ margin: "0 auto", color: "var(--muted)", maxWidth: "600px", fontSize: "1.1rem" }}>
               Tell us about your business and the tasks that are eating your team's time. We'll show you exactly how automation can fix it — for free.
             </p>
           </div>
+
         </div>
       </section>
 
       {/* =========================================
-           MEETING SECTION
+           CALENDLY SECTION
       ========================================= */}
-      <section className="page" id="meeting" style={{ padding: "120px 0", backgroundColor: "var(--white)" }}>
-        <div className="container" style={{ textAlign: "center" }}>
-           <p className="eyebrow" style={{ color: "var(--green)", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "1px", fontWeight: "700", textTransform: "uppercase", marginBottom: "15px" }}>SCHEDULE INSTANTLY</p>
-           <h2 className="section-title" style={{ color: "var(--text)" }}>Book a Time That Works for You</h2>
-           <p className="section-desc" style={{ marginBottom: "50px", color: "var(--muted)" }}>Pick a slot and we'll call you — no waiting, no back-and-forth.</p>
-           
-           <div style={{ minHeight: "600px", borderRadius: "16px", overflow: "hidden", backgroundColor: "var(--bg-alt)", boxShadow: "0 10px 40px rgba(0,0,0,0.03)", maxWidth: "1000px", margin: "0 auto", height: "700px" }}>
-             <iframe 
-               src="https://calendly.com/hashturns/30min?embed_domain=hashturn.com&embed_type=Inline" 
-               width="100%" 
-               height="100%" 
-               frameBorder="0" 
-               title="Select a Date & Time - Calendly"
-             ></iframe>
-           </div>
+      <section className="section" style={{ padding: "3rem 1.5rem", backgroundColor: "#f9fafb" }}>
+        <div className="container" style={{ marginBottom: "1rem", textAlign: "center" }}>
+          <p className="section-label" style={{ color: "var(--green)", fontWeight: "bold", letterSpacing: "1px", textTransform: "uppercase", fontSize: "0.85rem", marginBottom: "1rem" }}>Schedule Instantly</p>
+          <h2 className="section-title" style={{ marginBottom: "0.5rem", fontSize: "2rem" }}>Book a Time That Works for You</h2>
+          <p className="section-sub" style={{ margin: "0 auto", color: "var(--muted)", marginBottom: "3rem" }}>Pick a slot and we'll call you — no waiting, no back-and-forth.</p>
+        </div>
+        
+        <div style={{ minHeight: "37.5rem", borderRadius: "1rem", overflow: "hidden", backgroundColor: "var(--bg-alt)", boxShadow: "0 10px 40px rgba(0,0,0,0.03)", maxWidth: "62.5rem", margin: "0 auto", height: "43.75rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          {!showCalendar ? (
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem" }}>
+              <div className="spinner" style={{ border: "3px solid rgba(0,0,0,0.1)", borderTop: "3px solid var(--green)", borderRadius: "50%", width: "40px", height: "40px", animation: "spin 1s linear infinite" }}></div>
+              <p style={{ color: "var(--muted)", fontSize: "0.95rem" }}>Loading Calendar...</p>
+              <style jsx>{`
+                @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+              `}</style>
+            </div>
+          ) : (
+            <iframe 
+              src="https://calendly.com/hashturns/30min?embed_domain=hashturn.com&embed_type=Inline" 
+              width="100%" 
+              height="100%" 
+              frameBorder="0" 
+              title="Select a Date & Time - Calendly"
+              loading="lazy"
+            ></iframe>
+          )}
         </div>
       </section>
 
       {/* =========================================
            CONTACT FORM SECTION
       ========================================= */}
-      <section className="page" id="contact-form" style={{ paddingBottom: 120, backgroundColor: "var(--white)" }}>
+      <section className="page" style={{ padding: "4rem 0" }}>
         <div className="container">
-          <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr", gap: "3rem", alignItems: "start" }}>
+          <div className="responsive-grid-contact contact-layout reveal">
             
-            {/* Left: Form */}
-            <div className="glass-panel contact-form" style={{ backgroundColor: "#fff", border: "1px solid var(--border)", borderRadius: "16px", boxShadow: "0 10px 40px rgba(0,0,0,0.03)" }}>
+            {/* Left: Form Area */}
+            <div className="glass-panel contact-form" style={{ backgroundColor: "#fff", border: "1px solid var(--border)", borderRadius: "16px", boxShadow: "0 10px 40px rgba(0,0,0,0.03)", padding: "2.5rem 2.5rem 1.25rem 2.5rem", height: "fit-content" }}>
               <h3 style={{ fontSize: "1.6rem", fontWeight: "800", fontFamily: "'Plus Jakarta Sans', sans-serif", marginBottom: "0.5rem", color: "var(--text)" }}>Send Us a Message</h3>
               <p style={{ color: "var(--muted)", fontSize: "0.95rem", fontFamily: "'Inter', sans-serif", marginBottom: "2.5rem" }}>Fill out the form below and we'll get back to you within 24 hours.</p>
               
-              <form>
-                <div className="form-row">
+              {status.state === "success" && (
+                <div style={{ padding: "12px 16px", backgroundColor: "rgba(0, 177, 64, 0.1)", color: "var(--green)", border: "1px solid var(--green)", borderRadius: "8px", marginBottom: "1.5rem", fontSize: "0.95rem", fontWeight: "600" }}>
+                  <i className="fa-solid fa-check-circle" style={{ marginRight: "8px" }}></i>
+                  {status.message}
+                </div>
+              )}
+
+              {status.state === "error" && (
+                <div style={{ padding: "12px 16px", backgroundColor: "rgba(232, 25, 44, 0.1)", color: "var(--red)", border: "1px solid var(--red)", borderRadius: "8px", marginBottom: "1.5rem", fontSize: "0.95rem", fontWeight: "600" }}>
+                  <i className="fa-solid fa-triangle-exclamation" style={{ marginRight: "8px" }}></i>
+                  {status.message}
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit}>
+                <input type="text" name="_honey" style={{ display: "none" }} tabIndex="-1" autoComplete="off" />
+                <input type="hidden" name="source" value="contact" />
+                
+                <div className="form-row-grid">
                   <div className="form-group">
                     <label style={{ color: "var(--text)" }}>Your Name <span style={{ color: "var(--red)" }}>*</span></label>
-                    <input type="text" placeholder="John Smith" />
+                    <input type="text" name="name" placeholder="John Smith" required />
                   </div>
                   <div className="form-group">
                     <label style={{ color: "var(--text)" }}>Email Address <span style={{ color: "var(--red)" }}>*</span></label>
-                    <input type="email" placeholder="john@company.com" />
+                    <input type="email" name="email" placeholder="john@company.com" required />
                   </div>
                 </div>
 
-                <div className="form-row">
+                <div className="form-row-grid">
                   <div className="form-group">
                     <label style={{ color: "var(--text)" }}>Company Name</label>
-                    <input type="text" placeholder="Acme Corp" />
+                    <input type="text" name="company" placeholder="Acme Corp" />
                   </div>
                   <div className="form-group">
                     <label style={{ color: "var(--text)" }}>Estimated Budget</label>
-                    <select>
-                      <option>Select a range</option>
-                      <option>Under $500</option>
-                      <option>$500 - $2,000</option>
-                      <option>$2,000 - $5,000</option>
-                      <option>$5,000+</option>
-                      <option>Not sure yet</option>
+                    <select name="budget">
+                      <option value="">Select a range</option>
+                      <option value="Under $500">Under $500</option>
+                      <option value="$500 - $2,000">$500 - $2,000</option>
+                      <option value="$2,000 - $5,000">$2,000 - $5,000</option>
+                      <option value="$5,000+">$5,000+</option>
+                      <option value="Not sure yet">Not sure yet</option>
                     </select>
                   </div>
                 </div>
 
                 <div className="form-group">
                   <label style={{ color: "var(--text)" }}>What service are you interested in? <span style={{ color: "var(--red)" }}>*</span></label>
-                  <select>
-                    <option>Select a service</option>
-                    <option>Business Process Automation</option>
-                    <option>Robotic Process Automation (RPA)</option>
-                    <option>API & Webhook Integration</option>
-                    <option>CRM Automation</option>
-                    <option>Microsoft 365 Solutions</option>
-                    <option>Mobile & Web Development</option>
-                    <option>Other / Not Sure</option>
+                  <select name="service" required>
+                    <option value="">Select a service</option>
+                    <option value="Business Process Automation">Business Process Automation</option>
+                    <option value="Robotic Process Automation (RPA)">Robotic Process Automation (RPA)</option>
+                    <option value="API & Webhook Integration">API & Webhook Integration</option>
+                    <option value="CRM Automation">CRM Automation</option>
+                    <option value="Microsoft 365 Solutions">Microsoft 365 Solutions</option>
+                    <option value="Mobile & Web Development">Mobile & Web Development</option>
+                    <option value="Other">Other / Not Sure</option>
                   </select>
                 </div>
 
                 <div className="form-group">
                   <label style={{ color: "var(--text)" }}>Tell Us About Your Project <span style={{ color: "var(--red)" }}>*</span></label>
-                  <textarea rows="5" placeholder="Describe the tasks you want automated, the apps you use, and any challenges you're facing..."></textarea>
+                  <textarea name="message" rows="5" placeholder="Describe the tasks you want automated, the apps you use, and any challenges you're facing..." required></textarea>
                 </div>
 
-                {/* Turnstile placeholder */}
-                <div style={{ padding: "10px 15px", border: "1px solid var(--border)", borderRadius: "8px", display: "inline-flex", alignItems: "center", gap: "10px", marginBottom: "1.5rem", minWidth: "300px", backgroundColor: "#fcfcfc" }}>
-                  <i className="fa-solid fa-check-circle" style={{ color: "var(--green)", fontSize: "1.5rem" }}></i>
-                  <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", color: "var(--text)" }}>Success!</span>
-                  <div style={{ marginLeft: "auto", display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
-                    <span style={{ fontSize: "0.75rem", color: "#f6821f", fontWeight: "bold", fontFamily: "sans-serif" }}>CLOUDFLARE</span>
-                    <span style={{ fontSize: "0.65rem", color: "var(--muted)" }}>Privacy · Terms</span>
+                {/* Turnstile UI */}
+                {process.env.NODE_ENV === 'development' ? (
+                  <div style={{ padding: "10px 15px", border: "1px solid var(--border)", borderRadius: "8px", display: "inline-flex", alignItems: "center", gap: "10px", marginBottom: "1.5rem", minWidth: "300px", backgroundColor: "#fcfcfc" }}>
+                    <i className="fa-solid fa-check-circle" style={{ color: "var(--green)", fontSize: "1.5rem" }}></i>
+                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", color: "var(--text)" }}>Success!</span>
+                    <div style={{ marginLeft: "auto", display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
+                      <span style={{ fontSize: "0.75rem", color: "#f6821f", fontWeight: "bold", fontFamily: "sans-serif" }}>CLOUDFLARE</span>
+                      <span style={{ fontSize: "0.65rem", color: "var(--muted)" }}>Privacy · Terms</span>
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div style={{ marginBottom: "1.5rem" }}>
+                    <div className="cf-turnstile" data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'} data-theme="light"></div>
+                    <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="lazyOnload" />
+                  </div>
+                )}
 
-                <button type="button" className="btn-solid" style={{ width: "100%", textAlign: "center", display: "block", backgroundColor: "var(--green)", border: "none", color: "#fff", padding: "16px", borderRadius: "10px", fontWeight: "700", fontSize: "1.05rem", cursor: "pointer", transition: "opacity 0.2s" }}>
-                  Send Message & Book Free Call <i className="fa-solid fa-arrow-right" style={{ marginLeft: "5px" }}></i>
+                <button type="submit" disabled={status.state === "submitting"} className="btn-solid" style={{ width: "100%", textAlign: "center", display: "block", backgroundColor: "var(--green)", border: "none", color: "#fff", padding: "16px", borderRadius: "10px", fontWeight: "700", fontSize: "1.05rem", cursor: status.state === "submitting" ? "not-allowed" : "pointer", opacity: status.state === "submitting" ? 0.7 : 1, transition: "opacity 0.2s" }}>
+                  {status.state === "submitting" ? "Sending..." : "Send Message & Book Free Call"} {status.state !== "submitting" && <i className="fa-solid fa-arrow-right" style={{ marginLeft: "5px" }}></i>}
                 </button>
                 <div className="form-note" style={{ marginTop: "1rem" }}>
                   <i className="fa-solid fa-lock" style={{ color: "var(--yellow)" }}></i> <span style={{ color: "var(--muted)", marginLeft: "5px" }}>Your information is private and will never be shared. We respond within 24 hours.</span>

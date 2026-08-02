@@ -101,7 +101,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gridAutoRows: "1fr", gap: "20px", maxWidth: "1050px", margin: "0 auto" }}>
+          <div className="about-team-grid">
             {/* Team Member 1: Zeeshan Bilal */}
             <div className="team-card reveal" style={{ "--theme-color": "var(--green)" }}>
               <div className="team-image-wrapper">
@@ -386,7 +386,7 @@ export default function AboutPage() {
         </div>
         
         {/* Full width marquee outside container */}
-        <div style={{ width: '100vw', position: 'relative', left: '50%', right: '50%', marginLeft: '-50vw', marginRight: '-50vw' }}>
+        <div style={{ width: '100%' }}>
           <ToolsMarquee />
         </div>
       </section>
@@ -564,13 +564,14 @@ export default function AboutPage() {
           border: 1px solid #f0f0f0;
           box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
           border-radius: 24px;
-          padding: 30px 25px;
+          padding: 45px 25px 40px 25px;
           text-align: center;
           transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
           display: flex;
           flex-direction: column;
           align-items: center;
           height: 100%;
+          min-height: 480px;
         }
 
         .team-card:hover {
@@ -582,9 +583,9 @@ export default function AboutPage() {
 
         .team-image-wrapper {
           position: relative;
-          width: 110px;
-          height: 110px;
-          margin: 0 auto 20px;
+          width: 145px;
+          height: 145px;
+          margin: 0 auto 24px;
         }
 
         .team-image, .team-image-placeholder {
@@ -693,6 +694,26 @@ export default function AboutPage() {
           .mission-layout { grid-template-columns: 1fr; gap: 2.5rem; }
           .mc-1, .mc-2, .mc-3, .mc-4 { transform: none; margin: 0; }
           .mission-title-nowrap { white-space: normal; }
+        }
+
+        @media (max-width: 480px) {
+          .mission-collage { grid-template-columns: 1fr; gap: 1rem; }
+        }
+
+        .about-team-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+          width: 100%;
+          margin: 0 auto;
+        }
+
+        @media (max-width: 1024px) {
+          .about-team-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+          .about-team-grid { grid-template-columns: 1fr; }
         }
       `}} />
     </>

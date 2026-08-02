@@ -71,7 +71,7 @@ export default function HomePage() {
       <section
         className="page"
         id="home"
-        style={{ paddingTop: "calc(var(--nav-h) + 40px)", paddingBottom: 0 }}
+        style={{ paddingTop: "calc(var(--nav-h) + 40px)", paddingBottom: "40px" }}
       >
         <div className="container">
           <div className="cta-outer reveal">

@@ -36,7 +36,7 @@ export default function ValuesTabs() {
 
   return (
     <section style={{ padding: '120px 0', backgroundColor: 'var(--off, #f9fafb)' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
+      <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <span style={{ 
             color: 'var(--green)', 
@@ -69,8 +69,8 @@ export default function ValuesTabs() {
       <style jsx>{`
         .values-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1.5rem;
+          grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+          gap: 1.2rem;
           width: 100%;
           margin-top: 2rem;
         }
@@ -79,7 +79,7 @@ export default function ValuesTabs() {
           background: #ffffff;
           border: 1px solid rgba(0,0,0,0.06);
           border-radius: 24px;
-          padding: 1.5rem 1.5rem;
+          padding: 1.5rem;
           text-align: left;
           transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
           box-shadow: 0 4px 20px rgba(0,0,0,0.03);
@@ -112,13 +112,13 @@ export default function ValuesTabs() {
         }
 
         .icon-wrapper {
-          width: 60px;
-          height: 60px;
-          border-radius: 16px;
+          width: 50px;
+          height: 50px;
+          border-radius: 12px;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-bottom: 1.5rem;
+          margin-bottom: 1.2rem;
           transition: transform 0.4s ease;
         }
 
@@ -133,10 +133,10 @@ export default function ValuesTabs() {
 
         .value-title {
           font-family: 'Plus Jakarta Sans', sans-serif;
-          font-size: 1.4rem;
+          font-size: 1.25rem;
           font-weight: 800;
           color: #0f1115;
-          margin: 0 0 1rem 0;
+          margin: 0 0 0.8rem 0;
           line-height: 1.3;
         }
 
@@ -146,21 +146,8 @@ export default function ValuesTabs() {
           line-height: 1.6;
           color: #4b5563;
           margin: 0;
-        }
-
-        @media (max-width: 1024px) {
-          .values-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-
-        @media (max-width: 768px) {
-          .values-grid {
-            grid-template-columns: 1fr;
-          }
-          .value-card {
-            padding: 2rem;
-          }
+          text-align: justify;
+          text-justify: inter-word;
         }
       `}</style>
         </div>
