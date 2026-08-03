@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { sql } from '@/lib/db';
 import { marked } from 'marked';
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({ params }) {
   const result = await sql`SELECT title, description as desc FROM blog_posts WHERE slug = ${params.slug} LIMIT 1`.catch(() => []);
   const post = result[0];

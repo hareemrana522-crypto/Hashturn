@@ -7,6 +7,8 @@ export const metadata = {
 
 import { sql } from '@/lib/db';
 
+export const dynamic = "force-dynamic";
+
 export default async function BlogPage() {
   const posts = await sql`SELECT slug, title, description as desc, pub_date, '5 min read' as read_time, false as featured, hero_image as image, tags as tag FROM blog_posts ORDER BY pub_date DESC`.catch(() => []);
 
