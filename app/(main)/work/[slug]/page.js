@@ -135,7 +135,7 @@ export default async function CaseStudyPage({ params }) {
                     const cleanT = t.replace(/[{}"\[\]]/g, '').trim();
                     const tool = TOOL_LOGOS[cleanT] || { img: "react.png.png", color: "#ccc" };
                     return (
-                      <div key={t} className="tech-icon-badge" style={{ "--icon-color": tool.color }}>
+                      <div key={cleanT} className="tech-icon-badge" style={{ "--icon-color": tool.color }}>
                         {tool.text ? (
                           <span style={{ fontSize: "1.3rem", fontWeight: 800 }}>{tool.text}</span>
                         ) : tool.icon ? (
@@ -143,11 +143,14 @@ export default async function CaseStudyPage({ params }) {
                         ) : (
                           <img 
                             src={`/${tool.img}`} 
-                            alt={t} 
-                            style={tool.h ? { width: "auto", height: tool.h } : {}} 
+                            alt={cleanT} 
+                            style={{ 
+                              ...(tool.h ? { width: "auto", height: tool.h } : {}),
+                              ...(tool.blend ? { mixBlendMode: tool.blend } : {})
+                            }} 
                           />
                         )}
-                        <span className="tech-icon-tooltip">{t}</span>
+                        <span className="tech-icon-tooltip">{cleanT}</span>
                       </div>
                     );
                   })}

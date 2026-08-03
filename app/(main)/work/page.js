@@ -135,7 +135,7 @@ export default async function WorkPage() {
                         console.log("Mapping tool:", cleanT, "Found:", !!tool);
                         const finalTool = tool || { img: "react.png.png", color: "#ccc" };
                         return (
-                          <div key={t} className="tech-icon-badge" style={{ "--icon-color": finalTool.color }}>
+                          <div key={cleanT} className="tech-icon-badge" style={{ "--icon-color": finalTool.color }}>
                             {finalTool.text ? (
                               <span style={{ fontSize: "1.3rem", fontWeight: 800 }}>{finalTool.text}</span>
                             ) : finalTool.icon ? (
@@ -143,14 +143,14 @@ export default async function WorkPage() {
                             ) : (
                               <img 
                                 src={`/${finalTool.img}`} 
-                                alt={t} 
+                                alt={cleanT} 
                                 style={{ 
                                   ...(finalTool.h ? { width: "auto", height: finalTool.h } : {}),
                                   ...(finalTool.blend ? { mixBlendMode: finalTool.blend } : {})
                                 }} 
                               />
                             )}
-                            <span className="tech-icon-tooltip">{t}</span>
+                            <span className="tech-icon-tooltip">{cleanT}</span>
                           </div>
                         );
                       })}
