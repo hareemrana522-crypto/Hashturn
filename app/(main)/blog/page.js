@@ -35,7 +35,18 @@ export default async function BlogPage() {
 
         <div className="container">
           <div className="blog-grid reveal">
-            {posts.map((post, idx) => (
+            {posts.map((post, idx) => {
+              // Parse tags - stored as JSON array string
+              let firstTag = "Insight";
+              try {
+                const tagsArr = JSON.parse(post.tag || '[]');
+                if (Array.isArray(tagsArr) && tagsArr.length > 0) {
+                  firstTag = tagsArr[0];
+                } else if (typeof post.tag === 'string' && post.tag && !post.tag.startsWith('[')) {
+                  firstTag = post.tag;
+                }
+              } catch { firstTag = post.tag || "Insight"; }
+              return (
               <div
                 key={post.slug}
                 className={`glass-panel blog-card ${
@@ -49,10 +60,10 @@ export default async function BlogPage() {
                 </div>
                 
                 <span className="blog-tag" style={{ color: colors[idx % colors.length] }}>
-                  {post.tag || "Insight"}
+                  {firstTag}
                 </span>
                 <h3>{post.title}</h3>
-                <p style={{ flexGrow: 1 }}>{post.desc}</p>
+                <p style={{ flexGrow: 1, color: "var(--muted)", fontSize: "0.95rem", lineHeight: 1.6 }}>{post.desc}</p>
                 <div className="blog-meta">
                   <span>{new Date(post.pub_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
                   <span>•</span>
@@ -62,7 +73,8 @@ export default async function BlogPage() {
                   Read More <i className="fa-solid fa-arrow-right"></i>
                 </a>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
