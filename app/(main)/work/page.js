@@ -130,20 +130,23 @@ export default async function WorkPage() {
                     {/* Tech logos */}
                     <div className="tech-icons-row" style={{ marginBottom: "1.2rem" }}>
                       {techList.slice(0, 4).map((t) => {
-                        const tool = TOOL_LOGOS[t] || { img: "react.png.png", color: "#ccc" };
+                        const cleanT = t.replace(/[{}"\[\]]/g, '').trim();
+                        const tool = TOOL_LOGOS[cleanT];
+                        console.log("Mapping tool:", cleanT, "Found:", !!tool);
+                        const finalTool = tool || { img: "react.png.png", color: "#ccc" };
                         return (
-                          <div key={t} className="tech-icon-badge" style={{ "--icon-color": tool.color }}>
-                            {tool.text ? (
-                              <span style={{ fontSize: "1.3rem", fontWeight: 800 }}>{tool.text}</span>
-                            ) : tool.icon ? (
-                              <i className={tool.icon} style={{ fontSize: "1.5rem", color: tool.color }}></i>
+                          <div key={t} className="tech-icon-badge" style={{ "--icon-color": finalTool.color }}>
+                            {finalTool.text ? (
+                              <span style={{ fontSize: "1.3rem", fontWeight: 800 }}>{finalTool.text}</span>
+                            ) : finalTool.icon ? (
+                              <i className={finalTool.icon} style={{ fontSize: "1.5rem", color: finalTool.color }}></i>
                             ) : (
                               <img 
-                                src={`/${tool.img}`} 
+                                src={`/${finalTool.img}`} 
                                 alt={t} 
                                 style={{ 
-                                  ...(tool.h ? { width: "auto", height: tool.h } : {}),
-                                  ...(tool.blend ? { mixBlendMode: tool.blend } : {})
+                                  ...(finalTool.h ? { width: "auto", height: finalTool.h } : {}),
+                                  ...(finalTool.blend ? { mixBlendMode: finalTool.blend } : {})
                                 }} 
                               />
                             )}

@@ -132,7 +132,8 @@ export default async function CaseStudyPage({ params }) {
                 <h4>Tools & Technologies</h4>
                 <div className="tech-icons-row" style={{ marginTop: "1rem" }}>
                   {techList.map((t) => {
-                    const tool = TOOL_LOGOS[t] || { img: "react.png.png", color: "#ccc" };
+                    const cleanT = t.replace(/[{}"\[\]]/g, '').trim();
+                    const tool = TOOL_LOGOS[cleanT] || { img: "react.png.png", color: "#ccc" };
                     return (
                       <div key={t} className="tech-icon-badge" style={{ "--icon-color": tool.color }}>
                         {tool.text ? (
