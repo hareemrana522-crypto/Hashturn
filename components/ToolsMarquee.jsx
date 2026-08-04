@@ -21,15 +21,6 @@ const ROW_2 = [
   { label: "Angular", img: "ang.png.png", h: 32, color: "#dd0031" },
 ];
 
-const ROW_3 = [
-  { label: "Node.js", img: "node.png.png", h: 30, color: "#339933" },
-  { label: "Python", img: "pyth.png.png", h: 30, color: "#afb746" },
-  { label: "Django", img: "djan.png.png", h: 30, color: "#092e20" },
-  { label: "SQL Server", img: "sql.png.png", h: 30, color: "#3882ba" },
-  { label: "MongoDB", img: "mongo.png.png", h: 35, color: "#47a248" },
-  { label: "Docker", img: "docker.png.png", h: 23, color: "#2496ed" },
-  { label: "Power BI", img: "powerbi.png.png", h: 30, color: "#f2c811" },
-];
 
 export default function ToolsMarquee() {
   return (
@@ -58,17 +49,6 @@ export default function ToolsMarquee() {
         </div>
       </div>
 
-      {/* ROW 3 */}
-      <div className="marquee-row row-3">
-        <div className="marquee-track">
-          {Array(6).fill(ROW_3).flat().map((t, i) => (
-            <div className="tool-badge" key={`r3-${i}`} style={{ "--ic": t.color }}>
-              <img src={`/${t.img}`} alt={t.label} style={{ height: `${t.h}px`, width: 'auto', objectFit: 'contain' }} />
-              <span className="tool-tooltip">{t.label}</span>
-            </div>
-          ))}
-        </div>
-      </div>
 
       <style jsx>{`
         .tools-marquee-container {

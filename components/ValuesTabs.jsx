@@ -35,7 +35,7 @@ export default function ValuesTabs() {
   ];
 
   return (
-    <section style={{ padding: '120px 0', backgroundColor: 'var(--off, #f9fafb)' }}>
+    <section style={{ padding: 'clamp(50px, 8vw, 120px) 0', backgroundColor: '#ffffff' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <span style={{ 

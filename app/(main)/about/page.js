@@ -17,7 +17,7 @@ export default async function AboutPage() {
       {/* =========================================
            HERO SECTION
       ========================================= */}
-      <section className="page" id="about-hero" style={{ paddingTop: 180, paddingBottom: 80 }}>
+      <section className="page" id="about-hero" style={{ paddingTop: "clamp(120px, 14vw, 180px)", paddingBottom: "clamp(40px, 6vw, 80px)", background: "var(--bg)" }}>
         <div className="container" style={{ textAlign: "center" }}>
           <div className="hero-content reveal" style={{ maxWidth: 1200, margin: "0 auto", width: "100%", textAlign: "center" }}>
             <p className="eyebrow" style={{ color: "var(--green)", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "1px", fontWeight: "700", textTransform: "uppercase", marginBottom: "15px" }}>About Us</p>
@@ -35,7 +35,7 @@ export default async function AboutPage() {
       {/* =========================================
            OUR MISSION
       ========================================= */}
-      <section style={{ padding: "120px 0" }}>
+      <section style={{ padding: "clamp(50px, 8vw, 120px) 0", background: "var(--off)" }}>
         <div className="container">
           <div className="mission-layout">
 
@@ -93,7 +93,7 @@ export default async function AboutPage() {
       {/* =========================================
            OUR PEOPLE
       ========================================= */}
-      <section style={{ padding: "120px 0", background: "rgba(255, 255, 255, 0.015)" }}>
+      <section style={{ padding: "clamp(50px, 8vw, 120px) 0", background: "var(--bg)" }}>
         <div className="container">
           <div className="section-header reveal" style={{ textAlign: "center", marginBottom: "4rem" }}>
             <p className="eyebrow" style={{ color: "var(--green)" }}>OUR PEOPLE</p>
@@ -104,8 +104,11 @@ export default async function AboutPage() {
           </div>
 
           <div className="about-team-grid">
-            {teamMembers.map((member) => (
-              <div key={member.id} className="team-card reveal" style={{ "--theme-color": member.avatar_color || "var(--green)" }}>
+            {teamMembers.map((member, idx) => {
+              const BRAND = ["var(--blue)", "var(--green)", "var(--yellow)", "var(--red)"];
+              const cardColor = BRAND[idx % BRAND.length];
+              return (
+              <div key={member.id} className="team-card reveal" style={{ "--theme-color": cardColor }}>
                 <div className="team-image-wrapper">
                   {member.image ? (
                     <img src={member.image} alt={member.name} className="team-image" />
@@ -130,15 +133,48 @@ export default async function AboutPage() {
                   )}
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
+
+      {/* Equalize all team card heights to the tallest card */}
+      <script dangerouslySetInnerHTML={{ __html: `
+        (function() {
+          function equalizeCards() {
+            var cards = document.querySelectorAll('.team-card');
+            if (!cards.length) return;
+            // Reset heights first
+            cards.forEach(function(c) { c.style.height = 'auto'; });
+            // Find max height
+            var max = 0;
+            cards.forEach(function(c) {
+              var h = c.getBoundingClientRect().height;
+              if (h > max) max = h;
+            });
+            // Apply to all
+            cards.forEach(function(c) { c.style.height = max + 'px'; });
+          }
+          // Run after images load
+          if (document.readyState === 'complete') {
+            equalizeCards();
+          } else {
+            window.addEventListener('load', equalizeCards);
+          }
+          // Also re-run on resize
+          window.addEventListener('resize', function() {
+            var cards = document.querySelectorAll('.team-card');
+            cards.forEach(function(c) { c.style.height = 'auto'; });
+            setTimeout(equalizeCards, 50);
+          });
+        })();
+      ` }} />
       
       {/* =========================================
            EXPERTISE
       ========================================= */}
-      <section style={{ padding: "120px 0", overflow: "hidden" }}>
+      <section style={{ padding: "clamp(50px, 8vw, 120px) 0", overflow: "hidden", background: "var(--off)" }}>
         <div className="container" style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
           <div className="section-header reveal" style={{ textAlign: "center", marginBottom: "4rem" }}>
             <span style={{ color: 'var(--green)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Our Expertise</span>
@@ -158,7 +194,7 @@ export default async function AboutPage() {
       {/* =========================================
            CTA SECTION (WORK WITH US)
       ========================================= */}
-      <section style={{ padding: "120px 0", textAlign: "center", position: "relative" }}>
+      <section style={{ padding: "clamp(50px, 8vw, 120px) 0", textAlign: "center", position: "relative", background: "var(--bg)" }}>
         <div className="container" style={{ maxWidth: "800px", margin: "0 auto", padding: "0 20px" }}>
           <div className="section-header reveal">
             <span className="eyebrow" style={{ color: 'var(--green)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Work With Us</span>
@@ -327,15 +363,14 @@ export default async function AboutPage() {
           background: #ffffff;
           border: 1px solid #f0f0f0;
           box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-          border-radius: 24px;
-          padding: 45px 25px 40px 25px;
+          border-radius: 20px;
+          padding: 20px 18px;
           text-align: center;
           transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
           display: flex;
           flex-direction: column;
           align-items: center;
           height: 100%;
-          min-height: 480px;
         }
 
         .team-card:hover {
@@ -347,9 +382,9 @@ export default async function AboutPage() {
 
         .team-image-wrapper {
           position: relative;
-          width: 145px;
-          height: 145px;
-          margin: 0 auto 24px;
+          width: 85px;
+          height: 85px;
+          margin: 0 auto 10px;
         }
 
         .team-image, .team-image-placeholder {
@@ -397,28 +432,28 @@ export default async function AboutPage() {
 
         .team-info h3 {
           font-family: 'Plus Jakarta Sans', sans-serif;
-          font-size: 1.4rem;
+          font-size: 0.95rem;
           font-weight: 800;
           color: var(--foreground);
-          margin: 0 0 6px;
+          margin: 0 0 2px;
         }
 
         .team-role {
           font-family: 'Inter', sans-serif;
-          font-size: 0.85rem;
+          font-size: 0.68rem;
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 1.2px;
           color: var(--theme-color);
-          margin: 0 0 12px;
+          margin: 0 0 6px;
         }
 
         .team-bio {
           font-family: 'Inter', sans-serif;
-          font-size: 0.9rem;
+          font-size: 0.75rem;
           line-height: 1.5;
           color: var(--muted);
-          margin: 0 0 20px;
+          margin: 0 0 8px;
           text-align: justify;
           text-justify: inter-word;
           hyphens: auto;
@@ -467,16 +502,16 @@ export default async function AboutPage() {
         .about-team-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
-          width: 100%;
+          gap: 16px;
+          max-width: 1080px;
           margin: 0 auto;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 900px) {
           .about-team-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 560px) {
           .about-team-grid { grid-template-columns: 1fr; }
         }
       `}} />

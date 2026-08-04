@@ -21,7 +21,20 @@ export default async function EditBlogPage({ params }) {
   // Format date for input[type="date"]
   let formattedDate = "";
   if (post.pub_date) {
-    formattedDate = new Date(post.pub_date).toISOString().split("T")[0];
+    try { formattedDate = new Date(post.pub_date).toISOString().split("T")[0]; } catch {}
+  }
+
+  // Parse tags JSON array to comma-separated string for the form
+  let tagsDisplay = "";
+  try {
+    const parsed = JSON.parse(post.tags || "[]");
+    if (Array.isArray(parsed)) {
+      tagsDisplay = parsed.join(", ");
+    } else {
+      tagsDisplay = String(post.tags || "");
+    }
+  } catch {
+    tagsDisplay = String(post.tags || "");
   }
 
   return (
@@ -87,7 +100,8 @@ export default async function EditBlogPage({ params }) {
               type="text"
               id="tags"
               name="tags"
-              defaultValue={String(post.tags || "")}
+              defaultValue={tagsDisplay}
+              placeholder="e.g. Power Automate, SharePoint, Microsoft 365"
             />
           </div>
         </div>
@@ -130,6 +144,7 @@ export default async function EditBlogPage({ params }) {
             name="content"
             rows={20}
             defaultValue={String(post.content || "")}
+            suppressHydrationWarning={true}
           ></textarea>
         </div>
 

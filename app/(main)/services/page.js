@@ -1,4 +1,5 @@
-import MiniOrbit from "@/components/MiniOrbit";
+
+
 
 export const metadata = {
   title: "Services — Hashturn",
@@ -22,11 +23,11 @@ const SERVICES = [
       "Data validation and quality checks",
     ],
     tools: [
-      { img: "automate.png.png", label: "Power Automate", boost: true, color: "#7ec9f7" },
-      { img: "share.png.png", label: "SharePoint", color: "#1c667b" },
-      { img: "Powerapps.png.png", label: "Power Apps", color: "#742774" },
-      { img: "powerbi.png.png", label: "Power BI", boost: true, color: "#f2c811" },
-      { img: "msteam.png.png", label: "MS Teams", color: "#464eb8" },
+      { img: "automate.png.png", h: 32, label: "Power Automate", color: "#7ec9f7" },
+      { img: "share.png.png",    h: 30, label: "SharePoint",     color: "#1c667b" },
+      { img: "Powerapps.png.png",h: 30, label: "Power Apps",     color: "#742774" },
+      { img: "powerbi.png.png",  h: 30, label: "Power BI",       color: "#f2c811" },
+      { img: "msteam.png.png",   h: 30, label: "MS Teams",       color: "#464eb8" },
     ],
   },
   {
@@ -46,11 +47,11 @@ const SERVICES = [
       "Scheduled batch processing jobs",
     ],
     tools: [
-      { img: "pyth.png.png", label: "Python", color: "#afb746" },
-      { img: "automate.png.png", label: "Power Automate", boost: true, color: "#7ec9f7" },
-      { img: "excel.png.png", label: "MS Excel", color: "#107c41" },
-      { img: "sql.png.png", label: "SQL Server", color: "#3882ba" },
-      { img: "azure.png.png", label: "MS Azure", color: "#0089d6" },
+      { img: "pyth.png.png",     h: 30, label: "Python",        color: "#afb746" },
+      { img: "automate.png.png", h: 32, label: "Power Automate",color: "#7ec9f7" },
+      { img: "excel.png.png",    h: 25, label: "MS Excel",      color: "#107c41" },
+      { img: "sql.png.png",      h: 30, label: "SQL Server",    color: "#3882ba" },
+      { img: "azure.png.png",    h: 30, label: "MS Azure",      color: "#0089d6" },
     ],
   },
   {
@@ -70,11 +71,11 @@ const SERVICES = [
       "Multi-system data aggregation dashboards",
     ],
     tools: [
-      { img: "node.png.png", label: "Node.js", color: "#339933" },
-      { img: "docker.png.png", label: "Docker", color: "#2496ed" },
-      { img: "mongo.png.png", label: "MongoDB", color: "#47a248" },
-      { img: "azure.png.png", label: "Microsoft Azure", color: "#0089d6" },
-      { img: "automate.png.png", label: "Power Automate", boost: true, color: "#7ec9f7" },
+      { img: "node.png.png",     h: 30, label: "Node.js",        color: "#339933" },
+      { img: "docker.png.png",   h: 23, label: "Docker",         color: "#2496ed" },
+      { img: "mongo.png.png",    h: 35, label: "MongoDB",        color: "#47a248" },
+      { img: "azure.png.png",    h: 30, label: "Microsoft Azure",color: "#0089d6" },
+      { img: "automate.png.png", h: 32, label: "Power Automate", color: "#7ec9f7" },
     ],
   },
   {
@@ -94,11 +95,11 @@ const SERVICES = [
       "Sales pipeline reporting and dashboards",
     ],
     tools: [
-      { img: "automate.png.png", label: "Power Automate", boost: true, color: "#7ec9f7" },
-      { img: "out.png.png", label: "MS Outlook", color: "#0078d4" },
-      { img: "powerbi.png.png", label: "Power BI", boost: true, color: "#f2c811" },
-      { img: "excel.png.png", label: "MS Excel", color: "#107c41" },
-      { img: "sql.png.png", label: "SQL Server", color: "#3882ba" },
+      { img: "automate.png.png", h: 32, label: "Power Automate",color: "#7ec9f7" },
+      { img: "out.png.png",      h: 25, label: "MS Outlook",    color: "#0078d4" },
+      { img: "powerbi.png.png",  h: 30, label: "Power BI",      color: "#f2c811" },
+      { img: "excel.png.png",    h: 25, label: "MS Excel",      color: "#107c41" },
+      { img: "sql.png.png",      h: 30, label: "SQL Server",    color: "#3882ba" },
     ],
   },
   {
@@ -118,12 +119,12 @@ const SERVICES = [
       "Word document population and generation",
     ],
     tools: [
-      { img: "share.png.png", label: "SharePoint", color: "#1c667b" },
-      { img: "Powerapps.png.png", label: "Power Apps", color: "#742774" },
-      { img: "automate.png.png", label: "Power Automate", boost: true, color: "#7ec9f7" },
-      { img: "excel.png.png", label: "MS Excel", color: "#107c41" },
-      { img: "powerbi.png.png", label: "Power BI", boost: true, color: "#f2c811" },
-      { img: "word.png.png", label: "MS Word", color: "#185abd" },
+      { img: "share.png.png",    h: 30, label: "SharePoint",    color: "#1c667b" },
+      { img: "Powerapps.png.png",h: 30, label: "Power Apps",    color: "#742774" },
+      { img: "automate.png.png", h: 32, label: "Power Automate",color: "#7ec9f7" },
+      { img: "excel.png.png",    h: 25, label: "MS Excel",      color: "#107c41" },
+      { img: "powerbi.png.png",  h: 30, label: "Power BI",      color: "#f2c811" },
+      { img: "word.png.png",     h: 25, label: "MS Word",       color: "#185abd" },
     ],
   },
   {
@@ -143,11 +144,11 @@ const SERVICES = [
       "API development and backend services",
     ],
     tools: [
-      { img: "react.png.png", label: "React.js", color: "#61dafb" },
-      { img: "ang.png.png", label: "Angular", color: "#dd0031" },
-      { img: "node.png.png", label: "Node.js", color: "#339933" },
-      { img: "djan.png.png", label: "Django", color: "#092e20" },
-      { img: "aws.png.png", label: "AWS", color: "#ff9900" },
+      { img: "react.png.png",h: 30, label: "React.js",color: "#61dafb" },
+      { img: "ang.png.png",  h: 32, label: "Angular", color: "#dd0031" },
+      { img: "node.png.png", h: 30, label: "Node.js", color: "#339933" },
+      { img: "djan.png.png", h: 30, label: "Django",  color: "#092e20" },
+      { img: "aws.png.png",  h: 25, label: "AWS",     color: "#ff9900" },
     ],
   },
 ];
@@ -205,7 +206,22 @@ export default function ServicesPage() {
                       </a>
                     </div>
 
-                    <MiniOrbit tools={s.tools} />
+                    <div className="tech-icons-row" style={{ marginTop: "1.5rem" }}>
+                      {s.tools.map((tool) => (
+                        <div
+                          key={tool.label}
+                          className="tech-icon-badge"
+                          style={{ "--icon-color": tool.color || "#ccc" }}
+                        >
+                          <img
+                            src={`/${tool.img}`}
+                            alt={tool.label}
+                            style={{ height: `${tool.h || 30}px`, width: 'auto', objectFit: 'contain' }}
+                          />
+                          <span className="tech-icon-tooltip">{tool.label}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
                   <div className="srv-right-col">

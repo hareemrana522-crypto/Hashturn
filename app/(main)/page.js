@@ -1,6 +1,7 @@
 import GanttComparison from "@/components/GanttComparison";
 import OrbitWheel from "@/components/OrbitWheel";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import ReviewsMarquee from "@/components/ReviewsMarquee";
 import { sql } from "@/lib/db";
 
 const SERVICES_ACCORDION = [
@@ -58,7 +59,7 @@ const WHY_ITEMS = [
 
 export default async function HomePage() {
   const reviews = await sql`SELECT name as client_name, location as company, rating, review_text as text, source FROM reviews WHERE featured = true ORDER BY created_at DESC LIMIT 6`.catch(() => []);
-  const colors = ["var(--blue)", "var(--yellow)", "var(--red)", "var(--green)", "var(--blue)", "var(--yellow)"];
+
 
   return (
     <>
@@ -340,36 +341,7 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <div className="reviews-grid">
-            {reviews.map((r, idx) => {
-              const reviewColor = colors[idx % colors.length];
-              const initial = r.client_name ? r.client_name.charAt(0).toUpperCase() : "A";
-              return (
-                <div
-                  className="review-card glass-card reveal"
-                  style={{ "--rv-color": reviewColor }}
-                  key={idx}
-                >
-                  <i className="fa-solid fa-quote-left review-quote-icon"></i>
-                  <div className="review-stars">
-                    {Array.from({ length: r.rating || 5 }).map((_, i) => (
-                      <i className="fa-solid fa-star" key={i}></i>
-                    ))}
-                  </div>
-                  <p className="review-text">{r.text}</p>
-                  <div className="review-footer">
-                    <div className="review-avatar">{initial}</div>
-                    <div className="review-meta">
-                      <h4>{r.client_name}</h4>
-                      <span>
-                        {r.company ? r.company : (r.source === "Fiverr" ? "via Fiverr" : "")}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <ReviewsMarquee reviews={reviews} />
 
           <div className="reviews-cta reveal">
             <a href="https://www.fiverr.com/zeeshaanbillal?public_mode=true" target="_blank" rel="noopener noreferrer" className="btn-ghost">

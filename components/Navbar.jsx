@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 
 const NAV_LINKS = [
-  { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/work", label: "Work" },
   { href: "/pricing", label: "Pricing" },
@@ -47,7 +46,7 @@ export default function Navbar() {
   return (
     <nav className={`navbar${scrolled ? " scrolled" : ""}`} id="navbar">
       <div className="nav-inner">
-        <a href="#home" className="nav-logo">
+        <a href="/" className="nav-logo">
           <div className="logo-mark">
             <img src="/logo.png.png" alt="Hashturn Logo" height="55px" />
           </div>

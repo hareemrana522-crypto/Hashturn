@@ -4,25 +4,41 @@ import { deleteBlog } from "./actions";
 import DeleteButton from "../../DeleteButton";
 
 export default async function BlogAdminPage() {
-  const posts = await sql`SELECT slug, title, description, pub_date, author FROM blog_posts ORDER BY pub_date DESC, created_at DESC`.catch(() => []);
+  let posts = [];
+  let dbError = null;
+  let totalCount = 0;
+  try {
+    const countResult = await sql`SELECT COUNT(*) as c FROM blog_posts`;
+    totalCount = countResult[0]?.c ?? 0;
+    posts = await sql`SELECT slug, title, description, pub_date FROM blog_posts ORDER BY pub_date DESC`;
+  } catch (e) {
+    dbError = String(e);
+    console.error("Admin blog list error:", e);
+  }
 
   return (
     <div className="admin-card">
       <div className="admin-card__header">
-        <span className="admin-card__title">Blog Posts ({posts.length})</span>
+        <span className="admin-card__title">Blog Posts ({posts.length}) — DB Count: {String(totalCount)}</span>
         <Link href="/admin/blog/new" className="btn-admin btn-admin--green">
           + New Post
         </Link>
       </div>
 
-      {posts.length === 0 ? (
+      {dbError && (
+        <div style={{ padding: "1rem", background: "#fee2e2", color: "#dc2626", margin: "1rem 1.5rem", borderRadius: "8px", fontSize: "0.85rem", fontFamily: "monospace" }}>
+          DB Error: {dbError}
+        </div>
+      )}
+
+      {posts.length === 0 && !dbError ? (
         <div style={{ padding: "2rem", textAlign: "center", color: "#9CA3AF" }}>
           No posts yet.{" "}
           <Link href="/admin/blog/new" style={{ color: "#22C55E" }}>
             Write your first post →
           </Link>
         </div>
-      ) : (
+      ) : posts.length === 0 ? null : (
         <div style={{ overflowX: "auto" }}>
           <table className="admin-table">
             <thead>

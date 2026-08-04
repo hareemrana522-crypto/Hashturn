@@ -22,7 +22,9 @@ export async function createBlog(formData) {
   const title = formData.get("title");
   const author = formData.get("author") || "HashTurn Team";
   const pubDate = formData.get("pubDate");
-  const tags = formData.get("tags") || "";
+  const tagsRaw = formData.get("tags") || "";
+  // Convert comma-separated tags to JSON array
+  const tags = JSON.stringify(tagsRaw.split(",").map(t => t.trim()).filter(Boolean));
   const description = formData.get("description") || "";
   const content = formData.get("content") || "";
   
@@ -55,7 +57,9 @@ export async function updateBlog(formData) {
   const title = formData.get("title");
   const author = formData.get("author") || "HashTurn Team";
   const pubDate = formData.get("pubDate");
-  const tags = formData.get("tags") || "";
+  const tagsRaw = formData.get("tags") || "";
+  // Convert comma-separated tags to JSON array
+  const tags = JSON.stringify(tagsRaw.split(",").map(t => t.trim()).filter(Boolean));
   const description = formData.get("description") || "";
   const content = formData.get("content") || "";
 
