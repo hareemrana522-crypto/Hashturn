@@ -10,6 +10,8 @@ export const metadata = {
 };
 
 export default async function AboutPage() {
+  // Temporarily update image on load to bypass local connection limits
+  await sql`UPDATE team_members SET image = '/hassan.jpg' WHERE name = 'M Hassaan Sikandar'`.catch(() => {});
   const teamMembers = await sql`SELECT id, name, role, bio, avatar, avatar_color, image, linkedin FROM team_members ORDER BY display_order ASC`.catch(() => []);
   return (
     <>
@@ -107,32 +109,51 @@ export default async function AboutPage() {
             {teamMembers.map((member, idx) => {
               const BRAND = ["var(--blue)", "var(--green)", "var(--yellow)", "var(--red)"];
               const cardColor = BRAND[idx % BRAND.length];
+              const initials = member.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
               return (
-              <div key={member.id} className="team-card reveal" style={{ "--theme-color": cardColor }}>
-                <div className="team-image-wrapper">
-                  {member.image ? (
-                    <img src={member.image} alt={member.name} className="team-image" />
-                  ) : (
-                    <div className="team-image-placeholder" style={{ background: member.avatar_color || "var(--green)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: "2.5rem", fontWeight: "bold" }}>
-                      {member.avatar || member.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()}
-                    </div>
-                  )}
-                  <div className="team-image-glow"></div>
-                </div>
-                <div className="team-info">
-                  <h3>{member.name}</h3>
-                  <p className="team-role">{member.role}</p>
-                  <p className="team-bio">{member.bio}</p>
-                  {member.linkedin && (
-                    <div className="team-socials">
-                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="social-link">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                        LinkedIn
+                <div key={member.id} className="team-card reveal" style={{ "--theme-color": cardColor }}>
+                  <div className="tc-photo">
+                    {member.image ? (
+                      <img src={member.image} alt={member.name} />
+                    ) : (
+                      <div className="tc-initials" style={{ background: cardColor }}>{initials}</div>
+                    )}
+                  </div>
+                  <div className="tc-body">
+                    <h3 className="tc-name">{member.name}</h3>
+                    <p className="tc-role">{member.role}</p>
+                    <div className="tc-socials">
+                      {member.linkedin ? (
+                        <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="tc-icon-btn tc-linkedin" title="LinkedIn">
+                          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                          </svg>
+                        </a>
+                      ) : (
+                        <a href="#" className="tc-icon-btn tc-linkedin" title="LinkedIn">
+                          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                          </svg>
+                        </a>
+                      )}
+                      <a href="#" className="tc-icon-btn tc-facebook" title="Facebook">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                          <path d="M9 8H7v3h2v9h3v-9h3l.5-3H12V6c0-.88.39-1 1-1h2V2h-3c-2.42 0-4 1.35-4 4v2z"/>
+                        </svg>
+                      </a>
+                      <a href="#" className="tc-icon-btn tc-instagram" title="Instagram">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                        </svg>
+                      </a>
+                      <a href="#" className="tc-icon-btn tc-github" title="GitHub">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
                       </a>
                     </div>
-                  )}
+                  </div>
                 </div>
-              </div>
               );
             })}
           </div>
@@ -357,144 +378,151 @@ export default async function AboutPage() {
           z-index: 1;
         }
       
-        /* Team Card Styles */
+        /* Team Grid & Card Styles */
+        .about-team-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+          max-width: 900px;
+          margin: 0 auto;
+        }
+
         .team-card {
-          position: relative;
           background: #ffffff;
-          border: 1px solid #f0f0f0;
-          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-          border-radius: 20px;
-          padding: 20px 18px;
+          border: 1px solid #ebebeb;
+          border-radius: 12px;
+          padding: 16px;
           text-align: center;
-          transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+          transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
           display: flex;
           flex-direction: column;
           align-items: center;
-          height: 100%;
+          gap: 12px;
         }
 
         .team-card:hover {
-          transform: translateY(-8px);
+          transform: translateY(-6px);
+          box-shadow: 0 12px 30px rgba(0,0,0,0.08);
           border-color: var(--theme-color);
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-          background: #ffffff;
         }
 
-        .team-image-wrapper {
-          position: relative;
-          width: 85px;
-          height: 85px;
-          margin: 0 auto 10px;
+        .tc-photo {
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          overflow: hidden;
+          border-radius: 8px;
+          background: #f4f4f5;
         }
 
-        .team-image, .team-image-placeholder {
+        .tc-photo img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          border-radius: 50%;
-          position: relative;
-          z-index: 2;
-          border: 2px solid rgba(255, 255, 255, 0.08);
-          transition: all 0.4s ease;
-          background: var(--border);
+          display: block;
+          transition: transform 0.4s ease;
         }
 
-        .team-card:hover .team-image, .team-card:hover .team-image-placeholder {
-          border-color: var(--theme-color);
+        .team-card:hover .tc-photo img {
           transform: scale(1.05);
         }
 
-        .team-image-glow {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+        .tc-initials {
           width: 100%;
           height: 100%;
-          background: var(--theme-color);
-          border-radius: 50%;
-          filter: blur(18px);
-          opacity: 0;
-          z-index: 1;
-          transition: opacity 0.4s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 2.2rem;
+          font-weight: 800;
+          color: #fff;
+          font-family: 'Plus Jakarta Sans', sans-serif;
+          border-radius: 8px;
         }
 
-        .team-card:hover .team-image-glow {
-          opacity: 0.35;
-        }
-
-        .team-info {
+        .tc-body {
           display: flex;
           flex-direction: column;
-          flex-grow: 1;
+          align-items: center;
           width: 100%;
+          gap: 4px;
         }
 
-        .team-info h3 {
+        .tc-name {
           font-family: 'Plus Jakarta Sans', sans-serif;
-          font-size: 0.95rem;
-          font-weight: 800;
-          color: var(--foreground);
-          margin: 0 0 2px;
-        }
-
-        .team-role {
-          font-family: 'Inter', sans-serif;
-          font-size: 0.68rem;
+          font-size: 1.05rem;
           font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 1.2px;
-          color: var(--theme-color);
-          margin: 0 0 6px;
+          color: var(--text);
+          margin: 0;
         }
 
-        .team-bio {
+        .tc-role {
           font-family: 'Inter', sans-serif;
-          font-size: 0.75rem;
-          line-height: 1.5;
+          font-size: 0.76rem;
           color: var(--muted);
-          margin: 0 0 8px;
-          text-align: justify;
-          text-justify: inter-word;
-          hyphens: auto;
-          -webkit-hyphens: auto;
+          margin: 0;
+          font-weight: 500;
         }
 
-        .team-socials {
-          margin-top: auto;
+        .tc-socials {
           display: flex;
+          gap: 10px;
+          margin-top: 6px;
           justify-content: center;
         }
 
-        .social-link {
-          display: inline-flex;
+        .tc-icon-btn {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          background: #f4f4f5;
+          border: 1px solid #e4e4e7;
+          display: flex;
           align-items: center;
-          gap: 8px;
-          padding: 8px 18px;
-          background: #eff6ff;
-          border: 1px solid #bfdbfe;
-          border-radius: 50px;
-          color: #0077b5;
-          font-family: 'Inter', sans-serif;
-          font-size: 0.85rem;
-          font-weight: 600;
+          justify-content: center;
+          color: #555;
           text-decoration: none;
-          transition: all 0.3s ease;
+          transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
         }
 
-        .social-link:hover {
-          background: #0077b5;
-          border-color: #0077b5;
-          color: #ffffff;
+        .tc-icon-btn:hover {
+          color: #fff;
           transform: translateY(-2px);
+        }
+
+        .tc-linkedin:hover {
+          background: #0a66c2;
+          border-color: #0a66c2;
+        }
+
+        .tc-facebook:hover {
+          background: #1877f2;
+          border-color: #1877f2;
+        }
+
+        .tc-instagram:hover {
+          background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+          border-color: #d62976;
+        }
+
+        .tc-github:hover {
+          background: #24292f;
+          border-color: #24292f;
         }
 
         @media (max-width: 900px) {
           .mission-layout { grid-template-columns: 1fr; gap: 2.5rem; }
           .mc-1, .mc-2, .mc-3, .mc-4 { transform: none; margin: 0; }
           .mission-title-nowrap { white-space: normal; }
+          .about-team-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
 
+        @media (max-width: 560px) {
+          .about-team-grid {
+            grid-template-columns: 1fr;
+          }
+        }
         @media (max-width: 480px) {
           .mission-collage { grid-template-columns: 1fr; gap: 1rem; }
         }

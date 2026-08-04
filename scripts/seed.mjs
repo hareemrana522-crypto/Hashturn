@@ -100,7 +100,7 @@ const TEAM_MEMBERS = [
   { name: "Aqsa Wazeer", role: "Web Developer", image_url: "/aqsa.jpg.jpg", linkedin_url: "https://linkedin.com/in/aqsa-wazeer-a899b6417", bio: "Specializing in modern, high-performance web applications. Excels at turning complex designs into seamless digital experiences.", display_order: 11 },
   { name: "Hasnain Ahmad", role: "PCB & Embedded Systems", image_url: "/hasnain.jpg.png", linkedin_url: "https://l1nk.dev/pdzribp", bio: "Specializing in hardware development and circuit design across microcontrollers and IoT systems.", display_order: 12 },
   { name: "Muhammad Abubakar", role: "MERN Stack Developer", image_url: "/bkar.jpg", linkedin_url: "https://www.linkedin.com/in/muhammadabubakarmughal/", bio: "Specializing in building modern web applications, focusing on frontend architecture and responsive UI.", display_order: 13 },
-  { name: "M Hassaan Sikandar", role: "Jr. Web & Automation Dev", image_url: "/hassan.jpg.png", linkedin_url: "https://www.linkedin.com/in/hassaan-sikandar-ab43923ba/", bio: "Combining modern web development with process automation to build smart digital solutions.", display_order: 14 }
+  { name: "M Hassaan Sikandar", role: "Jr. Web & Automation Dev", image_url: "/hassan.jpg", linkedin_url: "https://www.linkedin.com/in/hassaan-sikandar-ab43923ba/", bio: "Combining modern web development with process automation to build smart digital solutions.", display_order: 14 }
 ];
 
 async function seed() {

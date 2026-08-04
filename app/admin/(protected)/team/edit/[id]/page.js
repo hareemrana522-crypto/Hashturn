@@ -19,7 +19,7 @@ export default async function EditTeamMemberPage({ params }) {
   }
 
   return (
-    <div className="admin-card">
+    <div className="admin-card" suppressHydrationWarning>
       <div className="admin-card__header">
         <span className="admin-card__title">Edit Team Member</span>
         <Link href="/admin/team" className="btn-admin btn-admin--outline">
