@@ -1,12 +1,12 @@
 import { sql } from '../lib/db.js';
 
-async function checkDetails() {
+async function checkSP() {
   try {
-    const projs = await sql`SELECT slug, title, tools, results FROM projects`;
+    const projs = await sql`SELECT * FROM projects WHERE slug = 'sharepoint-assembly-document-sync'`;
     console.log(JSON.stringify(projs, null, 2));
   } catch (err) {
     console.error("Error fetching DB:", err);
   }
 }
 
-checkDetails();
+checkSP();
