@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+import { marked } from "marked";
 import { TOOL_LOGOS } from "@/lib/case-studies";
 import { sql } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }) {
@@ -17,14 +19,26 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function CaseStudyPage({ params }) {
-  const result = await sql`SELECT slug, title, service as category, client, description as summary, description as problem, content as solution, results as results_text, tools as tech_stack, hero_image as image FROM projects WHERE slug = ${params.slug} LIMIT 1`.catch(() => []);
+  const result = await sql`SELECT *, service as category, hero_image as image, description as summary, description as problem FROM projects WHERE slug = ${params.slug} LIMIT 1`.catch((e) => {
+    console.error('DB query failed', e);
+    return [];
+  });
   const study = result[0];
 
   if (!study) notFound();
 
-  const studyColor = "#3B82F6"; // default blue or dynamic based on category
-  const techList = study.tech_stack ? study.tech_stack.split(',').map(s => s.trim()) : [];
-  const resultsList = study.results_text ? study.results_text.split('\n').filter(r => r.trim() !== '') : [];
+  // debug: log which slug is being rendered (server-side)
+  console.log('Rendering case study server-side for', params.slug);
+  console.log('study raw', JSON.stringify(study));
+  console.log('study.content length', study.content?.length);
+  console.log('study.content includes img1', String(study.content).includes('SharePoint-Assembly_Flow1_CreateModify.png'));
+  console.log('study.content raw', study.content);
+
+  const studyColor = "#3B82F6";
+  const rawContent = study.content || study.solution || '';
+  const solutionHtml = rawContent ? marked.parse(String(rawContent), { mangle: false, headerIds: false }) : "";
+  const techList = study.tools ? study.tools.split(',').map(s => s.trim()) : [];
+  const resultsList = study.results ? study.results.split('\n').filter(r => r.trim() !== '') : [];
 
   return (
     <>
@@ -37,7 +51,7 @@ export default async function CaseStudyPage({ params }) {
           </Link>
 
           {/* Title block */}
-          <div className="cd-overview" style={{ "--cs-color": study.color }}>
+          <div className="cd-overview reveal" style={{ "--cs-color": study.color }}>
             <span
               className="cs-tag"
               style={{ "--cs-color": study.color, marginBottom: "1.2rem" }}
@@ -108,27 +122,18 @@ export default async function CaseStudyPage({ params }) {
             <article>
               <h2 className="cd-article-title">Case Study</h2>
 
-              {/* Problem */}
-              {study.problem && (
+              {/* Full Case Study Content */}
+              {rawContent && (
                 <div className="cd-section">
-                  <h3>The Challenge</h3>
-                  <p style={{ whiteSpace: "pre-line" }}>{study.problem}</p>
-                </div>
-              )}
-
-              {/* Solution intro */}
-              {study.solution && (
-                <div className="cd-section">
-                  <h3>Our Approach & Solution</h3>
-                  <p style={{ whiteSpace: "pre-line" }}>{study.solution}</p>
+                  <div className="solution-html" dangerouslySetInnerHTML={{ __html: solutionHtml }} />
                 </div>
               )}
             </article>
 
             {/* ── Sidebar ── */}
-            <aside className="cd-sidebar">
+            <aside className="cd-sidebar reveal">
               {/* Tech stack box */}
-              <div className="cd-sidebar-box">
+              <div className="cd-sidebar-box glass-card">
                 <h4>Tools & Technologies</h4>
                 <div className="tech-icons-row" style={{ marginTop: "1rem" }}>
                   {techList.map((t) => {
@@ -159,7 +164,7 @@ export default async function CaseStudyPage({ params }) {
 
               {/* Results box */}
               {resultsList.length > 0 && (
-                <div className="cd-sidebar-box" style={{ "--cs-color": studyColor }}>
+                <div className="cd-sidebar-box glass-card" style={{ "--cs-color": studyColor }}>
                   <h4>Key Results</h4>
                   <ul className="cd-sidebar-results">
                     {resultsList.map((r, i) => (
@@ -176,7 +181,7 @@ export default async function CaseStudyPage({ params }) {
               )}
 
               {/* CTA box */}
-              <div className="cd-sidebar-cta">
+              <div className="cd-sidebar-cta glass-card">
                 <h4>Need Something Similar?</h4>
                 <p>
                   Book a free 30-minute strategy call and we&apos;ll show you

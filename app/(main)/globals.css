@@ -314,7 +314,7 @@ h4 {
 
 .nav-link {
   font-family: 'Inter', sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   padding: .5rem .75rem;
   border-radius: 8px;
@@ -4368,8 +4368,9 @@ h4 {
    ============================================================ */
 .tech-icons-row {
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 10px;
 }
 
 .tech-icon-badge {
@@ -4514,4 +4515,99 @@ h4 {
 .cf-turnstile-wrapper {
   overflow: hidden;
   max-width: 100%;
+}
+
+/* ============================================================
+   MARKDOWN CONTENT STYLING (Case Studies & Blog Posts)
+   ============================================================ */
+.solution-html, .blog-content {
+  color: var(--text);
+  line-height: 1.8;
+}
+
+.solution-html h1, .blog-content h1,
+.solution-html h2, .blog-content h2,
+.solution-html h3, .blog-content h3,
+.solution-html h4, .blog-content h4 {
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.solution-html h1, .blog-content h1 { font-size: 2.2rem; }
+.solution-html h2, .blog-content h2 { font-size: 1.8rem; }
+.solution-html h3, .blog-content h3 { font-size: 1.4rem; }
+
+.solution-html p, .blog-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.solution-html ul, .blog-content ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.solution-html ol, .blog-content ol {
+  list-style-type: decimal;
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.solution-html li, .blog-content li {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.solution-html blockquote, .blog-content blockquote {
+  border-left: 4px solid var(--blue);
+  background: var(--off);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  border-radius: 4px;
+}
+
+.solution-html img, .blog-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 2rem 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.solution-html a, .blog-content a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-color: rgba(0,71,255,0.3);
+  text-underline-offset: 4px;
+  transition: all 0.2s;
+}
+
+.solution-html a:hover, .blog-content a:hover {
+  text-decoration-color: var(--blue);
+}
+
+.solution-html pre, .blog-content pre {
+  background: #1e1e1e;
+  color: #fff;
+  padding: 1.2rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.solution-html code, .blog-content code {
+  font-family: monospace;
+  background: rgba(0,0,0,0.05);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+.solution-html pre code, .blog-content pre code {
+  background: transparent;
+  padding: 0;
 }

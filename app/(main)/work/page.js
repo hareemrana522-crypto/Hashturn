@@ -64,7 +64,7 @@ export default async function WorkPage() {
                   {/* Project Image */}
                   <div
                     className="cs-image-wrap"
-                    style={{ position: "relative", height: 240, flexShrink: 0 }}
+                    style={{ position: "relative", height: 240, flexShrink: 0, background: `color-mix(in srgb, ${studyColor} 10%, #f9fafb)` }}
                   >
                     {study.image ? (
                       <img
@@ -78,7 +78,7 @@ export default async function WorkPage() {
                           height: "100%",
                           objectFit: "contain",
                           display: "block",
-                          padding: "1rem"
+                          padding: "1.5rem"
                         }}
                       />
                     ) : (

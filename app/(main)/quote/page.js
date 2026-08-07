@@ -15,11 +15,6 @@ export default function QuotePage() {
     }
 
     try {
-      const turnstileResponse = formData.get("cf-turnstile-response");
-      if (process.env.NODE_ENV !== 'development' && !turnstileResponse) {
-        return setStatus({ state: "error", message: "Please complete the security check." });
-      }
-
       const res = await fetch("/api/submit", {
         method: "POST",
         body: formData
@@ -145,21 +140,9 @@ export default function QuotePage() {
                   </select>
                 </div>
 
-                {process.env.NODE_ENV === 'development' ? (
-                  <div style={{ padding: "10px 15px", border: "1px solid var(--border)", borderRadius: "8px", display: "inline-flex", alignItems: "center", gap: "10px", marginBottom: "1.5rem", width: "100%", maxWidth: "300px", backgroundColor: "#fcfcfc" }}>
-                    <i className="fa-solid fa-check-circle" style={{ color: "var(--green)", fontSize: "1.5rem" }}></i>
-                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.95rem", color: "var(--text)" }}>Success!</span>
-                    <div style={{ marginLeft: "auto", display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
-                      <span style={{ fontSize: "0.75rem", color: "#f6821f", fontWeight: "bold", fontFamily: "sans-serif" }}>CLOUDFLARE</span>
-                      <span style={{ fontSize: "0.65rem", color: "var(--muted)" }}>Privacy · Terms</span>
-                    </div>
-                  </div>
-                ) : (
-                  <div style={{ marginBottom: "1.5rem" }}>
-                    <div className="cf-turnstile" data-sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA'} data-theme="light"></div>
-                    <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" strategy="lazyOnload" />
-                  </div>
-                )}
+                <div style={{ marginTop: "20px" }}>
+                  {/* Cloudflare Turnstile removed from this page */}
+                </div>
 
                 <button type="submit" disabled={status.state === "submitting"} className="btn-solid" style={{ width: "100%", textAlign: "center", display: "block", backgroundColor: "var(--green)", border: "none", color: "#fff", padding: "16px", borderRadius: "10px", fontWeight: "700", fontSize: "1.05rem", cursor: status.state === "submitting" ? "not-allowed" : "pointer", opacity: status.state === "submitting" ? 0.7 : 1, transition: "opacity 0.2s" }}>
                   {status.state === "submitting" ? "Sending..." : "Submit Quote Request"} {status.state !== "submitting" && <i className="fa-solid fa-arrow-right" style={{ marginLeft: "5px" }}></i>}

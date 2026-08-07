@@ -97,19 +97,26 @@ export default async function EditTeamMemberPage({ params }) {
         </div>
 
         <div className="form-group">
-          <label htmlFor="image">Profile Picture (Image)</label>
-          {member.image && (
-            <div style={{ marginBottom: "0.5rem" }}>
-              <img src={String(member.image)} alt="Current" style={{ width: "50px", height: "50px", objectFit: "cover", borderRadius: "50%" }} />
-              <input type="hidden" name="currentImage" value={String(member.image)} />
-            </div>
-          )}
-          <input
-            type="file"
-            id="image"
-            name="image"
-            accept="image/*"
-          />
+          <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+            <label htmlFor="image">Profile Picture (Image)</label>
+            {member.image && (
+              <div style={{ marginBottom: "0.5rem" }}>
+                <img src={String(member.image)} alt="Current" style={{ width: "50px", height: "50px", objectFit: "cover", borderRadius: "50%" }} />
+                <input type="hidden" name="currentImage" value={String(member.image)} />
+              </div>
+            )}
+            <input
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+            />
+            {member.image && (
+              <span style={{ fontSize: "0.8rem", color: "var(--muted)" }}>
+                (Image is already saved. Select a new file only if you want to change it.)
+              </span>
+            )}
+          </div>
         </div>
 
         <div className="form-group">

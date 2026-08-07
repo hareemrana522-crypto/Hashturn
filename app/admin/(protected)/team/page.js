@@ -4,7 +4,7 @@ import TeamTable from "./TeamTable";
 import DeleteButton from "../../DeleteButton";
 
 export default async function TeamAdminPage() {
-  const members = await sql`SELECT id, name, role, display_order FROM team_members ORDER BY display_order ASC, name ASC`.catch(() => []);
+  const members = await sql`SELECT id, name, role, avatar, avatar_color, image, linkedin, bio, display_order FROM team_members ORDER BY display_order ASC, name ASC`.catch(() => []);
 
   return (
     <div className="admin-card">

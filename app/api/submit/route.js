@@ -16,7 +16,8 @@ export async function POST(request) {
     const turnstileSecret = process.env.TURNSTILE_SECRET_KEY ?? '1x0000000000000000000000000000000AA';
 
     // Only verify turnstile in production or if a real secret is provided and not in development
-    if (turnstileSecret && !turnstileSecret.startsWith('1x0000') && process.env.NODE_ENV !== 'development') {
+    const source = data.get('source')?.toString() ?? 'contact';
+    if (source !== 'quote' && turnstileSecret && !turnstileSecret.startsWith('1x0000') && process.env.NODE_ENV !== 'development') {
       const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

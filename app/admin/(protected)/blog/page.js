@@ -10,7 +10,7 @@ export default async function BlogAdminPage() {
   try {
     const countResult = await sql`SELECT COUNT(*) as c FROM blog_posts`;
     totalCount = countResult[0]?.c ?? 0;
-    posts = await sql`SELECT slug, title, description, pub_date FROM blog_posts ORDER BY pub_date DESC`;
+    posts = await sql`SELECT slug, title, description, pub_date, author FROM blog_posts ORDER BY pub_date DESC`;
   } catch (e) {
     dbError = String(e);
     console.error("Admin blog list error:", e);
