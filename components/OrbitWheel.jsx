@@ -48,7 +48,7 @@ export default function OrbitWheel() {
     <div className="master-orbit-wrapper">
       <div className="orbit-center-core">
         <div className="core-pulse-dot">
-          <Image src="/logo.png.png" alt="" width={60} height={60} style={{ objectFit: 'contain' }} />
+          <Image src="/logo.png.png" alt="" width={60} height={60} unoptimized style={{ objectFit: 'contain' }} />
         </div>
       </div>
 
