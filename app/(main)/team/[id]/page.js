@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import { sql } from '@/lib/db';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -83,10 +85,6 @@ export default async function TeamMemberPage({ params }) {
                     <span>LinkedIn Profile</span>
                   </a>
                 )}
-                <a href="#" className="social-pill" style={{ '--hover-color': '#1877F2' }}>
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M9 8H7v3h2v9h3v-9h3l.5-3H12V6c0-.88.39-1 1-1h2V2h-3c-2.42 0-4 1.35-4 4v2z"/></svg>
-                  <span>Facebook Profile</span>
-                </a>
               </div>
             </div>
           </div>

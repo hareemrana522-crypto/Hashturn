@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import GanttComparison from "@/components/GanttComparison";
 import OrbitWheel from "@/components/OrbitWheel";
 import AnimatedCounter from "@/components/AnimatedCounter";

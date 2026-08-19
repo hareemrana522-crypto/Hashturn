@@ -37,7 +37,7 @@ export default function QuotePage() {
       <section className="page" id="quote-hero" style={{ paddingTop: 180, paddingBottom: 100, backgroundColor: 'var(--bg)', color: 'var(--text)' }}>
         <div className="container" style={{ textAlign: "center" }}>
           <div className="hero-content reveal" style={{ maxWidth: 800, margin: "0 auto", width: "100%", textAlign: "center" }}>
-            <p className="eyebrow" style={{ color: "var(--green)", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "1px", fontWeight: "700", textTransform: "uppercase", marginBottom: "15px" }}>FREE QUOTE</p>
+            <p className="eyebrow" style={{ color: "navy", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "1px", fontWeight: "700", textTransform: "uppercase", marginBottom: "15px" }}>FREE QUOTE</p>
             <h1 className="hero-title" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: "800", marginBottom: 20, fontSize: "clamp(2.5rem, 4vw, 4rem)", lineHeight: 1.2, color: "var(--foreground)" }}>
               Get a Custom Quote<br />
               <span className="text-multicolor">in 24 Hours</span>

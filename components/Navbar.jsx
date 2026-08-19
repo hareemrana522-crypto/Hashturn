@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const NAV_LINKS = [
   { href: "/services", label: "Services" },
@@ -46,17 +47,17 @@ export default function Navbar() {
   return (
     <nav className={`navbar${scrolled ? " scrolled" : ""}`} id="navbar">
       <div className="nav-inner">
-        <a href="/" className="nav-logo">
+        <Link href="/" className="nav-logo">
           <div className="logo-mark">
             <img src="/logo.png.png" alt="Hashturn Logo" height="55px" />
           </div>
           <span className="logo-text" style={{ color: "#000", fontFamily: '"Anton", sans-serif', letterSpacing: "1px" }}>HASHTURN</span>
-        </a>
+        </Link>
 
         <ul className={`nav-links${open ? " open" : ""}`} id="navLinks">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
                 className={`nav-link${
                   activeId === link.href.replace("#", "") ? " active-link" : ""
@@ -64,12 +65,12 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
-        <a href="/contact" className="nav-cta button1">Get Free Quote</a>
+        <Link href="/contact" className="nav-cta button1">Get Free Quote</Link>
 
         <button
           className="hamburger"

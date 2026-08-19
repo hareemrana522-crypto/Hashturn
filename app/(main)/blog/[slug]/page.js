@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import Link from 'next/link';
 import { sql } from '@/lib/db';
 import { marked } from 'marked';

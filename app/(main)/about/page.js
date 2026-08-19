@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import Link from 'next/link';
 import ValuesTabs from '@/components/ValuesTabs';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -21,7 +23,7 @@ export default async function AboutPage() {
       <section className="page" id="about-hero" style={{ paddingTop: "clamp(120px, 14vw, 180px)", paddingBottom: "clamp(40px, 6vw, 80px)", background: "var(--bg)" }}>
         <div className="container" style={{ textAlign: "center" }}>
           <div className="hero-content reveal" style={{ maxWidth: 1200, margin: "0 auto", width: "100%", textAlign: "center" }}>
-            <p className="eyebrow" style={{ color: "var(--green)", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "1px", fontWeight: "700", textTransform: "uppercase", marginBottom: "15px" }}>About Us</p>
+            <p className="eyebrow" style={{ color: "navy", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "1px", fontWeight: "700", textTransform: "uppercase", marginBottom: "15px" }}>About Us</p>
             <h1 className="hero-title" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: "800", marginBottom: 20, fontSize: "clamp(2rem, 3.5vw, 3rem)", lineHeight: 1.2, color: "var(--foreground)" }}>
               We Are HashTurn.<br />
               <span className="text-multicolor">We Build Automation That Works.</span>
@@ -117,7 +119,7 @@ export default async function AboutPage() {
       <section id="team" style={{ padding: "clamp(50px, 8vw, 120px) 0", background: "var(--bg)" }}>
         <div className="container">
           <div className="section-header reveal" style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <p className="eyebrow" style={{ color: "var(--green)" }}>OUR PEOPLE</p>
+            <p className="eyebrow" style={{ color: "navy" }}>OUR PEOPLE</p>
             <h2 className="section-title">Meet the Team</h2>
             <p className="section-subtitle-text tight-subtitle" style={{ margin: "20px auto 0" }}>
               The specialists who design, build, and support your automation.
@@ -208,7 +210,7 @@ export default async function AboutPage() {
       <section style={{ padding: "clamp(50px, 8vw, 120px) 0", textAlign: "center", position: "relative", background: "var(--bg)" }}>
         <div className="container" style={{ maxWidth: "800px", margin: "0 auto", padding: "0 20px" }}>
           <div className="section-header reveal">
-            <span className="eyebrow" style={{ color: 'var(--green)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Work With Us</span>
+            <span className="eyebrow" style={{ color: 'navy', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Work With Us</span>
             <h2 className="section-title" style={{ marginTop: '10px' }}>
               Ready to See What Automation<br/>
               <span className="gradient-text">Can Do for Your Business?</span>

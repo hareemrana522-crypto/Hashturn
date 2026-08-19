@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import Link from 'next/link';
 
 export const metadata = {
@@ -23,7 +25,7 @@ export default async function BlogPage() {
       <section className="page" id="blog-hero" style={{ paddingTop: 180, paddingBottom: 120 }}>
         <div className="container" style={{ textAlign: "center" }}>
           <div className="hero-content reveal" style={{ maxWidth: 1200, margin: "0 auto", width: "100%", textAlign: "center" }}>
-            <p className="eyebrow" style={{ color: "var(--red)", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "1px", fontWeight: "700", textTransform: "uppercase", marginBottom: "15px" }}>Our Blog</p>
+            <p className="eyebrow" style={{ color: "navy", fontFamily: "'Plus Jakarta Sans', sans-serif", letterSpacing: "1px", fontWeight: "700", textTransform: "uppercase", marginBottom: "15px" }}>Our Blog</p>
             <h1 className="hero-title" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: "800", marginBottom: 20, fontSize: "clamp(2rem, 3.5vw, 3rem)", lineHeight: 1.2, color: "var(--foreground)" }}>
               Latest Insights & <span className="text-multicolor">Updates</span>
             </h1>

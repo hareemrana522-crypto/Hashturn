@@ -15,7 +15,7 @@ export default function PricingPage() {
       <section className="page" style={{ paddingTop: 100, paddingBottom: 0, minHeight: 'auto' }} id="pricing-hero">
         <div className="container">
           <div className="section-header reveal">
-            <span className="eyebrow" style={{ color: "var(--green)" }}>PRICING</span>
+            <span className="eyebrow" style={{ color: "navy" }}>PRICING</span>
             <h1 className="hero-title" style={{ fontSize: "3rem", marginBottom: "1rem" }}>
               Simple, <span className="text-multicolor">Transparent Pricing</span>
             </h1>
@@ -196,7 +196,7 @@ export default function PricingPage() {
       <section className="page" id="faq">
         <div className="container">
           <div className="section-header reveal">
-            <span className="eyebrow" style={{ color: "var(--brand-green)" }}>QUESTIONS</span>
+            <span className="eyebrow" style={{ color: "navy" }}>QUESTIONS</span>
             <h2 className="section-title">
               Frequently <span className="text-multicolor">Asked Questions</span>
             </h2>
@@ -271,7 +271,7 @@ export default function PricingPage() {
               <div className="cta-mesh-overlay"></div>
 
               <div className="cta-content">
-                <p className="eyebrow" style={{ color: "var(--brand-green)" }}>GET STARTED</p>
+                <p className="eyebrow" style={{ color: "navy" }}>GET STARTED</p>
                 <h2 className="section-title">
                   Not sure which <span className="text-multicolor">package is right?</span>
                 </h2>
