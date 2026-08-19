@@ -4821,4 +4821,96 @@ h6,
   .nav-logo .logo-text {
     font-size: 1.2rem !important;
   }
+}/* ============================================================
+   MARKDOWN CONTENT TYPOGRAPHY
+   ============================================================ */
+.blog-content,
+.solution-html {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.blog-content h1, .solution-html h1,
+.blog-content h2, .solution-html h2,
+.blog-content h3, .solution-html h3,
+.blog-content h4, .solution-html h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.blog-content h1, .solution-html h1 { font-size: 2.2rem; }
+.blog-content h2, .solution-html h2 { font-size: 1.8rem; }
+.blog-content h3, .solution-html h3 { font-size: 1.4rem; }
+.blog-content h4, .solution-html h4 { font-size: 1.2rem; }
+
+.blog-content p, .solution-html p {
+  margin-bottom: 1.5rem;
+}
+
+.blog-content a, .solution-html a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.3s;
+}
+.blog-content a:hover, .solution-html a:hover {
+  text-decoration-color: var(--blue);
+}
+
+.blog-content ul, .blog-content ol,
+.solution-html ul, .solution-html ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.blog-content li, .solution-html li {
+  margin-bottom: 0.5rem;
+}
+
+.blog-content blockquote, .solution-html blockquote {
+  border-left: 4px solid var(--blue);
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  color: var(--muted);
+  background: rgba(59, 130, 246, 0.05);
+  padding: 1.5rem;
+  border-radius: 0 12px 12px 0;
+}
+
+.blog-content img, .solution-html img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 2rem 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.blog-content code, .solution-html code {
+  font-family: 'Fira Code', monospace;
+  background: rgba(0,0,0,0.05);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.blog-content pre, .solution-html pre {
+  background: #1e1e1e;
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+.blog-content pre code, .solution-html pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
 }
