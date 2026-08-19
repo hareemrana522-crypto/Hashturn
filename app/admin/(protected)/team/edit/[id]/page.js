@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { sql } from "@/lib/db";
 import { updateTeamMember } from "../../actions";
 import { notFound } from "next/navigation";
@@ -101,7 +102,7 @@ export default async function EditTeamMemberPage({ params }) {
             <label htmlFor="image">Profile Picture (Image)</label>
             {member.image && (
               <div style={{ marginBottom: "0.5rem" }}>
-                <img src={String(member.image)} alt="Current" style={{ width: "50px", height: "50px", objectFit: "cover", borderRadius: "50%" }} />
+                <Image src={String(member.image)} alt="Current" width={50} height={50} style={{ objectFit: "cover", borderRadius: "50%" }} />
                 <input type="hidden" name="currentImage" value={String(member.image)} />
               </div>
             )}

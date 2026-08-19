@@ -3,6 +3,7 @@ export const revalidate = 60;
 import { sql } from '@/lib/db';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import ScrollReveal from '@/components/ScrollReveal';
 import { getUniqueProjectsForMember } from '@/lib/dummyProjects';
 
@@ -59,7 +60,7 @@ export default async function TeamMemberPage({ params }) {
             <div className="member-hero-image reveal">
               <div className="image-wrapper" style={{ '--theme': themeColor }}>
                 {member.image ? (
-                  <img src={member.image} alt={member.name} />
+                  <Image src={member.image} alt={member.name} fill style={{ objectFit: 'cover' }} />
                 ) : (
                   <div className="initials-avatar">{initials}</div>
                 )}
@@ -108,7 +109,7 @@ export default async function TeamMemberPage({ params }) {
             {memberProjects.map((proj, idx) => (
               <Link href={`/team/${member.id}/project/${proj.id}`} key={proj.id} className="dummy-project-card reveal" style={{ textDecoration: 'none' }}>
                 <div className="dp-image-wrap">
-                  <img src={proj.image} alt={proj.title} className="dp-image" />
+                  <Image src={proj.image} alt={proj.title} className="dp-image" fill style={{ objectFit: 'cover' }} />
                 </div>
                 <div className="dp-content">
                   <span className="dp-category">{proj.category}</span>

@@ -45,8 +45,8 @@ export default function PricingPage() {
         <div className="container">
           <div className="pricing-grid reveal" style={{ 
             display: "grid", 
-            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", 
-            gap: "2rem",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))", 
+            gap: "1.5rem",
             alignItems: "stretch"
           }}>
             
@@ -55,19 +55,19 @@ export default function PricingPage() {
               background: "var(--glass-bg)",
               border: "1px solid var(--glass-border)",
               borderRadius: "24px",
-              padding: "2.5rem 2rem",
+              padding: "2rem 1.5rem",
               display: "flex",
               flexDirection: "column",
               boxShadow: "0 10px 30px rgba(0,0,0,0.05)"
             }}>
-              <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>⚡</div>
-              <h3 style={{ fontSize: "1.8rem", marginBottom: "0.5rem" }}>Starter</h3>
-              <p style={{ color: "var(--muted)", fontSize: "1rem", marginBottom: "1.5rem", lineHeight: 1.6, minHeight: "50px" }}>
+              <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>⚡</div>
+              <h3 style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>Starter</h3>
+              <p style={{ color: "var(--muted)", fontSize: "0.95rem", marginBottom: "1.5rem", lineHeight: 1.6, minHeight: "50px" }}>
                 Perfect for small businesses looking to automate one key workflow.
               </p>
               <div style={{ marginBottom: "2rem" }}>
-                <span style={{ fontSize: "3.5rem", fontWeight: 800, letterSpacing: "-1px" }}>${isAnnual ? "39" : "49"}</span>
-                <span style={{ color: "var(--muted)", fontSize: "1rem" }}> /project</span>
+                <span style={{ fontSize: "2.8rem", fontWeight: 800, letterSpacing: "-1px" }}>${isAnnual ? "39" : "49"}</span>
+                <span style={{ color: "var(--muted)", fontSize: "0.9rem" }}> /project</span>
               </div>
               <ul style={{ listStyle: "none", padding: 0, margin: "0 0 2rem 0", flexGrow: 1, display: "flex", flexDirection: "column", gap: "1rem", fontSize: "1rem" }}>
                 <li><i className="fa-solid fa-check" style={{ color: "var(--green)", width: "20px" }}></i> 1 automation workflow</li>
@@ -86,12 +86,12 @@ export default function PricingPage() {
               background: "linear-gradient(#fff, #fff) padding-box, var(--brand-gradient) border-box",
               border: "2px solid transparent",
               borderRadius: "24px",
-              padding: "2.5rem 2rem",
+              padding: "2rem 1.5rem",
               display: "flex",
               flexDirection: "column",
               boxShadow: "0 0 40px rgba(29,201,115,0.15)",
               position: "relative",
-              transform: "scale(1.03)",
+              transform: "scale(1.02)",
               zIndex: 10
             }}>
               <div style={{
@@ -106,14 +106,14 @@ export default function PricingPage() {
                 fontSize: "0.85rem",
                 fontWeight: 800
               }}>Most Popular</div>
-              <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>🚀</div>
-              <h3 style={{ fontSize: "1.8rem", marginBottom: "0.5rem" }}>Growth</h3>
-              <p style={{ color: "var(--muted)", fontSize: "1rem", marginBottom: "1.5rem", lineHeight: 1.6, minHeight: "50px" }}>
+              <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>🚀</div>
+              <h3 style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>Growth</h3>
+              <p style={{ color: "var(--muted)", fontSize: "0.95rem", marginBottom: "1.5rem", lineHeight: 1.6, minHeight: "50px" }}>
                 For growing businesses that need multiple automations and integrations.
               </p>
               <div style={{ marginBottom: "2rem" }}>
-                <span style={{ fontSize: "3.5rem", fontWeight: 800, letterSpacing: "-1px" }}>${isAnnual ? "399" : "499"}</span>
-                <span style={{ color: "var(--muted)", fontSize: "1rem" }}> /project</span>
+                <span style={{ fontSize: "2.8rem", fontWeight: 800, letterSpacing: "-1px" }}>${isAnnual ? "399" : "499"}</span>
+                <span style={{ color: "var(--muted)", fontSize: "0.9rem" }}> /project</span>
               </div>
               <ul style={{ listStyle: "none", padding: 0, margin: "0 0 2rem 0", flexGrow: 1, display: "flex", flexDirection: "column", gap: "1rem", fontSize: "1rem" }}>
                 <li><i className="fa-solid fa-check" style={{ color: "var(--green)", width: "20px" }}></i> Up to 5 automation workflows</li>
@@ -132,18 +132,18 @@ export default function PricingPage() {
               background: "var(--glass-bg)",
               border: "1px solid var(--glass-border)",
               borderRadius: "24px",
-              padding: "2.5rem 2rem",
+              padding: "2rem 1.5rem",
               display: "flex",
               flexDirection: "column",
               boxShadow: "0 10px 30px rgba(0,0,0,0.05)"
             }}>
-              <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>🏢</div>
-              <h3 style={{ fontSize: "1.8rem", marginBottom: "0.5rem" }}>Enterprise</h3>
-              <p style={{ color: "var(--muted)", fontSize: "1rem", marginBottom: "1.5rem", lineHeight: 1.6, minHeight: "50px" }}>
+              <div style={{ fontSize: "2rem", marginBottom: "1rem" }}>🏢</div>
+              <h3 style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>Enterprise</h3>
+              <p style={{ color: "var(--muted)", fontSize: "0.95rem", marginBottom: "1.5rem", lineHeight: 1.6, minHeight: "50px" }}>
                 Full-scale automation, custom development, and ongoing partnership.
               </p>
               <div style={{ marginBottom: "2rem", display: "flex", alignItems: "flex-end", height: "56px" }}>
-                <span style={{ fontSize: "3rem", fontWeight: 800, letterSpacing: "-1px" }}>Custom</span>
+                <span style={{ fontSize: "2.5rem", fontWeight: 800, letterSpacing: "-1px" }}>Custom</span>
               </div>
               <ul style={{ listStyle: "none", padding: 0, margin: "0 0 2rem 0", flexGrow: 1, display: "flex", flexDirection: "column", gap: "1rem", fontSize: "1rem" }}>
                 <li><i className="fa-solid fa-check" style={{ color: "var(--green)", width: "20px" }}></i> Unlimited automation workflows</li>

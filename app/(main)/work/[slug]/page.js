@@ -80,10 +80,12 @@ export default async function CaseStudyPage({ params }) {
             style={{ marginTop: "2.5rem", "--cs-color": study.color, textAlign: "center" }}
           >
             {study.image ? (
-              <img
+              <Image
                 src={study.image}
                 alt={study.title}
                 className="cd-hero-image"
+                width={1200}
+                height={800}
                 style={{ objectFit: "contain", width: "100%", height: "auto", borderRadius: 24, maxHeight: "800px" }}
               />
             ) : (
@@ -146,11 +148,14 @@ export default async function CaseStudyPage({ params }) {
                         ) : tool.icon ? (
                           <i className={tool.icon} style={{ fontSize: "1.5rem", color: tool.color }}></i>
                         ) : (
-                          <img 
+                          <Image 
                             src={`/${tool.img}`} 
                             alt={cleanT} 
+                            height={tool.h || 24}
+                            width={tool.h ? tool.h * 1.5 : 36}
                             style={{ 
-                              ...(tool.h ? { width: "auto", height: tool.h } : {}),
+                              width: "auto",
+                              objectFit: "contain",
                               ...(tool.blend ? { mixBlendMode: tool.blend } : {})
                             }} 
                           />

@@ -1,6 +1,7 @@
 export const revalidate = 60;
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { sql } from '@/lib/db';
 import { marked } from 'marked';
 
@@ -61,8 +62,8 @@ export default async function BlogPost({ params }) {
               <span>{post.read_time || "5 min read"}</span>
             </div>
 
-            <div style={{ width: "100%", height: "400px", borderRadius: "16px", overflow: "hidden", marginBottom: "3rem" }}>
-              <img src={post.image || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"} alt={post.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <div style={{ width: "100%", height: "400px", borderRadius: "16px", overflow: "hidden", marginBottom: "3rem", position: "relative" }}>
+              <Image src={post.image || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"} alt={post.title} fill style={{ objectFit: "cover" }} />
             </div>
 
             <div 

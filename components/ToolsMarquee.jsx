@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Image from 'next/image';
 
 const ROW_1 = [
   { label: "SharePoint", img: "share.png.png", h: 30, color: "#1c667b" },
@@ -30,7 +31,7 @@ export default function ToolsMarquee() {
         <div className="marquee-track">
           {Array(6).fill(ROW_1).flat().map((t, i) => (
             <div className="tool-badge" key={`r1-${i}`} style={{ "--ic": t.color }}>
-              <img src={`/${t.img}`} alt={t.label} style={{ height: `${t.h}px`, width: 'auto', objectFit: 'contain' }} />
+              <Image src={`/${t.img}`} alt={t.label} height={t.h} width={t.h * 1.5} style={{ objectFit: 'contain', width: 'auto' }} />
               <span className="tool-tooltip">{t.label}</span>
             </div>
           ))}
@@ -42,7 +43,7 @@ export default function ToolsMarquee() {
         <div className="marquee-track">
           {Array(6).fill(ROW_2).flat().map((t, i) => (
             <div className="tool-badge" key={`r2-${i}`} style={{ "--ic": t.color }}>
-              <img src={`/${t.img}`} alt={t.label} style={{ height: `${t.h}px`, width: 'auto', objectFit: 'contain' }} />
+              <Image src={`/${t.img}`} alt={t.label} height={t.h} width={t.h * 1.5} style={{ objectFit: 'contain', width: 'auto' }} />
               <span className="tool-tooltip">{t.label}</span>
             </div>
           ))}

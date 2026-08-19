@@ -1,4 +1,5 @@
 import { getToolIcon } from "@/lib/tool-icons";
+import Image from "next/image";
 
 // Renders a row of circular tool-icon badges — visually identical to
 // the badges used in the Industry Tools orbit wheel (glass background,
@@ -19,7 +20,7 @@ export default function TechIcons({ tools }) {
           >
             {img ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={`/${img}`} alt="" height="24px" />
+              <Image src={`/${img}`} alt="" height={24} width={24} style={{ width: 'auto' }} />
             ) : (
               <i className="fa-solid fa-code"></i>
             )}

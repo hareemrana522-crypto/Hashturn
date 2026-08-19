@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const NAV_LINKS = [
   { href: "/services", label: "Services" },
@@ -49,7 +50,7 @@ export default function Navbar() {
       <div className="nav-inner">
         <Link href="/" className="nav-logo">
           <div className="logo-mark">
-            <img src="/logo.png.png" alt="Hashturn Logo" height="55px" />
+            <Image src="/logo.png.png" alt="Hashturn Logo" width={55} height={55} style={{ objectFit: 'contain' }} />
           </div>
           <span className="logo-text" style={{ color: "#000", fontFamily: '"Anton", sans-serif', letterSpacing: "1px" }}>HASHTURN</span>
         </Link>

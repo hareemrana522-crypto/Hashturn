@@ -69,17 +69,13 @@ export default async function WorkPage() {
                     style={{ position: "relative", height: 240, flexShrink: 0, background: `color-mix(in srgb, ${studyColor} 10%, #f9fafb)` }}
                   >
                     {study.image ? (
-                      <img
+                      <Image
                         src={study.image}
                         alt={study.title}
                         className="cs-image"
+                        fill
                         style={{
-                          position: "absolute",
-                          inset: 0,
-                          width: "100%",
-                          height: "100%",
                           objectFit: "contain",
-                          display: "block",
                           padding: "1.5rem"
                         }}
                       />
@@ -144,11 +140,14 @@ export default async function WorkPage() {
                             ) : finalTool.icon ? (
                               <i className={finalTool.icon} style={{ fontSize: "1.5rem", color: finalTool.color }}></i>
                             ) : (
-                              <img 
+                              <Image 
                                 src={`/${finalTool.img}`} 
                                 alt={cleanT} 
+                                height={finalTool.h || 24}
+                                width={finalTool.h ? finalTool.h * 1.5 : 36}
                                 style={{ 
-                                  ...(finalTool.h ? { width: "auto", height: finalTool.h } : {}),
+                                  width: "auto",
+                                  objectFit: "contain",
                                   ...(finalTool.blend ? { mixBlendMode: finalTool.blend } : {})
                                 }} 
                               />

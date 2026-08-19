@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { sql } from "@/lib/db";
 import { updateBlog } from "../../actions";
 import { notFound } from "next/navigation";
@@ -120,7 +121,7 @@ export default async function EditBlogPage({ params }) {
           <label htmlFor="image">Hero Image</label>
           {post.hero_image && (
             <div style={{ marginBottom: "0.5rem" }}>
-              <img src={String(post.hero_image)} alt="Current" style={{ width: "150px", height: "auto", objectFit: "cover", borderRadius: "8px" }} />
+              <Image src={String(post.hero_image)} alt="Current" width={150} height={100} style={{ width: "150px", height: "auto", objectFit: "cover", borderRadius: "8px" }} />
               <input type="hidden" name="currentImage" value={String(post.hero_image)} />
             </div>
           )}

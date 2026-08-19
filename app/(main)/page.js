@@ -1,10 +1,13 @@
 export const revalidate = 60;
 
-import GanttComparison from "@/components/GanttComparison";
-import OrbitWheel from "@/components/OrbitWheel";
-import AnimatedCounter from "@/components/AnimatedCounter";
-import ReviewsMarquee from "@/components/ReviewsMarquee";
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { sql } from "@/lib/db";
+
+const GanttComparison = dynamic(() => import('@/components/GanttComparison'));
+const OrbitWheel = dynamic(() => import('@/components/OrbitWheel'));
+const AnimatedCounter = dynamic(() => import('@/components/AnimatedCounter'));
+const ReviewsMarquee = dynamic(() => import('@/components/ReviewsMarquee'));
 
 const SERVICES_ACCORDION = [
   {
@@ -117,35 +120,35 @@ export default async function HomePage() {
 
           <div className="floating-tool" style={{ top: "18%", left: "12%", animation: "floatIcon1 6s infinite ease-in-out" }}>
             <div className="tool-badge-card" style={{ "--icon-color": "#61dafb" }}>
-              <img src="/react.png.png" alt="" style={{ height: "30px", width: "auto", objectFit: "contain" }} />
+              <Image src="/react.png.png" alt="" width={60} height={30} style={{ width: "auto", objectFit: "contain" }} />
               <span className="tool-tooltip">React.js</span>
             </div>
           </div>
 
           <div className="floating-tool" style={{ top: "65%", left: "18%", animation: "floatIcon2 8s infinite ease-in-out" }}>
             <div className="tool-badge-card" style={{ "--icon-color": "#afb746" }}>
-              <img src="/pyth.png.png" alt="" style={{ height: "30px", width: "auto", objectFit: "contain" }} />
+              <Image src="/pyth.png.png" alt="" width={60} height={30} style={{ width: "auto", objectFit: "contain" }} />
               <span className="tool-tooltip">Python</span>
             </div>
           </div>
 
           <div className="floating-tool" style={{ top: "22%", right: "15%", animation: "floatIcon3 7s infinite ease-in-out" }}>
             <div className="tool-badge-card" style={{ "--icon-color": "#ff9900" }}>
-              <img src="/aws.png.png" alt="" style={{ height: "25px", width: "auto", objectFit: "contain" }} />
+              <Image src="/aws.png.png" alt="" width={50} height={25} style={{ width: "auto", objectFit: "contain" }} />
               <span className="tool-tooltip">AWS</span>
             </div>
           </div>
 
           <div className="floating-tool" style={{ top: "70%", right: "12%", animation: "floatIcon4 9s infinite ease-in-out" }}>
             <div className="tool-badge-card" style={{ "--icon-color": "#2496ed" }}>
-              <img src="/docker.png.png" alt="" style={{ height: "23px", width: "auto", objectFit: "contain" }} />
+              <Image src="/docker.png.png" alt="" width={46} height={23} style={{ width: "auto", objectFit: "contain" }} />
               <span className="tool-tooltip">Docker</span>
             </div>
           </div>
 
           <div className="floating-tool" style={{ top: "82%", left: "50%", animation: "floatIcon1 7.5s infinite ease-in-out" }}>
             <div className="tool-badge-card" style={{ "--icon-color": "#742774" }}>
-              <img src="/Powerapps.png.png" alt="" style={{ height: "30px", width: "auto", objectFit: "contain" }} />
+              <Image src="/Powerapps.png.png" alt="" width={60} height={30} style={{ width: "auto", objectFit: "contain" }} />
               <span className="tool-tooltip">Power Apps</span>
             </div>
           </div>
@@ -495,44 +498,67 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ░░ FINAL CTA ░░ */}
-      <section className="page cta-section" id="cta">
+      {/* ░░ FINAL CTA (ULTRA-MINIMAL & CLEAN) ░░ */}
+      <section className="page" id="cta" style={{ background: "white", padding: "140px 0", borderTop: "1px solid var(--border)" }}>
         <div className="container">
-          <div className="cta-outer reveal">
-            <div className="cta-mesh-card">
-              <div className="cta-mesh-blob mb-1"></div>
-              <div className="cta-mesh-blob mb-2"></div>
-              <div className="cta-mesh-blob mb-3"></div>
-              <div className="cta-mesh-blob mb-4"></div>
-              <div className="cta-mesh-overlay"></div>
+          <div className="reveal" style={{ textAlign: "center", maxWidth: "900px", margin: "0 auto" }}>
+            
+            <span className="eyebrow" style={{ color: "navy", fontSize: "0.85rem", letterSpacing: "2px", fontWeight: "700", display: "block", marginBottom: "20px" }}>
+              READY TO AUTOMATE?
+            </span>
+            
+            <h2 style={{ 
+              fontSize: "clamp(1.8rem, 3vw, 2.8rem)", 
+              fontWeight: "800", 
+              lineHeight: "1.2", 
+              color: "var(--text)", 
+              marginBottom: "25px",
+              letterSpacing: "-0.5px"
+            }}>
+              Stop Losing Hours to Tasks <br />
+              <span style={{ color: "navy" }}>A Robot Can Do Better.</span>
+            </h2>
+            
+            <p style={{ 
+              fontSize: "1.1rem", 
+              lineHeight: "1.7", 
+              color: "var(--muted)", 
+              marginBottom: "40px"
+            }}>
+              Book a free 30-minute strategy call. We'll map out exactly how automation can save your business time and money — no obligation, no cost.
+            </p>
 
-              <div className="cta-content">
-                <p className="eyebrow">Ready to Automate?</p>
-                <h2 className="section-title">
-                  Stop Losing Hours to Tasks
-                  <br />a Robot Can Do Better.
-                </h2>
-                <p className="section-subtitle-text tight-subtitle">
-                  Book a free 30-minute strategy call. We&apos;ll map out
-                  exactly how automation can save your business time and
-                  money — no obligation, no cost.
-                </p>
-
-                <div className="hero-actions" style={{ marginTop: 15 }}>
-                  <a href="/contact" className="cta-btn-grad">
-                    Book Free Strategy Call <i className="fa-solid fa-arrow-right"></i>
-                  </a>
-                  <a href="/services" className="btn-ghost">
-                    View All Services
-                  </a>
-                </div>
-
-                <p className="cta-trust">
-                  Free call &nbsp;·&nbsp; No credit card required &nbsp;·&nbsp;
-                  Response within 24 hours
-                </p>
-              </div>
+            <div style={{ display: "flex", gap: "15px", justifyContent: "center", flexWrap: "wrap" }}>
+              <a href="/contact" className="btn-primary" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
+                Book Free Strategy Call <i className="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="/services" className="btn-ghost" style={{ padding: "1rem 2.5rem", fontSize: "1.05rem" }}>
+                View All Services
+              </a>
             </div>
+
+            <div style={{ 
+              marginTop: "50px", 
+              display: "flex", 
+              alignItems: "center", 
+              justifyContent: "center", 
+              gap: "25px",
+              color: "var(--muted)",
+              fontSize: "0.9rem",
+              fontWeight: "600",
+              flexWrap: "wrap"
+            }}>
+              <span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <i className="fa-solid fa-check" style={{ color: "var(--green)" }}></i> Free call
+              </span>
+              <span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <i className="fa-solid fa-check" style={{ color: "var(--green)" }}></i> No credit card required
+              </span>
+              <span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <i className="fa-solid fa-check" style={{ color: "var(--green)" }}></i> Response within 24 hours
+              </span>
+            </div>
+
           </div>
         </div>
       </section>

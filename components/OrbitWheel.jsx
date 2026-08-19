@@ -1,5 +1,6 @@
 // Pure presentational — all hover/tooltip behavior is handled by CSS
 // (:hover on .tool-badge-card), so this can stay a server component.
+import Image from "next/image";
 
 const OUTER_RING = [
   { angle: 0, img: "share.png.png", h: 30, color: "#1c667b", label: "SharePoint" },
@@ -35,7 +36,7 @@ function OrbitSlot({ item, radiusDist }) {
       style={{ "--angle": `${item.angle}deg`, "--radius-dist": `${radiusDist}px` }}
     >
       <div className="tool-badge-card" style={{ "--icon-color": item.color }}>
-        <img src={`/${item.img}`} alt="" style={{ height: `${item.h}px`, width: 'auto', objectFit: 'contain' }} />
+        <Image src={`/${item.img}`} alt={item.label || ""} height={item.h} width={item.h * 1.5} style={{ objectFit: 'contain', width: 'auto' }} />
         <span className="tool-tooltip">{item.label}</span>
       </div>
     </div>
@@ -47,7 +48,7 @@ export default function OrbitWheel() {
     <div className="master-orbit-wrapper">
       <div className="orbit-center-core">
         <div className="core-pulse-dot">
-          <img src="/logo.png.png" alt="" />
+          <Image src="/logo.png.png" alt="" width={60} height={60} style={{ objectFit: 'contain' }} />
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 export const revalidate = 60;
 
 import Link from 'next/link';
+import Image from 'next/image';
 import ValuesTabs from '@/components/ValuesTabs';
 import ScrollReveal from '@/components/ScrollReveal';
 import ToolsMarquee from '@/components/ToolsMarquee';
@@ -136,9 +137,11 @@ export default async function AboutPage() {
                   <Link href={`/team/${member.id}`} className="tc-link-overlay" aria-label={`View ${member.name}'s profile`}></Link>
                   <div className="tc-photo">
                     {member.image ? (
-                      <img 
+                      <Image 
                         src={member.image} 
-                        alt={member.name} 
+                        alt={member.name}
+                        fill
+                        style={{ objectFit: 'cover' }}
                       />
                     ) : (
                       <div className="tc-initials" style={{ background: cardColor }}>{initials}</div>
@@ -402,6 +405,7 @@ export default async function AboutPage() {
         .tc-photo {
           width: 100%;
           aspect-ratio: 1 / 1;
+          position: relative;
           overflow: hidden;
           border-radius: 8px;
           background: #f4f4f5;

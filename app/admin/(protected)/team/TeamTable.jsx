@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import DeleteButton from "../../DeleteButton";
 import { deleteTeamMember } from "./actions";
 
@@ -117,7 +118,7 @@ export default function TeamTable({ initialMembers }) {
                 <td>
                   <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
                     {m.image ? (
-                      <img src={m.image} alt={m.name} style={{ width: "36px", height: "36px", borderRadius: "50%", objectFit: "cover" }} />
+                      <Image src={m.image} alt={m.name} width={36} height={36} style={{ borderRadius: "50%", objectFit: "cover" }} />
                     ) : (
                       <div style={{ width: "36px", height: "36px", borderRadius: "50%", background: m.avatar_color || "#22C55E", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: "0.85rem", color: "#fff", flexShrink: 0 }}>
                         {m.avatar || String(m.name).split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}

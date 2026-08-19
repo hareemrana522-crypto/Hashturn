@@ -22,6 +22,8 @@ const SOCIALS = [
   { icon: "fa-brands fa-whatsapp", color: "#25D366", label: "WhatsApp", href: "https://api.whatsapp.com/send/?phone=923090483683&text&type=phone_number&app_absent=0" },
 ];
 
+import Image from "next/image";
+
 export default function Footer() {
   return (
     <footer className="site-footer" id="footer">
@@ -36,7 +38,7 @@ export default function Footer() {
         <div className="footer-brand-col">
           <div className="nav-logo">
             <div className="logo-mark">
-              <img src="/logo.png.png" alt="Hashturn Logo" height="36px" />
+              <Image src="/logo.png.png" alt="Hashturn Logo" width={36} height={36} style={{ objectFit: 'contain' }} />
             </div>
             <span className="logo-text">HASHTURN</span>
           </div>

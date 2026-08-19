@@ -114,6 +114,11 @@ h1 {
   line-height: 83.2px;
 }
 
+p {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
 .button1 {
   background: var(--brandd-gradient);
 
@@ -380,9 +385,11 @@ h1 {
   .hamburger {
     display: flex;
   }
+
   .nav-cta {
     display: none;
   }
+
   .nav-links {
     position: absolute;
     top: 100%;
@@ -402,6 +409,7 @@ h1 {
     transform: translateY(-10px);
     transition: all 0.3s ease;
   }
+
   .nav-links.open {
     opacity: 1;
     visibility: visible;
@@ -1079,7 +1087,8 @@ h1 {
 
 .master-orbit-wrapper {
   position: absolute;
-  bottom: -340px; /* Pushes the wheel down even more */
+  bottom: -340px;
+  /* Pushes the wheel down even more */
   width: 540px;
   height: 540px;
   display: flex;
@@ -4546,15 +4555,20 @@ h1 {
 /* ============================================================
    MARKDOWN CONTENT STYLING (Case Studies & Blog Posts)
    ============================================================ */
-.solution-html, .blog-content {
+.solution-html,
+.blog-content {
   color: var(--text);
   line-height: 1.8;
 }
 
-.solution-html h1, .blog-content h1,
-.solution-html h2, .blog-content h2,
-.solution-html h3, .blog-content h3,
-.solution-html h4, .blog-content h4 {
+.solution-html h1,
+.blog-content h1,
+.solution-html h2,
+.blog-content h2,
+.solution-html h3,
+.blog-content h3,
+.solution-html h4,
+.blog-content h4 {
   color: var(--text);
   font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   margin-top: 2rem;
@@ -4562,33 +4576,49 @@ h1 {
   font-weight: 700;
 }
 
-.solution-html h1, .blog-content h1 { font-size: 2.2rem; }
-.solution-html h2, .blog-content h2 { font-size: 1.8rem; }
-.solution-html h3, .blog-content h3 { font-size: 1.4rem; }
+.solution-html h1,
+.blog-content h1 {
+  font-size: 2.2rem;
+}
 
-.solution-html p, .blog-content p {
+.solution-html h2,
+.blog-content h2 {
+  font-size: 1.8rem;
+}
+
+.solution-html h3,
+.blog-content h3 {
+  font-size: 1.4rem;
+}
+
+.solution-html p,
+.blog-content p {
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
 }
 
-.solution-html ul, .blog-content ul {
+.solution-html ul,
+.blog-content ul {
   list-style-type: disc;
   margin-left: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
-.solution-html ol, .blog-content ol {
+.solution-html ol,
+.blog-content ol {
   list-style-type: decimal;
   margin-left: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
-.solution-html li, .blog-content li {
+.solution-html li,
+.blog-content li {
   margin-bottom: 0.5rem;
   font-size: 1.1rem;
 }
 
-.solution-html blockquote, .blog-content blockquote {
+.solution-html blockquote,
+.blog-content blockquote {
   border-left: 4px solid var(--blue);
   background: var(--off);
   padding: 1rem 1.5rem;
@@ -4597,27 +4627,31 @@ h1 {
   border-radius: 4px;
 }
 
-.solution-html img, .blog-content img {
+.solution-html img,
+.blog-content img {
   max-width: 100%;
   height: auto;
   border-radius: 12px;
   margin: 2rem 0;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-.solution-html a, .blog-content a {
+.solution-html a,
+.blog-content a {
   color: var(--blue);
   text-decoration: underline;
-  text-decoration-color: rgba(0,71,255,0.3);
+  text-decoration-color: rgba(0, 71, 255, 0.3);
   text-underline-offset: 4px;
   transition: all 0.2s;
 }
 
-.solution-html a:hover, .blog-content a:hover {
+.solution-html a:hover,
+.blog-content a:hover {
   text-decoration-color: var(--blue);
 }
 
-.solution-html pre, .blog-content pre {
+.solution-html pre,
+.blog-content pre {
   background: #1e1e1e;
   color: #fff;
   padding: 1.2rem;
@@ -4626,14 +4660,17 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
-.solution-html code, .blog-content code {
+.solution-html code,
+.blog-content code {
   font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: rgba(0,0,0,0.05);
+  background: rgba(0, 0, 0, 0.05);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
   font-size: 0.9em;
 }
-.solution-html pre code, .blog-content pre code {
+
+.solution-html pre code,
+.blog-content pre code {
   background: transparent;
   padding: 0;
 }
@@ -4652,7 +4689,18 @@ p {
 }
 
 
-h1, h2, h3, h4, h5, h6, .section-title, .hero-title, .section-subtitle-text, .eyebrow { font-weight: 700 !important; }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.section-title,
+.hero-title,
+.section-subtitle-text,
+.eyebrow {
+  font-weight: 700 !important;
+}
 
 /* ============================================================
    GLOBAL MOBILE RESPONSIVENESS OVERRIDES
@@ -4661,33 +4709,52 @@ h1, h2, h3, h4, h5, h6, .section-title, .hero-title, .section-subtitle-text, .ey
   .hero-stats {
     grid-template-columns: repeat(2, 1fr) !important;
   }
-  
+
   .floating-tool {
     transform: scale(0.75) !important;
     opacity: 1 !important;
     z-index: 2 !important;
   }
 
-  .floating-tool:nth-child(2) { top: 10% !important; left: 2% !important; }
-  .floating-tool:nth-child(3) { top: 52% !important; left: 2% !important; }
-  .floating-tool:nth-child(4) { top: 12% !important; right: 2% !important; }
-  .floating-tool:nth-child(5) { top: 58% !important; right: 2% !important; }
-  .floating-tool:nth-child(6) { top: 85% !important; left: 42% !important; }
+  .floating-tool:nth-child(2) {
+    top: 10% !important;
+    left: 2% !important;
+  }
+
+  .floating-tool:nth-child(3) {
+    top: 52% !important;
+    left: 2% !important;
+  }
+
+  .floating-tool:nth-child(4) {
+    top: 12% !important;
+    right: 2% !important;
+  }
+
+  .floating-tool:nth-child(5) {
+    top: 58% !important;
+    right: 2% !important;
+  }
+
+  .floating-tool:nth-child(6) {
+    top: 85% !important;
+    left: 42% !important;
+  }
 
   .tool-badge-card {
     cursor: pointer !important;
   }
-  
+
   .wheel-flex-container {
     flex-direction: column !important;
     text-align: center !important;
     gap: 2rem !important;
   }
-  
+
   .wheel-text-side h2 {
     font-size: 2.2rem !important;
   }
-  
+
   .wheel-visual-side {
     height: 280px !important;
     width: 100% !important;
@@ -4703,7 +4770,7 @@ h1, h2, h3, h4, h5, h6, .section-title, .hero-title, .section-subtitle-text, .ey
     bottom: -270px !important;
     transform: scale(0.65) !important;
   }
-  
+
   .why-collage {
     height: auto !important;
     display: flex !important;
@@ -4711,7 +4778,7 @@ h1, h2, h3, h4, h5, h6, .section-title, .hero-title, .section-subtitle-text, .ey
     gap: 1.5rem !important;
     padding: 1rem !important;
   }
-  
+
   .why-float-card {
     position: relative !important;
     width: 100% !important;
@@ -4723,14 +4790,15 @@ h1, h2, h3, h4, h5, h6, .section-title, .hero-title, .section-subtitle-text, .ey
     left: auto !important;
     right: auto !important;
   }
-  
-  .values-grid, .footer-grid {
+
+  .values-grid,
+  .footer-grid {
     grid-template-columns: 1fr !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 2rem !important;
   }
-  
+
   section.page:not(#home) {
     padding-top: 60px !important;
     padding-bottom: 60px !important;
@@ -4741,6 +4809,7 @@ h1, h2, h3, h4, h5, h6, .section-title, .hero-title, .section-subtitle-text, .ey
   .hero-stats {
     grid-template-columns: 1fr !important;
   }
+
   .nav-logo .logo-text {
     font-size: 1.2rem !important;
   }

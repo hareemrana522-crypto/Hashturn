@@ -1,6 +1,7 @@
 export const revalidate = 60;
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata = {
   title: 'Blog | HashTurn',
@@ -57,8 +58,8 @@ export default async function BlogPage() {
                 style={{ display: "flex", flexDirection: "column" }}
               >
                 {/* Blog Image */}
-                <div style={{ margin: "-2rem -2rem 1.5rem -2rem", borderRadius: "1rem 1rem 0 0", overflow: "hidden" }}>
-                  <img src={post.image || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"} alt={post.title} style={{ width: "100%", height: "220px", objectFit: "cover" }} />
+                <div style={{ margin: "-2rem -2rem 1.5rem -2rem", borderRadius: "1rem 1rem 0 0", overflow: "hidden", position: "relative", height: "220px" }}>
+                  <Image src={post.image || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"} alt={post.title} fill style={{ objectFit: "cover" }} />
                 </div>
                 
                 <span className="blog-tag" style={{ color: colors[idx % colors.length] }}>

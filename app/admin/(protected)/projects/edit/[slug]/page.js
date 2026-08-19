@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { sql } from "@/lib/db";
 import { updateProject } from "../../actions";
 import { notFound } from "next/navigation";
@@ -97,7 +98,7 @@ export default async function EditProjectPage({ params }) {
           <label htmlFor="image">Main Image (Project Thumbnail)</label>
           {project.main_image && (
             <div style={{ marginBottom: "0.5rem" }}>
-              <img src={String(project.main_image)} alt="Current" style={{ width: "150px", height: "auto", objectFit: "cover", borderRadius: "8px" }} />
+              <Image src={String(project.main_image)} alt="Current" width={150} height={100} style={{ width: "150px", height: "auto", objectFit: "cover", borderRadius: "8px" }} />
               <input type="hidden" name="currentImage" value={String(project.main_image)} />
             </div>
           )}
