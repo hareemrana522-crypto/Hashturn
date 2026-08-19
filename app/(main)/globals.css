@@ -357,7 +357,7 @@ p {
 }
 
 .nav-link:hover {
-  color: var(--text);
+  color: navy;
 }
 
 .nav-cta {
