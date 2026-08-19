@@ -24,9 +24,9 @@ export default function TypewriterTitle() {
             ],
             autoStart: true,
             loop: true,
-            delay: 50,
-            deleteSpeed: 30,
-            pauseFor: 0,
+            delay: 60,
+            deleteSpeed: 40,
+            pauseFor: 800,
           }}
         />
       </span>
