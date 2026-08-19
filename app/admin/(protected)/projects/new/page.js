@@ -34,10 +34,12 @@ export default function NewProjectPage() {
           <div className="form-group">
             <label htmlFor="category">Category</label>
             <select id="category" name="category">
-              <option value="Process Automation">Process Automation</option>
-              <option value="RPA">RPA</option>
-              <option value="Web Development">Web Development</option>
-              <option value="API Integration">API Integration</option>
+              <option value="Business Process Automation">Business Process Automation</option>
+              <option value="Robotic Process Automation (RPA)">Robotic Process Automation (RPA)</option>
+              <option value="API & Webhook Integration">API & Webhook Integration</option>
+              <option value="CRM Automation">CRM Automation</option>
+              <option value="Microsoft 365 Solutions">Microsoft 365 Solutions</option>
+              <option value="Mobile & Web Development">Mobile & Web Development</option>
             </select>
           </div>
         </div>
