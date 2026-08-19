@@ -3,6 +3,9 @@ import { sql } from "@/lib/db";
 import { deleteProject } from "./actions";
 import DeleteButton from "../../DeleteButton";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function ProjectsAdminPage() {
   const projects = await sql`SELECT slug, title, service as category, created_at FROM projects ORDER BY created_at DESC`.catch(() => []);
 
