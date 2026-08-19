@@ -52,7 +52,7 @@ export default function Navbar() {
           <div className="logo-mark">
             <Image src="/logo.png.png" alt="Hashturn Logo" width={55} height={55} style={{ objectFit: 'contain' }} />
           </div>
-          <span className="logo-text" style={{ color: "#000", fontFamily: '"Plus Jakarta Sans", sans-serif', fontWeight: 800, letterSpacing: "1px" }}>HASHTURN</span>
+          <span className="logo-text" style={{ color: "#000", fontFamily: '"Oswald", sans-serif', fontWeight: 600, letterSpacing: "0.5px" }}>HASHTURN</span>
         </Link>
 
         <ul className={`nav-links${open ? " open" : ""}`} id="navLinks">
