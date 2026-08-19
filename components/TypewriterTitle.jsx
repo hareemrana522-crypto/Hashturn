@@ -26,7 +26,7 @@ export default function TypewriterTitle() {
             loop: true,
             delay: 50,
             deleteSpeed: 30,
-            pauseFor: 2500,
+            pauseFor: 0,
           }}
         />
       </span>
