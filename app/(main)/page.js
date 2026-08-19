@@ -155,28 +155,38 @@ export default async function HomePage() {
         </div>
         
         <div className="container" style={{ position: "relative", zIndex: 1, pointerEvents: "none" }}>
+          <style>{`
+            @keyframes fadeInUpStagger {
+              0% { opacity: 0; transform: translateY(30px); }
+              100% { opacity: 1; transform: translateY(0); }
+            }
+            .stagger-anim {
+              opacity: 0;
+              animation: fadeInUpStagger 0.8s ease-out forwards;
+            }
+          `}</style>
           <div
-            className="hero-content reveal"
+            className="hero-content"
             style={{ maxWidth: 1200, margin: "0 auto", width: "100%", textAlign: "center", padding: "40px 20px", pointerEvents: "auto" }}
           >
             <h1
               className="hero-title"
               style={{ marginBottom: 20, fontSize: "clamp(2.2rem, 7.5vw, 75px)", lineHeight: "1.1", letterSpacing: "-0.05em", fontWeight: 800 }}
             >
-              <span style={{ display: "inline-block", color: "rgb(8, 8, 8)" }}>We Automate the Work.</span>
+              <span className="stagger-anim" style={{ display: "inline-block", color: "rgb(8, 8, 8)", animationDelay: "0.1s" }}>We Automate the Work.</span>
               <br />
-              <span className="text-multicolor" style={{ display: "inline-block" }}>You Run the Business.</span>
+              <span className="text-multicolor stagger-anim" style={{ display: "inline-block", animationDelay: "0.4s" }}>You Run the Business.</span>
             </h1>
             <p
-              className="hero-sub"
-              style={{ marginBottom: 35, fontSize: "0.95rem", maxWidth: "700px", margin: "0 auto 35px", lineHeight: 1.6, color: "rgb(55, 65, 81)" }}
+              className="hero-sub stagger-anim"
+              style={{ marginBottom: 35, fontSize: "0.95rem", maxWidth: "700px", margin: "0 auto 35px", lineHeight: 1.6, color: "rgb(55, 65, 81)", animationDelay: "0.7s" }}
             >
               Custom automation systems that eliminate repetitive tasks.
             </p>
 
             <div
-              className="hero-actions"
-              style={{ display: "flex", justifyContent: "center", gap: "15px", marginBottom: 50, flexWrap: "wrap" }}
+              className="hero-actions stagger-anim"
+              style={{ display: "flex", justifyContent: "center", gap: "15px", marginBottom: 50, flexWrap: "wrap", animationDelay: "1s" }}
             >
               <a href="/contact" className="cta-btn-grad">
                 Book Free Strategy Call <i className="fa-solid fa-arrow-right"></i>
@@ -187,14 +197,15 @@ export default async function HomePage() {
             </div>
 
             <div
-              className="hero-stats"
+              className="hero-stats stagger-anim"
               style={{
                 marginTop: 0,
                 paddingTop: "10px",
                 display: "flex",
                 justifyContent: "center",
                 gap: "30px",
-                flexWrap: "wrap"
+                flexWrap: "wrap",
+                animationDelay: "1.3s"
               }}
             >
               <div className="stat-box" style={{ textAlign: "center" }}>
