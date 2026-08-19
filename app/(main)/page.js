@@ -8,6 +8,7 @@ const GanttComparison = dynamic(() => import('@/components/GanttComparison'));
 const OrbitWheel = dynamic(() => import('@/components/OrbitWheel'));
 const AnimatedCounter = dynamic(() => import('@/components/AnimatedCounter'));
 const ReviewsMarquee = dynamic(() => import('@/components/ReviewsMarquee'));
+const TypewriterTitle = dynamic(() => import('@/components/TypewriterTitle'), { ssr: false });
 
 const SERVICES_ACCORDION = [
   {
@@ -175,7 +176,7 @@ export default async function HomePage() {
             >
               <span className="stagger-anim" style={{ display: "inline-block", color: "rgb(8, 8, 8)", animationDelay: "0.1s" }}>We Automate the Work.</span>
               <br />
-              <span className="text-multicolor stagger-anim" style={{ display: "inline-block", animationDelay: "0.4s" }}>You Run the Business.</span>
+              <TypewriterTitle />
             </h1>
             <p
               className="hero-sub stagger-anim"
