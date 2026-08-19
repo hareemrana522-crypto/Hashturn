@@ -158,11 +158,11 @@ export default async function HomePage() {
           >
             <h1
               className="hero-title"
-              style={{ marginBottom: 20, fontSize: "clamp(3rem, 7.5vw, 75px)", lineHeight: "0.95", letterSpacing: "-0.05em", fontWeight: 800 }}
+              style={{ marginBottom: 20, fontSize: "clamp(2.2rem, 7.5vw, 75px)", lineHeight: "1.1", letterSpacing: "-0.05em", fontWeight: 800 }}
             >
-              <span style={{ display: "inline-block", whiteSpace: "nowrap", color: "rgb(8, 8, 8)" }}>We Automate the Work.</span>
+              <span style={{ display: "inline-block", color: "rgb(8, 8, 8)" }}>We Automate the Work.</span>
               <br />
-              <span className="text-multicolor" style={{ display: "inline-block", whiteSpace: "nowrap" }}>You Run the Business.</span>
+              <span className="text-multicolor" style={{ display: "inline-block" }}>You Run the Business.</span>
             </h1>
             <p
               className="hero-sub"

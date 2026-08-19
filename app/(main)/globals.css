@@ -376,6 +376,39 @@ h1 {
   transition: .3s;
 }
 
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+  .nav-cta {
+    display: none;
+  }
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+  .nav-links.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
 /* ============================================================
    HOME HERO (ULTRA COMPACT & SLEEK VERSION)
    ============================================================ */
@@ -4620,3 +4653,95 @@ p {
 
 
 h1, h2, h3, h4, h5, h6, .section-title, .hero-title, .section-subtitle-text, .eyebrow { font-weight: 700 !important; }
+
+/* ============================================================
+   GLOBAL MOBILE RESPONSIVENESS OVERRIDES
+   ============================================================ */
+@media (max-width: 900px) {
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .floating-tool {
+    transform: scale(0.75) !important;
+    opacity: 1 !important;
+    z-index: 2 !important;
+  }
+
+  .floating-tool:nth-child(2) { top: 10% !important; left: 2% !important; }
+  .floating-tool:nth-child(3) { top: 52% !important; left: 2% !important; }
+  .floating-tool:nth-child(4) { top: 12% !important; right: 2% !important; }
+  .floating-tool:nth-child(5) { top: 58% !important; right: 2% !important; }
+  .floating-tool:nth-child(6) { top: 85% !important; left: 42% !important; }
+
+  .tool-badge-card {
+    cursor: pointer !important;
+  }
+  
+  .wheel-flex-container {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 2rem !important;
+  }
+  
+  .wheel-text-side h2 {
+    font-size: 2.2rem !important;
+  }
+  
+  .wheel-visual-side {
+    height: 280px !important;
+    width: 100% !important;
+    position: relative !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-top: 4rem !important;
+  }
+
+  .master-orbit-wrapper {
+    position: absolute !important;
+    bottom: -270px !important;
+    transform: scale(0.65) !important;
+  }
+  
+  .why-collage {
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    padding: 1rem !important;
+  }
+  
+  .why-float-card {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 180px;
+    transform: none !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+  }
+  
+  .values-grid, .footer-grid {
+    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+  
+  section.page:not(#home) {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-stats {
+    grid-template-columns: 1fr !important;
+  }
+  .nav-logo .logo-text {
+    font-size: 1.2rem !important;
+  }
+}
