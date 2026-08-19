@@ -7,12 +7,10 @@ export default function TypewriterTitle() {
     <span className="stagger-anim" style={{ display: "inline-block", animationDelay: "0.4s" }}>
       <style>{`
         .my-typewriter-wrapper .Typewriter__wrapper {
-          background: linear-gradient(90deg, var(--blue), var(--red));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          color: navy;
         }
         .my-typewriter-wrapper .Typewriter__cursor {
-          color: var(--blue);
+          color: navy;
         }
       `}</style>
       <span className="my-typewriter-wrapper">
