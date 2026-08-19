@@ -50,7 +50,7 @@ export default function Navbar() {
           <div className="logo-mark">
             <img src="/logo.png.png" alt="Hashturn Logo" height="55px" />
           </div>
-          <span className="logo-text">HASHTURN</span>
+          <span className="logo-text" style={{ color: "#000", fontFamily: '"Anton", sans-serif', letterSpacing: "1px" }}>HASHTURN</span>
         </a>
 
         <ul className={`nav-links${open ? " open" : ""}`} id="navLinks">

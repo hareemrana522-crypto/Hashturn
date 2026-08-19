@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  src: url('https://dhygzobemt712.cloudfront.net/Fonts/VF/WFVisualSansVF.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ============================================================
    HASHTURN — styles.css (Fully Updated & Fixed)
    ------------------------------------------------------------
@@ -10,9 +18,9 @@
   --yellow: #FFD600;
 
   /* Derived gradient (logo order: R → G → B → Y) */
-  --brand-gradient: linear-gradient(135deg, var(--red) 0%, var(--green) 33%, var(--blue) 66%, var(--yellow) 100%);
-  --brand-gradient-animated: linear-gradient(270deg, var(--red), var(--yellow), var(--green), var(--blue), var(--red));
-  --brandd-gradient: linear-gradient(279deg, var(--red), var(--blue), var(--blue), var(--red));
+  --brand-gradient: linear-gradient(135deg, navy 0%, navy 100%);
+  --brand-gradient-animated: linear-gradient(270deg, navy, navy);
+  --brandd-gradient: linear-gradient(279deg, navy, navy);
   /* Neutrals */
   --white: #ffffff;
   --off: #f8f8f8;
@@ -62,7 +70,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--white);
   color: var(--text);
   overflow-x: hidden;
@@ -84,7 +92,7 @@ ul {
 }
 
 button {
-  font-family: inherit;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   cursor: pointer;
   border: none;
   background: none;
@@ -95,9 +103,15 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   letter-spacing: -0.015em;
-  /* Kheecha hua look khatam karne ke liye tight spacing */
+  color: rgb(8, 8, 8);
+}
+
+h1 {
+  font-size: 80px;
+  font-weight: 600;
+  line-height: 83.2px;
 }
 
 .button1 {
@@ -108,7 +122,7 @@ h4 {
   gap: .55rem;
   padding: .9rem 1.9rem;
   border-radius: 100px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
   font-size: .9rem;
   color: var(--white);
@@ -120,21 +134,18 @@ h4 {
 }
 
 .eyebrow {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .75rem;
   font-weight: 600;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--blue);
+  color: navy !important;
   margin-bottom: 1rem;
 }
 
 /* ── Gradient text ── */
 .gradient-text {
-  background: var(--brand-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: navy;
 }
 
 /* ── Buttons ── */
@@ -144,7 +155,7 @@ h4 {
   gap: .55rem;
   padding: .9rem 1.9rem;
   border-radius: 100px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
   font-size: .9rem;
   color: var(--white);
@@ -172,7 +183,7 @@ h4 {
   display: inline-block;
   padding: .8rem 2rem;
   border-radius: 100px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .9rem;
   font-weight: 600;
   border: 1.5px solid var(--border);
@@ -234,6 +245,7 @@ h4 {
 }
 
 .section-title {
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: clamp(1.75rem, 3.2vw, 2.5rem);
   font-weight: 700;
   line-height: 1.2;
@@ -285,7 +297,7 @@ h4 {
 
 /* .logo-text{
   .anton-regular {
-  font-family: "Anton", sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -294,13 +306,13 @@ h4 {
 .nav-logo {
   display: flex;
   align-items: center;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 900;
   font-size: 1.4rem;
   letter-spacing: -0.02em;
 
   .anton-regular {
-    font-family: "Anton", sans-serif;
+    font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 400;
     font-style: normal;
   }
@@ -308,44 +320,26 @@ h4 {
 
 .nav-links {
   display: flex;
-  gap: .25rem;
-  margin-left: auto;
+  gap: 1.5rem;
+  margin-left: 0;
 }
 
 .nav-link {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: .5rem .75rem;
-  border-radius: 8px;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 25.6px;
   color: var(--muted);
   transition: color .2s, background .2s;
   position: relative;
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 2px;
-  left: 50%;
-  right: 50%;
-  height: 2px;
-  border-radius: 2px;
-  background: var(--brand-gradient);
-  transition: left .25s var(--ease), right .25s var(--ease);
 }
 
 .nav-link:hover {
   color: var(--text);
 }
 
-.nav-link:hover::after {
-  left: .75rem;
-  right: .75rem;
-}
-
 .nav-cta {
-  margin-left: 1rem;
+  margin-left: auto;
 }
 
 .hamburger {
@@ -396,7 +390,7 @@ h4 {
 
 /* 
 .hero-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: clamp(1.75rem, 3.2vw, 2.5rem);
   font-weight: 800;           
   line-height: 1.12;           
@@ -409,32 +403,24 @@ h4 {
 
 /* Hero Title ke normal text ke liye */
 .hero-content h1 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: clamp(1.75rem, 3.2vw, 2.5rem);
   font-weight: 800;
   line-height: 1.12;
   letter-spacing: -0.03em;
   margin-bottom: 1.5rem;
-  max-width: 680px;
+  max-width: 1200px;
   color: var(--text);
   /* Baki ka text normal color me rahega */
 }
 
 /* Sirf Span ke andar wale text ke liye (Multicolor + Animation) */
-.hero-content h1 span {
-  background: var(--brand-gradient-animated);
-  background-size: 400% 100%;
+.hero-content h1 span.text-multicolor {
+  color: navy;
 
-  /* Text ke andar color lock karne ke liye */
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  /* Footer button wali line-speed animation */
-  animation: gradientShift 8s ease infinite;
 
   /* Fallback safe color */
-  color: var(--blue);
+  color: navy;
 
   /* Optional: Agar span ka background thoda cut raha ho toh safe display */
   display: inline-block;
@@ -456,17 +442,14 @@ h4 {
 }
 
 .text-multicolor {
-  background: var(--brand-gradient);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  color: navy;
   display: inline-block;
 
 }
 
 
 .hero-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: clamp(0.8rem, 1vw, 0.88rem);
   color: var(--muted);
   max-width: 480px;
@@ -499,17 +482,11 @@ h4 {
 }
 
 .stat-box:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 20%;
-  height: 60%;
-  width: 1px;
-  background: rgba(0, 0, 0, 0.06);
+  display: none;
 }
 
 .stat-num {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: clamp(1.2rem, 1.8vw, 1.5rem);
   font-weight: 800;
   color: var(--text);
@@ -525,7 +502,7 @@ h4 {
 }
 
 .stat-label {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.72rem;
   color: var(--muted);
   margin-top: 3px;
@@ -537,7 +514,7 @@ h4 {
    THE PROBLEM WE SOLVE
    ============================================================ */
 .compact-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 37px;
   font-weight: 800;
   line-height: 1.15;
@@ -548,7 +525,7 @@ h4 {
 .tight-subtitle {
   max-width: 680px;
   margin: 1.2rem auto 0 auto;
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.8rem;
   color: var(--muted);
   line-height: 1.55;
@@ -568,7 +545,7 @@ h4 {
 }
 
 .flow-side-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.9rem;
   font-weight: 800;
   letter-spacing: 2px;
@@ -607,14 +584,14 @@ h4 {
 }
 
 .list-text {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.05rem;
   color: var(--text);
   font-weight: 500;
 }
 
 .list-icon {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
   width: 20px;
@@ -639,7 +616,7 @@ h4 {
   position: relative;
   width: 50px;
   height: 2px;
-  background: linear-gradient(to right, rgba(232, 25, 44, 0.2), rgba(0, 177, 64, 0.4));
+  background: navy;
   border-radius: 2px;
 }
 
@@ -694,7 +671,7 @@ h4 {
 }
 
 .btn-minimal-action {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--text);
@@ -736,7 +713,7 @@ h4 {
 }
 
 .service-index {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1rem;
   font-weight: 700;
   color: var(--muted);
@@ -745,7 +722,7 @@ h4 {
 }
 
 .service-main-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--text);
@@ -774,7 +751,7 @@ h4 {
 }
 
 .content-wrapper-inner p {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.05rem;
   color: var(--muted);
   line-height: 1.6;
@@ -783,7 +760,7 @@ h4 {
 }
 
 .service-action-link {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   color: inherit;
@@ -962,7 +939,7 @@ h4 {
 }
 
 .stat-number {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 2.2rem;
   font-weight: 800;
   color: var(--text);
@@ -1026,6 +1003,7 @@ h4 {
   align-items: center;
   justify-content: space-between;
   gap: 4rem;
+  text-align: left;
 }
 
 .wheel-text-side {
@@ -1035,7 +1013,7 @@ h4 {
 
 .wheel-text-side h2 {
   font-size: 2.8rem;
-  margin-top: 1rem;
+  margin-top: 0.2rem;
   margin-bottom: 1.5rem;
   line-height: 1.2;
 }
@@ -1046,18 +1024,18 @@ h4 {
   justify-content: center;
   align-items: center;
   position: relative;
-  height: 650px;
+  height: 350px;
 }
 
 .master-orbit-wrapper {
-  position: relative;
+  position: absolute;
+  bottom: -340px; /* Pushes the wheel down even more */
   width: 540px;
   height: 540px;
   display: flex;
   align-items: center;
   justify-content: center;
   transform: scale(1.25);
-  /* Makes the wheel 25% larger on desktop */
 }
 
 /* ─── ORBIT RINGS ─── */
@@ -1341,11 +1319,7 @@ h4 {
 
 /* ── GRADIENT TEXT FIX ── */
 .text-gradient {
-  background: var(--brand-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  color: navy;
   display: inline-block;
 }
 
@@ -1360,7 +1334,7 @@ h4 {
 }
 
 .filter-btn {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   padding: .5rem 1.25rem;
   border-radius: 100px;
   font-size: .82rem;
@@ -1442,7 +1416,7 @@ h4 {
 }
 
 .pc-tag {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .73rem;
   font-weight: 600;
   color: var(--muted);
@@ -1460,7 +1434,7 @@ h4 {
   font-size: .88rem;
   color: var(--muted);
   line-height: 1.6;
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ============================================================
@@ -1507,7 +1481,7 @@ h4 {
   font-size: .88rem;
   color: var(--muted);
   line-height: 1.65;
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .bento-pill {
@@ -1521,7 +1495,7 @@ h4 {
   text-transform: uppercase;
   color: var(--bp);
   background: color-mix(in srgb, var(--bp) 10%, transparent);
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ============================================================
@@ -1552,7 +1526,7 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
   margin: 0 auto 1rem;
@@ -1569,7 +1543,7 @@ h4 {
   font-size: .8rem;
   color: var(--muted);
   margin-bottom: .75rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .tc-bio {
@@ -1577,7 +1551,7 @@ h4 {
   color: var(--muted);
   line-height: 1.6;
   margin-bottom: 1rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .tc-links {
@@ -1587,7 +1561,7 @@ h4 {
 }
 
 .tc-link {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -1633,7 +1607,7 @@ h4 {
 }
 
 .blog-tag {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   display: inline-block;
   font-size: .72rem;
   font-weight: 600;
@@ -1655,11 +1629,11 @@ h4 {
   color: var(--muted);
   line-height: 1.65;
   margin-bottom: 1rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .blog-meta {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   display: flex;
   gap: .4rem;
   font-size: .78rem;
@@ -1668,7 +1642,7 @@ h4 {
 }
 
 .blog-link {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .85rem;
   font-weight: 600;
   color: var(--text);
@@ -1690,7 +1664,7 @@ h4 {
   display: flex;
   flex-direction: column;
   gap: .6rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .contact-details p {
@@ -1712,7 +1686,7 @@ h4 {
 }
 
 .form-group {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   display: flex;
   flex-direction: column;
   gap: .4rem;
@@ -1731,7 +1705,7 @@ h4 {
   padding: .75rem 1rem;
   border-radius: 10px;
   border: 1.5px solid var(--border);
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .9rem;
   background: rgba(255, 255, 255, .8);
   outline: none;
@@ -1746,7 +1720,7 @@ h4 {
 }
 
 .form-note {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .82rem;
   color: var(--green);
   margin-top: .75rem;
@@ -1757,7 +1731,7 @@ h4 {
    FOOTER
    ============================================================ */
 .site-footer {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--text);
   color: rgba(255, 255, 255, .6);
   padding: 60px 0 0;
@@ -1797,7 +1771,7 @@ h4 {
 }
 
 .fl-col h4 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--white);
   font-size: .9rem;
   margin-bottom: .4rem;
@@ -2390,7 +2364,7 @@ h4 {
 }
 
 .stat-number {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 2.75rem;
   font-weight: 800;
   color: var(--text);
@@ -2399,7 +2373,7 @@ h4 {
 }
 
 .stat-plus {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--blue);
@@ -2416,7 +2390,7 @@ h4 {
 }
 
 .stat-text {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--muted);
@@ -2477,7 +2451,7 @@ h4 {
   left: 12.5%;
   right: 12.5%;
   height: 2px;
-  background: linear-gradient(90deg, var(--blue), var(--yellow), var(--red), var(--green));
+  background: navy;
   opacity: .28;
   z-index: 1;
 }
@@ -2549,7 +2523,7 @@ h4 {
   border-radius: 50%;
   background: var(--step-color);
   color: var(--white);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .68rem;
   font-weight: 700;
   display: flex;
@@ -2562,6 +2536,9 @@ h4 {
 .process-card {
   padding: 1.5rem 1.3rem;
   width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
 }
 
@@ -2569,14 +2546,14 @@ h4 {
   font-size: 1.02rem;
   font-weight: 700;
   margin-bottom: .55rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .process-card p {
   font-size: .84rem;
   line-height: 1.62;
   color: var(--muted);
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .process-step:hover .process-icon {
@@ -2665,7 +2642,7 @@ h4 {
 }
 
 /* .review-text {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .87rem;
   line-height: 1.68;
   color: var(--muted);
@@ -2677,7 +2654,7 @@ h4 {
   overflow: hidden;
 } */
 .review-text {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .87rem;
   line-height: 1.68;
   color: var(--muted);
@@ -2710,7 +2687,7 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
   font-size: .78rem;
   color: var(--white);
@@ -2718,14 +2695,14 @@ h4 {
 }
 
 .review-meta h4 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .85rem;
   font-weight: 700;
   margin-bottom: 2px;
 }
 
 .review-meta span {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .75rem;
   color: var(--muted);
 }
@@ -2737,7 +2714,7 @@ h4 {
   display: inline-flex;
   align-items: center;
   gap: .35rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .68rem;
   font-weight: 600;
   color: var(--green);
@@ -2805,7 +2782,7 @@ h4 {
 }
 
 .why-item-num {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.7rem;
   font-weight: 800;
   color: var(--wc);
@@ -2820,14 +2797,14 @@ h4 {
 }
 
 .why-item-body h4 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: .4rem;
 }
 
 .why-item-body p {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .84rem;
   color: var(--muted);
   line-height: 1.6;
@@ -2898,14 +2875,14 @@ h4 {
 }
 
 .why-float-card h3 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.7rem;
   font-weight: 800;
   margin-bottom: .3rem;
 }
 
 .why-float-card p {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .78rem;
   color: var(--muted);
   line-height: 1.5;
@@ -3093,7 +3070,7 @@ h4 {
 }
 
 .cta-trust {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .78rem;
   color: var(--muted);
   margin-top: .3rem;
@@ -3106,7 +3083,7 @@ h4 {
   gap: .55rem;
   padding: .9rem 1.9rem;
   border-radius: 100px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
   font-size: .9rem;
   color: var(--white);
@@ -3143,7 +3120,7 @@ h4 {
   -webkit-backdrop-filter: blur(16px) saturate(1.4);
   border: 1px solid var(--glass-border);
   box-shadow: 0 12px 32px rgba(15, 17, 21, .12);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .8rem;
   font-weight: 700;
   color: var(--text);
@@ -3263,7 +3240,7 @@ h4 {
 }
 
 .footer-tagline {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--white);
@@ -3272,7 +3249,7 @@ h4 {
 }
 
 .footer-desc {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .85rem;
   color: rgba(255, 255, 255, .5);
   line-height: 1.6;
@@ -3313,7 +3290,7 @@ h4 {
   gap: .55rem;
   padding: .9rem 1.9rem;
   border-radius: 100px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 700;
   font-size: .9rem;
   color: var(--white);
@@ -3340,7 +3317,7 @@ h4 {
 
 /* ── link columns ── */
 .footer-col-title {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .72rem;
   font-weight: 700;
   letter-spacing: .1em;
@@ -3356,7 +3333,7 @@ h4 {
 
 .footer-link {
   position: relative;
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .87rem;
   color: rgba(255, 255, 255, .62);
   padding: .55rem 0 .55rem 1.1rem;
@@ -3391,7 +3368,7 @@ h4 {
   display: flex;
   align-items: center;
   gap: .55rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .85rem;
   color: rgba(255, 255, 255, .62);
   padding: .55rem 0;
@@ -3439,7 +3416,7 @@ h4 {
 }
 
 .footer-bottom-inner p {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .78rem;
   color: rgba(255, 255, 255, .4);
 }
@@ -3448,7 +3425,7 @@ h4 {
   display: flex;
   align-items: center;
   gap: .6rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .78rem;
 }
 
@@ -3592,7 +3569,7 @@ h4 {
 
 .srv-tag {
   display: inline-block;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -3601,7 +3578,7 @@ h4 {
 }
 
 .srv-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 2.3rem;
   font-weight: 800;
   line-height: 1.15;
@@ -3612,16 +3589,11 @@ h4 {
 
 /* Infinite Wave Shift for Title Span */
 .anim-gradient-text {
-  background: var(--brand-gradient-animated);
-  background-size: 400% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientShift 8s ease infinite;
+  color: navy;
 }
 
 .srv-subtitle {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.15rem;
   line-height: 1.65;
   color: var(--muted);
@@ -3671,7 +3643,7 @@ h4 {
 }
 
 .srv-card-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.65rem;
   font-weight: 800;
   color: var(--text);
@@ -3679,7 +3651,7 @@ h4 {
 }
 
 .srv-card-desc {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.94rem;
   line-height: 1.65;
   color: var(--muted);
@@ -3697,7 +3669,7 @@ h4 {
 }
 
 .srv-card-bullets li {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.9rem;
   color: var(--text);
   margin-bottom: 0.8rem;
@@ -3785,7 +3757,7 @@ h4 {
 }
 
 .srv-row-num {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
   color: var(--row-color);
@@ -3794,7 +3766,7 @@ h4 {
 }
 
 .srv-row-heading {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.8rem;
   font-weight: 800;
   line-height: 1.3;
@@ -3808,7 +3780,7 @@ h4 {
 }
 
 .srv-row-summary {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.95rem;
   line-height: 1.6;
   color: var(--muted);
@@ -3828,7 +3800,7 @@ h4 {
 }
 
 .srv-detail-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -3844,7 +3816,7 @@ h4 {
 }
 
 .srv-feature-list li {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.92rem;
   color: var(--text);
   margin-bottom: 0.85rem;
@@ -4026,7 +3998,7 @@ h4 {
 .cs-tag {
   display: inline-block;
   align-self: flex-start;
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .75rem;
   font-weight: 700;
   letter-spacing: .05em;
@@ -4038,7 +4010,7 @@ h4 {
 }
 
 .cs-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.15rem;
   font-weight: 800;
   color: var(--text);
@@ -4047,7 +4019,7 @@ h4 {
 }
 
 .cs-desc {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .86rem;
   line-height: 1.6;
   color: var(--muted);
@@ -4061,7 +4033,7 @@ h4 {
 }
 
 .cs-tech-pill {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .78rem;
   font-weight: 600;
   color: var(--text);
@@ -4075,7 +4047,7 @@ h4 {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .86rem;
   font-weight: 700;
   color: var(--cs-color);
@@ -4142,7 +4114,7 @@ h4 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .85rem;
   font-weight: 600;
   color: var(--muted);
@@ -4160,7 +4132,7 @@ h4 {
 }
 
 .cd-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 800;
   color: var(--text);
@@ -4169,7 +4141,7 @@ h4 {
 }
 
 .cd-description {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1rem;
   line-height: 1.7;
   color: var(--muted);
@@ -4185,7 +4157,7 @@ h4 {
 }
 
 .cd-meta-label {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .72rem;
   font-weight: 700;
   letter-spacing: .08em;
@@ -4195,14 +4167,14 @@ h4 {
 }
 
 .cd-meta-value {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .95rem;
   font-weight: 700;
   color: var(--text);
 }
 
 .cd-result-inline {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .92rem;
   line-height: 1.75;
   color: var(--text);
@@ -4222,7 +4194,7 @@ h4 {
 }
 
 .cd-article-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.7rem;
   font-weight: 800;
   color: var(--text);
@@ -4235,7 +4207,7 @@ h4 {
 }
 
 .cd-section h3 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--text);
@@ -4243,7 +4215,7 @@ h4 {
 }
 
 .cd-section p {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .95rem;
   line-height: 1.75;
   color: var(--muted);
@@ -4263,7 +4235,7 @@ h4 {
 }
 
 .cd-bullets li {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .92rem;
   line-height: 1.65;
   color: var(--muted);
@@ -4289,7 +4261,7 @@ h4 {
 }
 
 .cd-sidebar-box h4 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1rem;
   font-weight: 800;
   color: var(--text);
@@ -4318,7 +4290,7 @@ h4 {
 }
 
 .cd-sidebar-results li {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .84rem;
   line-height: 1.6;
   color: var(--muted);
@@ -4335,7 +4307,7 @@ h4 {
 }
 
 .cd-sidebar-cta h4 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 1.05rem;
   font-weight: 800;
   color: var(--white);
@@ -4343,7 +4315,7 @@ h4 {
 }
 
 .cd-sidebar-cta p {
-  font-family: 'Inter', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: .85rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, .65);
@@ -4530,7 +4502,7 @@ h4 {
 .solution-html h3, .blog-content h3,
 .solution-html h4, .blog-content h4 {
   color: var(--text);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   margin-top: 2rem;
   margin-bottom: 1rem;
   font-weight: 700;
@@ -4601,7 +4573,7 @@ h4 {
 }
 
 .solution-html code, .blog-content code {
-  font-family: monospace;
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   background: rgba(0,0,0,0.05);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
@@ -4611,3 +4583,19 @@ h4 {
   background: transparent;
   padding: 0;
 }
+
+
+/* FORCE FONT EVERYWHERE EXCEPT ICONS AND LOGO TEXT */
+:not(i):not([class^="fa-"]):not(.logo-text) {
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* FORCE ALL PARAGRAPHS TO MATCH HERO SECTION */
+p {
+  font-family: 'WF Visual Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+}
+
+
+h1, h2, h3, h4, h5, h6, .section-title, .hero-title, .section-subtitle-text, .eyebrow { font-weight: 700 !important; }

@@ -34,6 +34,26 @@ export default async function AboutPage() {
       </section>
 
       {/* =========================================
+           EXPERTISE
+      ========================================= */}
+      <section style={{ padding: "clamp(50px, 8vw, 120px) 0", overflow: "hidden", background: "var(--off)" }}>
+        <div className="container" style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
+          <div className="section-header reveal" style={{ textAlign: "center", marginBottom: "4rem" }}>
+            <span style={{ color: 'var(--green)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Our Expertise</span>
+            <h2 className="section-title" style={{ marginTop: '10px' }}>Tools We <span className="gradient-text">Master</span></h2>
+            <p className="section-subtitle-text tight-subtitle" style={{ margin: "10px auto 0", fontSize: "1.15rem" }}>
+              We are certified in the world's leading automation and development platforms.
+            </p>
+          </div>
+        </div>
+        
+        {/* Full width marquee outside container */}
+        <div style={{ width: '100%' }}>
+          <ToolsMarquee />
+        </div>
+      </section>
+
+      {/* =========================================
            OUR MISSION
       ========================================= */}
       <section style={{ padding: "clamp(50px, 8vw, 120px) 0", background: "var(--off)" }}>
@@ -139,11 +159,6 @@ export default async function AboutPage() {
                           </svg>
                         </a>
                       )}
-                      <a href="#" className="tc-icon-btn tc-facebook" title="Facebook">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                          <path d="M9 8H7v3h2v9h3v-9h3l.5-3H12V6c0-.88.39-1 1-1h2V2h-3c-2.42 0-4 1.35-4 4v2z"/>
-                        </svg>
-                      </a>
                     </div>
                   </div>
                 </div>
@@ -185,25 +200,7 @@ export default async function AboutPage() {
         })();
       ` }} />
       
-      {/* =========================================
-           EXPERTISE
-      ========================================= */}
-      <section style={{ padding: "clamp(50px, 8vw, 120px) 0", overflow: "hidden", background: "var(--off)" }}>
-        <div className="container" style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
-          <div className="section-header reveal" style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <span style={{ color: 'var(--green)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Our Expertise</span>
-            <h2 className="section-title" style={{ marginTop: '10px' }}>Tools We <span className="gradient-text">Master</span></h2>
-            <p className="section-subtitle-text tight-subtitle" style={{ margin: "10px auto 0", fontSize: "1.15rem" }}>
-              We are certified in the world's leading automation and development platforms.
-            </p>
-          </div>
-        </div>
-        
-        {/* Full width marquee outside container */}
-        <div style={{ width: '100%' }}>
-          <ToolsMarquee />
-        </div>
-      </section>
+
 
       {/* =========================================
            CTA SECTION (WORK WITH US)
@@ -251,12 +248,7 @@ export default async function AboutPage() {
           margin: 0 0 1.4rem;
         }
 
-        .gradient-text {
-          background: linear-gradient(90deg, var(--red), var(--yellow), var(--green), var(--blue));
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
+
 
         .section-body {
           font-family: 'Inter', sans-serif;
@@ -444,6 +436,7 @@ export default async function AboutPage() {
           flex-direction: column;
           align-items: center;
           width: 100%;
+          margin-top: 16px;
           gap: 4px;
         }
 

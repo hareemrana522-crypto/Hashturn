@@ -67,88 +67,172 @@ export default async function HomePage() {
       <section
         className="page"
         id="home"
-        style={{ paddingTop: "calc(var(--nav-h) + 40px)", paddingBottom: "40px" }}
+        style={{
+          paddingTop: "calc(var(--nav-h) + 40px)",
+          paddingBottom: "40px",
+          position: "relative",
+          background: "#ffffff",
+          overflow: "hidden"
+        }}
       >
-        <div className="container">
-          <div className="cta-outer reveal">
-            <div
-              className="cta-mesh-card"
-              style={{ padding: "90px 40px 60px", textAlign: "center" }}
+        {/* Background Image with Reduced Opacity */}
+        <div 
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundImage: "url('/custom-blur-bg.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            opacity: 0.15,
+            zIndex: 0
+          }}
+        />
+
+        {/* Blur Overlay (Optional but nice) */}
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backdropFilter: "blur(5px)", zIndex: 0 }}></div>
+
+        {/* Floating Tool Icons in Background (NOW ON TOP OF BG) */}
+        <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, zIndex: 0, overflow: "hidden", pointerEvents: "none" }}>
+          <style>{`
+            @keyframes floatIcon1 { 0% { transform: translate(0px, 0px) rotate(0deg); } 50% { transform: translate(20px, -20px) rotate(10deg); } 100% { transform: translate(0px, 0px) rotate(0deg); } }
+            @keyframes floatIcon2 { 0% { transform: translate(0px, 0px) rotate(0deg); } 50% { transform: translate(-20px, 25px) rotate(-10deg); } 100% { transform: translate(0px, 0px) rotate(0deg); } }
+            @keyframes floatIcon3 { 0% { transform: translate(0px, 0px) rotate(0deg); } 50% { transform: translate(25px, 20px) rotate(15deg); } 100% { transform: translate(0px, 0px) rotate(0deg); } }
+            @keyframes floatIcon4 { 0% { transform: translate(0px, 0px) rotate(0deg); } 50% { transform: translate(-25px, -20px) rotate(-15deg); } 100% { transform: translate(0px, 0px) rotate(0deg); } }
+            .floating-tool {
+              position: absolute;
+              opacity: 0.9;
+              transition: opacity 0.3s ease;
+              pointer-events: auto; /* Allow hover */
+              width: 56px;
+              height: 56px;
+              border-radius: 50%;
+            }
+          `}</style>
+
+          <div className="floating-tool" style={{ top: "18%", left: "12%", animation: "floatIcon1 6s infinite ease-in-out" }}>
+            <div className="tool-badge-card" style={{ "--icon-color": "#61dafb" }}>
+              <img src="/react.png.png" alt="" style={{ height: "30px", width: "auto", objectFit: "contain" }} />
+              <span className="tool-tooltip">React.js</span>
+            </div>
+          </div>
+
+          <div className="floating-tool" style={{ top: "65%", left: "18%", animation: "floatIcon2 8s infinite ease-in-out" }}>
+            <div className="tool-badge-card" style={{ "--icon-color": "#afb746" }}>
+              <img src="/pyth.png.png" alt="" style={{ height: "30px", width: "auto", objectFit: "contain" }} />
+              <span className="tool-tooltip">Python</span>
+            </div>
+          </div>
+
+          <div className="floating-tool" style={{ top: "22%", right: "15%", animation: "floatIcon3 7s infinite ease-in-out" }}>
+            <div className="tool-badge-card" style={{ "--icon-color": "#ff9900" }}>
+              <img src="/aws.png.png" alt="" style={{ height: "25px", width: "auto", objectFit: "contain" }} />
+              <span className="tool-tooltip">AWS</span>
+            </div>
+          </div>
+
+          <div className="floating-tool" style={{ top: "70%", right: "12%", animation: "floatIcon4 9s infinite ease-in-out" }}>
+            <div className="tool-badge-card" style={{ "--icon-color": "#2496ed" }}>
+              <img src="/docker.png.png" alt="" style={{ height: "23px", width: "auto", objectFit: "contain" }} />
+              <span className="tool-tooltip">Docker</span>
+            </div>
+          </div>
+
+          <div className="floating-tool" style={{ top: "82%", left: "50%", animation: "floatIcon1 7.5s infinite ease-in-out" }}>
+            <div className="tool-badge-card" style={{ "--icon-color": "#742774" }}>
+              <img src="/Powerapps.png.png" alt="" style={{ height: "30px", width: "auto", objectFit: "contain" }} />
+              <span className="tool-tooltip">Power Apps</span>
+            </div>
+          </div>
+        </div>
+        
+        <div className="container" style={{ position: "relative", zIndex: 1, pointerEvents: "none" }}>
+          <div
+            className="hero-content reveal"
+            style={{ maxWidth: 1200, margin: "0 auto", width: "100%", textAlign: "center", padding: "40px 20px", pointerEvents: "auto" }}
+          >
+            <h1
+              className="hero-title"
+              style={{ marginBottom: 20, fontSize: "clamp(3rem, 7.5vw, 75px)", lineHeight: "0.95", letterSpacing: "-0.05em", fontWeight: 800 }}
             >
-              <div className="cta-mesh-blob mb-1"></div>
-              <div className="cta-mesh-blob mb-2"></div>
-              <div className="cta-mesh-blob mb-3"></div>
-              <div className="cta-mesh-blob mb-4"></div>
-              <div className="cta-mesh-overlay"></div>
+              <span style={{ display: "inline-block", whiteSpace: "nowrap", color: "rgb(8, 8, 8)" }}>We Automate the Work.</span>
+              <br />
+              <span className="text-multicolor" style={{ display: "inline-block", whiteSpace: "nowrap" }}>You Run the Business.</span>
+            </h1>
+            <p
+              className="hero-sub"
+              style={{ marginBottom: 35, fontSize: "0.95rem", maxWidth: "700px", margin: "0 auto 35px", lineHeight: 1.6, color: "rgb(55, 65, 81)" }}
+            >
+              Custom automation systems that eliminate repetitive tasks.
+            </p>
 
-              <div
-                className="cta-content"
-                style={{ maxWidth: 900, margin: "0 auto", width: "100%" }}
-              >
-                <h1
-                  className="hero-title"
-                  style={{ marginBottom: 20, fontSize: "2.3rem", lineHeight: 1.15, fontWeight: 800 }}
-                >
-                  We Automate the Work.
-                  <br />
-                  <span className="text-multicolor">You Run the Business.</span>
-                </h1>
-                <p
-                  className="hero-sub reveal"
-                  style={{ marginBottom: 35, fontSize: "0.95rem", maxWidth: "700px", margin: "0 auto 35px", lineHeight: 1.6 }}
-                >
-                  HashTurn designs and builds custom automation systems —
-                  connecting your apps, eliminating repetitive tasks, and
-                  giving your team back hundreds of hours every month.
-                </p>
+            <div
+              className="hero-actions"
+              style={{ display: "flex", justifyContent: "center", gap: "15px", marginBottom: 50, flexWrap: "wrap" }}
+            >
+              <a href="/contact" className="cta-btn-grad">
+                Book Free Strategy Call <i className="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="/services" className="btn-ghost">
+                See Our Services
+              </a>
+            </div>
 
-                <div
-                  className="hero-actions reveal"
-                  style={{ justifyContent: "center", marginBottom: 50 }}
-                >
-                  <a href="/contact" className="cta-btn-grad">
-                    Book Free Strategy Call <i className="fa-solid fa-arrow-right"></i>
-                  </a>
-                  <a href="/services" className="btn-ghost">
-                    See Our Services
-                  </a>
+            <div
+              className="hero-stats"
+              style={{
+                marginTop: 0,
+                paddingTop: "10px",
+                display: "flex",
+                justifyContent: "center",
+                gap: "30px",
+                flexWrap: "wrap"
+              }}
+            >
+              <div className="stat-box" style={{ textAlign: "center" }}>
+                <div className="stat-num" style={{ fontSize: "1.5rem", fontWeight: "bold", color: "var(--text)" }}>200+</div>
+                <p className="stat-label" style={{ fontSize: "0.85rem", color: "var(--muted)" }}>Projects Delivered</p>
+              </div>
+
+              <div className="stat-box" style={{ textAlign: "center" }}>
+                <div className="stat-num" style={{ fontSize: "1.5rem", fontWeight: "bold", color: "var(--text)" }}>
+                  <span className="star-icon" style={{ color: "var(--yellow)" }}>⭐</span> 5.0
                 </div>
+                <p className="stat-label" style={{ fontSize: "0.85rem", color: "var(--muted)" }}>Fiverr Rating</p>
+              </div>
 
-                <div
-                  className="hero-stats"
-                  style={{
-                    marginTop: 0,
-                    borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-                    paddingTop: 0,
-                  }}
-                >
-                  <div className="stat-box">
-                    <div className="stat-num">200+</div>
-                    <p className="stat-label">Projects Delivered</p>
-                  </div>
+              <div className="stat-box" style={{ textAlign: "center" }}>
+                <div className="stat-num" style={{ fontSize: "1.5rem", fontWeight: "bold", color: "var(--text)" }}>Fast</div>
+                <p className="stat-label" style={{ fontSize: "0.85rem", color: "var(--muted)" }}>Turnaround</p>
+              </div>
 
-                  <div className="stat-box">
-                    <div className="stat-num">
-                      <span className="star-icon">⭐</span> 5.0
-                    </div>
-                    <p className="stat-label">Fiverr Rating</p>
-                  </div>
-
-                  <div className="stat-box">
-                    <div className="stat-num">Fast</div>
-                    <p className="stat-label">Turnaround</p>
-                  </div>
-
-                  <div className="stat-box">
-                    <div className="stat-num">100%</div>
-                    <p className="stat-label">Client Satisfaction</p>
-                  </div>
-                </div>
+              <div className="stat-box" style={{ textAlign: "center" }}>
+                <div className="stat-num" style={{ fontSize: "1.5rem", fontWeight: "bold", color: "var(--text)" }}>100%</div>
+                <p className="stat-label" style={{ fontSize: "0.85rem", color: "var(--muted)" }}>Client Satisfaction</p>
               </div>
             </div>
-            <div className="cta-sticker sticker-1">
-              <i className="fa-solid fa-check"></i> 200+ Projects Delivered
-            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ░░ OUR TOOLKIT SECTION ░░ */}
+      <section className="tools-wheel-section">
+        <div className="container wheel-flex-container">
+          <div className="wheel-text-side reveal">
+            <span className="eyebrow">Our Toolkit</span>
+            <h2>
+              Industry
+              <br />
+              <span className="text-gradient">Leading Tools</span>
+            </h2>
+            <p>We are certified experts in the platforms businesses trust most.</p>
+          </div>
+
+          <div className="wheel-visual-side">
+            <OrbitWheel />
           </div>
         </div>
       </section>
@@ -267,24 +351,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ░░ OUR TOOLKIT SECTION ░░ */}
-      <section className="tools-wheel-section">
-        <div className="container wheel-flex-container">
-          <div className="wheel-text-side reveal">
-            <span className="eyebrow">Our Toolkit</span>
-            <h2>
-              Industry
-              <br />
-              <span className="text-gradient">Leading Tools</span>
-            </h2>
-            <p>We are certified experts in the platforms businesses trust most.</p>
-          </div>
-
-          <div className="wheel-visual-side">
-            <OrbitWheel />
-          </div>
-        </div>
-      </section>
 
       {/* ░░ OUR PROCESS ░░ */}
       <section className="page process-section" id="process">

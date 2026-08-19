@@ -117,7 +117,7 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <div className="container footer-bottom-inner">
-          <p>© 2026 Hashturn B.V. · All rights reserved.</p>
+          <p>© 2026 HashTurn · All rights reserved.</p>
           <div className="footer-bottom-links">
             <a href="#">Privacy Policy</a>
             <span>·</span>
