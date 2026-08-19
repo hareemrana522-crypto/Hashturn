@@ -2,6 +2,8 @@ import Link from "next/link";
 import { sql } from "@/lib/db";
 import { updateSubmissionStatus, deleteSubmission } from "./actions";
 
+export const dynamic = 'force-dynamic';
+
 export default async function SubmissionsAdminPage() {
   const submissions = await sql`SELECT * FROM submissions ORDER BY created_at DESC`.catch(() => []);
   const newCount = submissions.filter(s => s.status === 'new').length;

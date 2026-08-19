@@ -51,7 +51,7 @@ export async function POST(request) {
         ${data.get('service')?.toString() ?? ''},
         ${message},
         ${data.get('how')?.toString() ?? ''},
-        ${data.get('tools')?.toString().trim() ?? ''},
+        ${(data.get('tools') || data.get('apps'))?.toString().trim() ?? ''},
         ${data.get('timeline')?.toString() ?? ''},
         ${data.get('source')?.toString() ?? 'contact'},
         'new'
