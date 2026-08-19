@@ -3,9 +3,13 @@ import { sql } from "@/lib/db";
 import { updateSubmissionStatus, deleteSubmission } from "./actions";
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function SubmissionsAdminPage() {
-  const submissions = await sql`SELECT * FROM submissions ORDER BY created_at DESC`.catch(() => []);
+  const submissions = await sql`SELECT * FROM submissions ORDER BY created_at DESC`.catch((e) => {
+    console.error("Database Error on Submissions Page:", e);
+    return [];
+  });
   const newCount = submissions.filter(s => s.status === 'new').length;
 
   const statusColors = {
