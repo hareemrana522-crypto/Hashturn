@@ -52,29 +52,34 @@ export default async function BlogPage() {
               return (
               <div
                 key={post.slug}
-                className={`glass-panel blog-card ${
+                className={`blog-card ${
                   post.featured ? "blog-card-featured" : ""
                 }`}
                 style={{ display: "flex", flexDirection: "column" }}
               >
                 {/* Blog Image */}
-                <div style={{ margin: "-2rem -2rem 1.5rem -2rem", borderRadius: "1rem 1rem 0 0", overflow: "hidden", position: "relative", height: "220px" }}>
+                <div style={{ position: "relative", height: "240px", width: "100%", overflow: "hidden" }}>
                   <Image src={post.image || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"} alt={post.title} fill priority={idx < 6} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" style={{ objectFit: "cover" }} />
                 </div>
                 
-                <span className="blog-tag" style={{ color: colors[idx % colors.length] }}>
-                  {firstTag}
-                </span>
-                <h3>{post.title}</h3>
-                <p style={{ flexGrow: 1, color: "var(--muted)", fontSize: "0.95rem", lineHeight: 1.6 }}>{post.desc}</p>
-                <div className="blog-meta">
-                  <span>{new Date(post.pub_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
-                  <span>•</span>
-                  <span>{post.read_time || "5 min read"}</span>
+                <div className="blog-card-content" style={{ padding: "1.8rem", display: "flex", flexDirection: "column", flexGrow: 1 }}>
+                  <span className="blog-tag" style={{ color: colors[idx % colors.length] }}>
+                    {firstTag}
+                  </span>
+                  <h3 style={{ fontSize: "1.1rem", lineHeight: "1.5", marginBottom: "0.8rem", fontWeight: "700" }}>{post.title}</h3>
+                  <p style={{ flexGrow: 1, color: "var(--muted)", fontSize: "0.95rem", lineHeight: 1.6 }}>{post.desc}</p>
+                  
+                  <div style={{ marginTop: "1.5rem", borderTop: "1px solid rgba(0,0,0,0.05)", paddingTop: "1rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <div className="blog-meta" style={{ marginBottom: 0 }}>
+                      <span>{new Date(post.pub_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                      <span>•</span>
+                      <span>{post.read_time || "5 min read"}</span>
+                    </div>
+                    <a href={`/blog/${post.slug}`} className="blog-link" style={{ color: "var(--blue)" }}>
+                      Read More <i className="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
                 </div>
-                <a href={`/blog/${post.slug}`} className="blog-link">
-                  Read More <i className="fa-solid fa-arrow-right"></i>
-                </a>
               </div>
               );
             })}
