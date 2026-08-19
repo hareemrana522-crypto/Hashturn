@@ -189,7 +189,7 @@ export default function ContactPage() {
                   </div>
                 )}
 
-                <button type="submit" disabled={status.state === "submitting"} className="btn-solid" style={{ width: "100%", textAlign: "center", display: "block", backgroundColor: "var(--green)", border: "none", color: "#fff", padding: "16px", borderRadius: "10px", fontWeight: "700", fontSize: "1.05rem", cursor: status.state === "submitting" ? "not-allowed" : "pointer", opacity: status.state === "submitting" ? 0.7 : 1, transition: "opacity 0.2s" }}>
+                <button type="submit" disabled={status.state === "submitting"} className="btn-solid" style={{ width: "100%", textAlign: "center", display: "block", backgroundColor: "navy", border: "none", color: "#fff", padding: "16px", borderRadius: "10px", fontWeight: "700", fontSize: "1.05rem", cursor: status.state === "submitting" ? "not-allowed" : "pointer", opacity: status.state === "submitting" ? 0.7 : 1, transition: "opacity 0.2s" }}>
                   {status.state === "submitting" ? "Sending..." : "Send Message & Book Free Call"} {status.state !== "submitting" && <i className="fa-solid fa-arrow-right" style={{ marginLeft: "5px" }}></i>}
                 </button>
                 <div className="form-note" style={{ marginTop: "1rem" }}>

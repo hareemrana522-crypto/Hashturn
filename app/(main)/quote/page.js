@@ -144,7 +144,7 @@ export default function QuotePage() {
                   {/* Cloudflare Turnstile removed from this page */}
                 </div>
 
-                <button type="submit" disabled={status.state === "submitting"} className="btn-solid" style={{ width: "100%", textAlign: "center", display: "block", backgroundColor: "var(--green)", border: "none", color: "#fff", padding: "16px", borderRadius: "10px", fontWeight: "700", fontSize: "1.05rem", cursor: status.state === "submitting" ? "not-allowed" : "pointer", opacity: status.state === "submitting" ? 0.7 : 1, transition: "opacity 0.2s" }}>
+                <button type="submit" disabled={status.state === "submitting"} className="btn-solid" style={{ width: "100%", textAlign: "center", display: "block", backgroundColor: "navy", border: "none", color: "#fff", padding: "16px", borderRadius: "10px", fontWeight: "700", fontSize: "1.05rem", cursor: status.state === "submitting" ? "not-allowed" : "pointer", opacity: status.state === "submitting" ? 0.7 : 1, transition: "opacity 0.2s" }}>
                   {status.state === "submitting" ? "Sending..." : "Submit Quote Request"} {status.state !== "submitting" && <i className="fa-solid fa-arrow-right" style={{ marginLeft: "5px" }}></i>}
                 </button>
                 <div className="form-note" style={{ marginTop: "1rem", textAlign: "center", fontSize: "0.85rem" }}>
@@ -188,7 +188,7 @@ export default function QuotePage() {
               <div className="glass-panel" style={{ backgroundColor: "#fff", border: "1px solid var(--border)", borderRadius: "16px", padding: "2rem", boxShadow: "0 10px 40px rgba(0,0,0,0.03)" }}>
                 <h4 style={{ fontSize: "1.1rem", fontWeight: "800", fontFamily: "'Plus Jakarta Sans', sans-serif", marginBottom: "0.8rem", color: "var(--text)" }}>Prefer a Call?</h4>
                 <p style={{ color: "var(--muted)", fontSize: "0.95rem", fontFamily: "'Inter', sans-serif", marginBottom: "1.5rem", lineHeight: 1.6 }}>Schedule a free 30-minute strategy call and we'll discuss your project live.</p>
-                <a href="/contact" style={{ display: "block", textAlign: "center", backgroundColor: "var(--green)", color: "#fff", padding: "12px", borderRadius: "8px", fontWeight: "600", textDecoration: "none", fontFamily: "'Inter', sans-serif" }}>
+                <a href="/contact" style={{ display: "block", textAlign: "center", backgroundColor: "navy", color: "#fff", padding: "12px", borderRadius: "8px", fontWeight: "600", textDecoration: "none", fontFamily: "'Inter', sans-serif" }}>
                   Book Free Call
                 </a>
               </div>
