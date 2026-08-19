@@ -148,7 +148,9 @@ export default async function WorkPage() {
                                 height={finalTool.h || 24}
                                 width={finalTool.h ? finalTool.h * 1.5 : 36}
                                 style={{ 
+                                  height: `${finalTool.h || 24}px`,
                                   width: "auto",
+                                  maxWidth: "60px",
                                   objectFit: "contain",
                                   ...(finalTool.blend ? { mixBlendMode: finalTool.blend } : {})
                                 }} 

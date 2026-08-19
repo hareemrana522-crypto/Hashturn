@@ -154,7 +154,9 @@ export default async function CaseStudyPage({ params }) {
                             height={tool.h || 24}
                             width={tool.h ? tool.h * 1.5 : 36}
                             style={{ 
+                              height: `${tool.h || 24}px`,
                               width: "auto",
+                              maxWidth: "60px",
                               objectFit: "contain",
                               ...(tool.blend ? { mixBlendMode: tool.blend } : {})
                             }} 
