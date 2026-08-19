@@ -38,7 +38,7 @@ export default function Footer() {
         <div className="footer-brand-col">
           <div className="nav-logo">
             <div className="logo-mark">
-              <Image src="/logo.png.png" alt="Hashturn Logo" width={36} height={36} style={{ objectFit: 'contain' }} />
+              <Image src="/logo.png.png" alt="Hashturn Logo" width={36} height={36} unoptimized style={{ objectFit: 'contain' }} />
             </div>
             <span className="logo-text">HASHTURN</span>
           </div>

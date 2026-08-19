@@ -50,7 +50,7 @@ export default function Navbar() {
       <div className="nav-inner">
         <Link href="/" className="nav-logo">
           <div className="logo-mark">
-            <Image src="/logo.png.png" alt="Hashturn Logo" width={55} height={55} style={{ objectFit: 'contain' }} />
+            <Image src="/logo.png.png" alt="Hashturn Logo" width={55} height={55} unoptimized style={{ objectFit: 'contain' }} />
           </div>
           <span className="logo-text" style={{ color: "#000", fontFamily: '"Oswald", sans-serif', fontWeight: 900, letterSpacing: "0.5px" }}>HASHTURN</span>
         </Link>
