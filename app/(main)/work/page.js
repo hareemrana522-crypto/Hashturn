@@ -74,6 +74,8 @@ export default async function WorkPage() {
                         alt={study.title}
                         className="cs-image"
                         fill
+                        priority={idx < 6}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         style={{
                           objectFit: "contain",
                           padding: "1.5rem"

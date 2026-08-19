@@ -59,7 +59,7 @@ export default async function BlogPage() {
               >
                 {/* Blog Image */}
                 <div style={{ margin: "-2rem -2rem 1.5rem -2rem", borderRadius: "1rem 1rem 0 0", overflow: "hidden", position: "relative", height: "220px" }}>
-                  <Image src={post.image || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"} alt={post.title} fill style={{ objectFit: "cover" }} />
+                  <Image src={post.image || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"} alt={post.title} fill priority={idx < 6} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" style={{ objectFit: "cover" }} />
                 </div>
                 
                 <span className="blog-tag" style={{ color: colors[idx % colors.length] }}>
