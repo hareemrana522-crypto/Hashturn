@@ -11,7 +11,27 @@ export async function POST(request) {
       return NextResponse.json({ success: true }, { status: 200 });
     }
 
-    // Turnstile verification temporarily disabled to fix submission blocks
+    // Cloudflare Turnstile verification
+    const turnstileToken = data.get('cf-turnstile-response')?.toString() ?? '';
+    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY ?? '1x0000000000000000000000000000000AA';
+
+    // Only verify turnstile in production or if a real secret is provided and not in development
+    const source = data.get('source')?.toString() ?? 'contact';
+    if (source !== 'quote' && turnstileSecret && !turnstileSecret.startsWith('1x0000') && process.env.NODE_ENV !== 'development') {
+      const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          secret: turnstileSecret,
+          response: turnstileToken,
+          remoteip: request.headers.get('x-forwarded-for') ?? '',
+        }),
+      });
+      const verifyData = await verifyRes.json();
+      if (!verifyData.success) {
+        return NextResponse.json({ error: 'Captcha verification failed. Please try again.' }, { status: 400 });
+      }
+    }
 
     const name = data.get('name')?.toString().trim() ?? '';
     const email = data.get('email')?.toString().trim() ?? '';
