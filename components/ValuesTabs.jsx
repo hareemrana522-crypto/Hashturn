@@ -39,7 +39,7 @@ export default function ValuesTabs() {
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <span style={{ 
-            color: 'var(--green)', 
+            color: 'navy', 
             fontWeight: 700, 
             textTransform: 'uppercase', 
             letterSpacing: '2px', 

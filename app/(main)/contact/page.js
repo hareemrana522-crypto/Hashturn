@@ -49,7 +49,7 @@ export default function ContactPage() {
         <div className="container">
           
           <div className="section-header reveal" style={{ textAlign: "center" }}>
-            <p className="section-label" style={{ color: "var(--green)", fontWeight: "bold", letterSpacing: "1px", textTransform: "uppercase", fontSize: "0.85rem", marginBottom: "1rem" }}>Get in Touch</p>
+            <p className="section-label" style={{ color: "navy", fontWeight: "bold", letterSpacing: "1px", textTransform: "uppercase", fontSize: "0.85rem", marginBottom: "1rem" }}>Get in Touch</p>
             <h1 className="section-title" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", lineHeight: 1.1, marginBottom: "1.5rem" }}>
               Book Your Free<br />
               <span className="gradient-text">Strategy Call</span>
@@ -67,7 +67,7 @@ export default function ContactPage() {
       ========================================= */}
       <section className="section" style={{ padding: "3rem 1.5rem", backgroundColor: "#f9fafb" }}>
         <div className="container" style={{ marginBottom: "1rem", textAlign: "center" }}>
-          <p className="section-label" style={{ color: "var(--green)", fontWeight: "bold", letterSpacing: "1px", textTransform: "uppercase", fontSize: "0.85rem", marginBottom: "1rem" }}>Schedule Instantly</p>
+          <p className="section-label" style={{ color: "navy", fontWeight: "bold", letterSpacing: "1px", textTransform: "uppercase", fontSize: "0.85rem", marginBottom: "1rem" }}>Schedule Instantly</p>
           <h2 className="section-title" style={{ marginBottom: "0.5rem", fontSize: "2rem" }}>Book a Time That Works for You</h2>
           <p className="section-sub" style={{ margin: "0 auto", color: "var(--muted)", marginBottom: "3rem" }}>Pick a slot and we'll call you — no waiting, no back-and-forth.</p>
         </div>

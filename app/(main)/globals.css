@@ -2890,7 +2890,7 @@ h1 {
 
 /* positions + rotation, staggered like a collage */
 .wc-1 {
-  top: 0;
+  top: -3%;
   left: 0;
   transform: rotate(-7deg);
 }
@@ -3573,7 +3573,7 @@ h1 {
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: var(--blue);
+  color: navy;
   margin-bottom: 20px;
 }
 

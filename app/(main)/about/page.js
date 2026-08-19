@@ -41,7 +41,7 @@ export default async function AboutPage() {
       <section style={{ padding: "clamp(50px, 8vw, 120px) 0", overflow: "hidden", background: "var(--off)" }}>
         <div className="container" style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 20px" }}>
           <div className="section-header reveal" style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <span style={{ color: 'var(--green)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Our Expertise</span>
+            <span style={{ color: 'navy', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Our Expertise</span>
             <h2 className="section-title" style={{ marginTop: '10px' }}>Tools We <span className="gradient-text">Master</span></h2>
             <p className="section-subtitle-text tight-subtitle" style={{ margin: "10px auto 0", fontSize: "1.15rem" }}>
               We are certified in the world's leading automation and development platforms.

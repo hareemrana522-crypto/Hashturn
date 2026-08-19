@@ -67,7 +67,7 @@ export default async function TeamMemberPage({ params }) {
             </div>
             
             <div className="member-hero-content reveal" style={{ transitionDelay: '0.1s' }}>
-              <p className="eyebrow" style={{ color: themeColor }}>{member.role}</p>
+              <p className="eyebrow" style={{ color: "navy" }}>{member.role}</p>
               <h1 className="hero-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>{member.name}</h1>
               
               <div className="member-bio" style={{ fontSize: '1.15rem', lineHeight: 1.8, color: 'var(--muted)', marginBottom: '2.5rem' }}>
@@ -97,7 +97,7 @@ export default async function TeamMemberPage({ params }) {
       <section style={{ padding: 'clamp(60px, 8vw, 100px) 0', background: 'var(--off)' }}>
         <div className="container">
           <div className="section-header reveal" style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <p className="eyebrow" style={{ color: 'var(--blue)' }}>PORTFOLIO</p>
+            <p className="eyebrow" style={{ color: 'navy' }}>PORTFOLIO</p>
             <h2 className="section-title">Recent <span className="gradient-text">Projects</span></h2>
             <p className="section-subtitle-text tight-subtitle" style={{ margin: '15px auto 0', maxWidth: '600px' }}>
               Explore the automation solutions {member.name.split(' ')[0]} has contributed to.
