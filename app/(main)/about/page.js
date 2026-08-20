@@ -253,6 +253,10 @@ export default async function AboutPage() {
           margin: 0 0 1.4rem;
         }
 
+        .cta-title {
+          text-align: center !important;
+        }
+
         .cta-title .title-part1, .cta-title .title-part2 {
           display: inline-block;
           white-space: nowrap;
