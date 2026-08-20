@@ -211,12 +211,12 @@ export default async function AboutPage() {
            CTA SECTION (WORK WITH US)
       ========================================= */}
       <section style={{ padding: "0 0 clamp(50px, 8vw, 120px) 0", textAlign: "center", position: "relative", background: "var(--bg)" }}>
-        <div className="container" style={{ maxWidth: "800px", margin: "0 auto", padding: "0 20px" }}>
+        <div className="container" style={{ maxWidth: "1000px", margin: "0 auto", padding: "0 20px" }}>
           <div className="section-header reveal">
             <span className="eyebrow" style={{ color: 'navy', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Work With Us</span>
-            <h2 className="section-title cta-title" style={{ marginTop: '10px' }}>
-              <span className="title-part1">Ready to See What Automation</span><br/>
-              <span className="gradient-text title-part2">Can Do for Your Business?</span>
+            <h2 className="section-title" style={{ marginTop: '10px', textAlign: 'center' }}>
+              Ready to See What Automation<br/>
+              <span className="gradient-text">Can Do for Your Business?</span>
             </h2>
             <p className="section-subtitle-text tight-subtitle" style={{ margin: "20px auto 40px auto", maxWidth: "600px", fontSize: "1.1rem" }}>
               Book a free strategy call. No commitment, no pressure — just an honest conversation about your business and how we can help.
@@ -251,20 +251,6 @@ export default async function AboutPage() {
           font-weight: 800;
           line-height: 1.2;
           margin: 0 0 1.4rem;
-        }
-
-        .cta-title {
-          text-align: center !important;
-        }
-
-        .cta-title .title-part1, .cta-title .title-part2 {
-          display: inline;
-          white-space: nowrap;
-        }
-        @media (max-width: 900px) {
-          .cta-title .title-part1, .cta-title .title-part2 {
-            white-space: normal;
-          }
         }        .section-body {
           font-family: 'Inter', sans-serif;
           font-size: .98rem;
