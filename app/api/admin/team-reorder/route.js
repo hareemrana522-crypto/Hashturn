@@ -1,20 +1,14 @@
 import { NextResponse } from "next/server";
 import { sql } from "@/lib/db";
 import { cookies } from "next/headers";
-import { jwtVerify } from "jose";
+const SESSION_SECRET = "hashturn-admin-secret-2025";
+const SESSION_COOKIE = "ht_session";
 
 export async function POST(req) {
   const cookieStore = cookies();
-  const token = cookieStore.get("admin_session")?.value;
+  const token = cookieStore.get(SESSION_COOKIE)?.value;
 
-  if (!token) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
-  try {
-    const secret = new TextEncoder().encode(process.env.JWT_SECRET || "fallback_secret");
-    await jwtVerify(token, secret);
-  } catch (err) {
+  if (!token || token !== SESSION_SECRET) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
