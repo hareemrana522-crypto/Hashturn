@@ -210,7 +210,7 @@ export default async function AboutPage() {
       {/* =========================================
            CTA SECTION (WORK WITH US)
       ========================================= */}
-      <section style={{ padding: "clamp(50px, 8vw, 120px) 0", textAlign: "center", position: "relative", background: "var(--bg)" }}>
+      <section style={{ padding: "0 0 clamp(50px, 8vw, 120px) 0", textAlign: "center", position: "relative", background: "var(--bg)" }}>
         <div className="container" style={{ maxWidth: "800px", margin: "0 auto", padding: "0 20px" }}>
           <div className="section-header reveal">
             <span className="eyebrow" style={{ color: 'navy', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Work With Us</span>
@@ -258,7 +258,7 @@ export default async function AboutPage() {
         }
 
         .cta-title .title-part1, .cta-title .title-part2 {
-          display: inline-block;
+          display: inline;
           white-space: nowrap;
         }
         @media (max-width: 900px) {
