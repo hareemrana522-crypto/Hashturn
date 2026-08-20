@@ -214,7 +214,7 @@ export default async function AboutPage() {
         <div className="container" style={{ maxWidth: "1000px", margin: "0 auto", padding: "0 20px" }}>
           <div className="section-header reveal">
             <span className="eyebrow" style={{ color: 'navy', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>Work With Us</span>
-            <h2 className="section-title" style={{ marginTop: '10px', textAlign: 'center' }}>
+            <h2 className="section-title text-center" style={{ marginTop: '10px', textAlign: 'center' }}>
               Ready to See What Automation<br/>
               <span className="gradient-text">Can Do for Your Business?</span>
             </h2>
